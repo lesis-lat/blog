@@ -6,7 +6,7 @@ date:   2025-07-22
 
 ### Abstract
 
-The increasing reliance on third-party libraries in software development has expanded the attack surface of modern applications. Software Composition Analysis (SCA) tools have emerged as automated mechanisms to mitigate risks associated with the use of outdated or vulnerable components. However, the Perl ecosystem lacks such tooling. This paper introduces Bunkai, a tool specifically designed to analyse the security of dependencies in Perl projects. The architecture, core features, and integration capabilities of the tool—particularly with formats such as SARIF—are presented. Results suggest that the adoption of tools like Bunkai may enhance the security posture of both legacy and actively maintained Perl systems.
+The increasing reliance on third-party libraries in software development has expanded the attack surface of modern applications. Software Composition Analysis (SCA) tools have emerged as automated mechanisms to mitigate risks associated with the use of outdated or vulnerable components. However, the Perl ecosystem lacks such tooling. This paper introduces [Bunkai](https://github.com/lesis-lat/bunkai), a tool specifically designed to analyse the security of dependencies in Perl projects. The architecture, core features, and integration capabilities of the tool—particularly with formats such as SARIF—are presented. Results suggest that the adoption of tools like Bunkai may enhance the security posture of both legacy and actively maintained Perl systems.
 
 This publication is also available in: [Portuguese](https://blog.lesis.lat/blog/Fortalecendo-a-software-supply-chain-de-projetos-Perl-com-Bunkai/) and [Spanish](https://blog.lesis.lat/blog/Fortalecimiento-de-la-cadena-de-suministro-de-software-en-proyectos-Perl-mediante-la-herramienta-Bunkai/)
 
@@ -35,7 +35,7 @@ The primary objective of SCA is to reduce the risk of introducing insecure compo
 
 ### 3. Bunkai: architecture and capabilities
 
-Bunkai is an SCA tool developed specifically for the Perl ecosystem. It is designed to assist developers in evaluating the security of declared project dependencies, as specified in the cpanfile.
+[Bunkai](https://github.com/lesis-lat/bunkai) is an SCA tool developed specifically for the Perl ecosystem. It is designed to assist developers in evaluating the security of declared project dependencies, as specified in the cpanfile.
 
 The tool provides the following functionality:
 
@@ -113,7 +113,7 @@ Bunkai supports export in SARIF (Static Analysis Results Interchange Format), a 
 
 The absence of SCA tooling within the Perl ecosystem represents a significant gap in the current landscape of software supply chain security. Bunkai addresses this gap by providing a specialised solution that aligns with modern development practices and security requirements.
 
-Systematic adoption of Bunkai may enhance software governance processes, particularly in Perl projects considered critical or legacy.
+Systematic adoption of [Bunkai](https://github.com/lesis-lat/bunkai) may enhance software governance processes, particularly in Perl projects considered critical or legacy.
 
 ---
 
