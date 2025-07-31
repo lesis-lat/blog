@@ -20,7 +20,7 @@ The lack of automated SCA tooling for Perl limits the ability to detect outdated
 
 ---
 
-### 2. Fundamentos de Análise de Composição de Software (SCA)
+### 2. Fundamentals of Software Composition Analysis (SCA)
 
 SCA tools perform automated inspection of a project’s metadata and dependency definitions. Typical checks include:
 
