@@ -1,0 +1,37 @@
+---
+layout: default
+---
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  {% if page.lang == 'en' or page.url contains '/en/' %}
+    {% assign t = site.data.translations.en %}
+  {% elsif page.lang == 'es' or page.url contains '/es/' %}
+    {% assign t = site.data.translations.es %}
+  {% else %}
+    {% assign t = site.data.translations.pt %}
+  {% endif %}
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        {% include date.html date=page.date %} 
+      </time>
+      {%- if page.author -%}
+       • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>
+      {%- endif -%}
+      <span> </span> • {{ t.reading_time }} {% include read_time.html %}
+    </p>
+  </header>
+  <div class="post-content e-content" itemprop="articleBody">
+    {{ content }}
+    <td style="white-space:nowrap;">
+        {% include share-buttons.html %}
+    </td> 
+  </div>
+  {%- if page.author-info -%}
+    {% include author.html author=page.author-info %}
+  {%- endif -%}
+  {%- if site.disqus.shortname -%}
+    {%- include disqus_comments.html -%}
+  {%- endif -%}
+  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+</article>
