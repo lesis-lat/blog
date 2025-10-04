@@ -1,0 +1,39 @@
+title: Laboratory of Engineering Studies in Information Security 
+short_title: Blog
+author: LESIS
+tagline: Your security R&D partner
+website:
+  link: www.lesis.lat
+  url: https://lesis.lat
+email: contact@lesis.lat
+description: >-
+  Our mission is to advance information security through applied research in offensive technologies, developing innovative solutions that reflect the mindset and methods of an attacker. We excel in vulnerability research, custom tooling, and exploitation strategies, always aiming to strengthen critical operations and enhance digital resilience. Our commitment is to deliver actionable knowledge, cutting-edge technology, and results that empower organizations and partners to anticipate emerging threats and operate securely in complex environments.
+baseurl: ''
+url: 'https://blog.lesis.lat'
+linkedin_username: lesis-lat
+twitter_username: lesis_lat
+instagram_username: lesis.lat
+github_username: lesis-lat
+
+show_excerpts: true
+theme: minima
+plugins:
+  - jekyll-feed
+
+google_analytics: UA-167519399-1
+
+kramdown:
+  syntax_highlighter: rouge
+  input: GFM
+
+# exclude:
+#   - .sass-cache/
+#   - .jekyll-cache/
+#   - gemfiles/
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules/
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/

@@ -1,0 +1,32 @@
+en:
+  read_more: "Read more"
+  posts_heading: "Publications"
+  rss_follow: "Follow our"
+  rss_feed: "RSS feed"
+  reading_time: "Reading time:"
+  about: "ABOUT"
+  share_on: "Share on"
+  site_description: ""
+  tagline: "Your security R&D partner"
+
+pt:
+  read_more: "Leia mais"
+  posts_heading: "Publicações"
+  rss_follow: "Acompanhe nosso"
+  rss_feed: "feed RSS"
+  reading_time: "Tempo de leitura:"
+  about: "SOBRE"
+  share_on: "Compartilhe em"
+  site_description: ""
+  tagline: "Your security R&D partner"
+
+es:
+  read_more: "Leer más"
+  posts_heading: "Publicaciones"
+  rss_follow: "Sigue nuestro"
+  rss_feed: "feed RSS"
+  reading_time: "Tiempo de lectura:"
+  about: "SOBRE"
+  share_on: "Compartir en"
+  site_description: ""
+  tagline: "Your security R&D partner"

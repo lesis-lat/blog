@@ -1,0 +1,43 @@
+---
+layout: default
+---
+
+<head>
+  <script src="/securityHeaders.js" defer></script>
+</head>
+<div class="home">
+  {%- if page.title -%}
+    <h1 class="page-heading">{{ page.title }}</h1>
+  {%- endif -%}
+  {{ content }}
+  {% if page.lang == 'en' or page.url contains '/en/' %}
+    {% assign t = site.data.translations.en %}
+  {% elsif page.lang == 'es' or page.url contains '/es/' %}
+    {% assign t = site.data.translations.es %}
+  {% else %}
+    {% assign t = site.data.translations.pt %}
+  {% endif %}
+  {%- if site.posts.size > 0 -%}
+    <h2 class="post-list-heading">{{ page.list_title | default: t.posts_heading }}</h2>
+    <ul class="post-list">
+      {%- assign filtered_posts = site.posts | where: "lang", page.lang -%}
+        <ul class="post-list">
+          {%- for post in filtered_posts -%}
+          <li>
+            <span class="post-meta">{% include date.html date=post.date %}</span>
+            <h3>
+              <a class="post-link" href="{{ post.url | relative_url }}">
+                {{ post.title | escape }}
+              </a>
+            </h3>
+            {%- if site.show_excerpts -%}
+              {{ post.excerpt }}
+              <a href="{{ post.url | relative_url }}">{{ t.read_more }}</a>
+            {%- endif -%}
+          </li>
+          {%- endfor -%}
+        </ul>
+    </ul>
+    <p class="rss-subscribe">{{ t.rss_follow }} <a href="{{ "/feed.xml" | relative_url }}">{{ t.rss_feed }}</a></p>
+  {%- endif -%}
+</div>
