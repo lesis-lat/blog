@@ -1,12 +1,7 @@
-/**
- * Site header
- */
 .site-header {
   border-top: 5px solid $grey-color-dark;
   border-bottom: 1px solid $grey-color-light;
   min-height: $spacing-unit * 1.865;
-
-  // Positioning context for the mobile navigation icon
   position: relative;
 }
 
@@ -20,15 +15,14 @@
 
   &,
   &:visited {
-    color: $grey-color-dark;
+    color: #3db55d;
   }
 }
 
 .site-nav .trigger {
   display: flex;
-  justify-content: flex-end; // joga os links para a direita
+  justify-content: flex-end;
 }
-
 
 .site-nav {
   float: right;
@@ -109,11 +103,6 @@
   }
 }
 
-
-
-/**
- * Site footer
- */
 .site-footer {
   border-top: 1px solid $grey-color-light;
   padding: $spacing-unit 0;
