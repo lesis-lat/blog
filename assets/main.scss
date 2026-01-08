@@ -2,24 +2,31 @@
 ---
 
 @import "minima";
+@import "_ibm-plex-sans";
 
 html, body {
-  font-family: "Gotham", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'IBM Plex Sans', "Gotham", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #222222;
   -webkit-font-smoothing: antialiased;
+  background-color: #fdf9ed;
+}
+
+.site-footer {
+  background-color: #fafafa;
 }
 
 .site-header {
   border-top: 3px solid #000000;
   padding-top: 10px;
-  border-bottom: 1px solid #e8e8e8;
+  background-color: #1d1d1d;
 }
 
 .site-title, .site-title:visited {
+  font-family: 'IBM Plex Sans';
   font-weight: 500;
   font-size: 28px;
   letter-spacing: normal;
-  color: #222222;
+  color: #e7e7e7;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -43,7 +50,7 @@ html, body {
 // }
 
 a, a:visited {
-  color: #565656;
+  color: #a3a3a3;
   transition: color 0.25s ease-in-out;
 }
 
@@ -59,7 +66,7 @@ a.post-link {
 }
 
 a:hover, a.page-link:hover  {
-  color: #3db55d;
+  color: #533e33;
   text-decoration: none;
 }
 
@@ -70,6 +77,7 @@ pre, code {
 }
 
 .post-title {
+  font-family: 'IBM Plex Sans', 'Gotham', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #252525;
   font-size: 48px;
   line-height: 1.2;
@@ -78,6 +86,13 @@ pre, code {
 
 .post-content p {
   color: #222222;
+}
+
+.author-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
 }
 
 .about-author {
@@ -132,9 +147,14 @@ pre, code {
     
     &.active {
       font-weight: bold;
-      color: #3db55d;
+      color: #533e33;
     }
   }
+}
+
+.post-list-heading {
+  font-size: 1.75rem;
+  font-weight: bold;
 }
 
 .post-list {
@@ -148,11 +168,11 @@ pre, code {
     border-radius: 10px;
     padding: 1.75rem 2rem;
     margin-bottom: 2rem;
-
+    border-left: 6px solid #252525;
     transition: box-shadow 0.2s ease, transform 0.2s ease;
 
     &:hover {
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 10px 25px #0000000d;
       transform: translateY(-2px);
     }
 
@@ -171,7 +191,7 @@ pre, code {
     }
 
     &:hover .post-title {
-      color: #3db55d;
+      color: #533e33;
     }
 
     .post-excerpt {
