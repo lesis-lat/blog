@@ -19,25 +19,32 @@ layout: default
   {% endif %}
   {%- if site.posts.size > 0 -%}
     <h2 class="post-list-heading">{{ page.list_title | default: t.posts_heading }}</h2>
-    <ul class="post-list">
-      {%- assign filtered_posts = site.posts | where: "lang", page.lang -%}
-        <ul class="post-list">
-          {%- for post in filtered_posts -%}
-          <li>
-            <span class="post-meta">{% include date.html date=post.date %}</span>
-            <h3>
-              <a class="post-link" href="{{ post.url | relative_url }}">
+      <ul class="post-list">
+        {%- assign filtered_posts = site.posts | where: "lang", page.lang -%}
+        {%- for post in filtered_posts -%}
+          <li class="post-card">
+            <a href="{{ post.url | relative_url }}" class="post-card-link">
+              <span class="post-date">
+                {% include date.html date=post.date %}
+              </span>
+
+              <h3 class="post-title">
                 {{ post.title | escape }}
-              </a>
-            </h3>
-            {%- if site.show_excerpts -%}
-              {{ post.excerpt }}
-              <a href="{{ post.url | relative_url }}">{{ t.read_more }}</a>
-            {%- endif -%}
+              </h3>
+
+              {%- if site.show_excerpts -%}
+                <p class="post-excerpt">
+                  {{ post.excerpt | strip_html | truncate: 220 }}
+                </p>
+
+                <span class="read-more">
+                  {{ t.read_more }} →
+                </span>
+              {%- endif -%}
+            </a>
           </li>
-          {%- endfor -%}
-        </ul>
-    </ul>
+        {%- endfor -%}
+      </ul>
     <p class="rss-subscribe">{{ t.rss_follow }} <a href="{{ "/feed.xml" | relative_url }}">{{ t.rss_feed }}</a></p>
   {%- endif -%}
 </div>
