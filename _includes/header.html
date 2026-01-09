@@ -4,7 +4,10 @@
   <div class="wrapper">
     {%- assign default_paths = site.pages | map: "path" -%}
     {%- assign page_paths = site.header_pages | default: default_paths -%}
-    <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.short_title | escape }}</a>
+    <a class="site-title" rel="author" href="{{ "/" | relative_url }}">
+      <img src="/assets/iconBranco.png" alt="Logo" class="site-logo" />
+      {{ site.short_title | escape }}
+    </a>
 
     {% if page.lang == 'en' or page.url contains '/en/' %}
       {% assign t = site.data.translations.en %}
