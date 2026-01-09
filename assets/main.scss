@@ -8,11 +8,13 @@ html, body {
   font-family: 'IBM Plex Sans', "Gotham", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #222222;
   -webkit-font-smoothing: antialiased;
-  background-color: #fdf9ed;
+  background-color: #fdfbf4;
 }
 
 .site-footer {
-  background-color: #fafafa;
+  background-color: #1d1d1d;
+  color: #e7e7e7;
+  padding: 2.5rem 0;
 }
 
 .site-header {
@@ -153,7 +155,7 @@ pre, code {
 }
 
 .post-list-heading {
-  font-size: 1.75rem;
+  font-size: 2.5rem;
   font-weight: bold;
 }
 
@@ -168,7 +170,7 @@ pre, code {
     border-radius: 10px;
     padding: 1.75rem 2rem;
     margin-bottom: 2rem;
-    border-left: 6px solid #252525;
+    border-left: 5px solid #252525;
     transition: box-shadow 0.2s ease, transform 0.2s ease;
 
     &:hover {
@@ -202,9 +204,9 @@ pre, code {
     }
 
     .read-more {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 500;
-      color: #04412c;
+      color: #533e33;
       text-decoration: none;
 
       &:hover {
@@ -212,6 +214,12 @@ pre, code {
       }
     }
   }
+}
+
+.footer-heading {
+  display: flex;
+  margin: auto auto 0;
+  font-size: 10px;
 }
 
 @include media-query($on-palm) {
@@ -226,4 +234,15 @@ pre, code {
     align-items: center;
     text-align: center;
   }
+    .post-list-heading {
+    font-size: 2rem;
+    text-align: left;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+    .footer-heading{
+      margin: 1.5rem auto 0;
+      justify-content: center;
+      text-align: center;
+    }
 }

@@ -1,33 +1,37 @@
 <footer class="site-footer h-card">
   <data class="u-url" href="{{ "/" | relative_url }}"></data>
-  <div class="wrapper">
-    <h2 class="footer-heading">{{ site.title | escape }}</h2>
+  <div class="wrapper" style="display: flex; align-items: flex-start;">
+    <div class="footer-logo-social">
+      <img src="/assets/logoBranco.png" alt="Logo LESIS" style="height:44px; width:102px; margin-bottom:1rem;" />
+      <div class="footer-socials">{%- include social.html -%}</div>
+    </div>
     {% if page.lang == 'en' or page.url contains '/en/' %}
-      {% assign t = site.data.translations.en %}
+    {% assign t = site.data.translations.en %}
     {% elsif page.lang == 'es' or page.url contains '/es/' %}
-      {% assign t = site.data.translations.es %}
+    {% assign t = site.data.translations.es %}
     {% else %}
-      {% assign t = site.data.translations.pt %}
+    {% assign t = site.data.translations.pt %}
     {% endif %}
+    <h2 class="footer-heading">{{ site.title | escape }}</h2>
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li class="p-name">
+          <!-- <li class="p-name">
             {%- if site.author -%}
-              {{ site.author | escape }}
+            {{ site.author | escape }}
             {%- else -%}
-              {{ site.title | escape }}
+            {{ site.title | escape }}
             {%- endif -%}
-          </li>
-          <li class="p-name tagline">
+          </li> -->
+          <!-- <li class="p-name tagline">
             {{ t.tagline }}
-          </li>
-            {%- if site.website.url -%}
-            <li>
-              <a href="{{ site.website.url }}">
+          </li> -->
+          {%- if site.website.url -%}
+          <li>
+            <a href="{{ site.website.url }}">
               {%- if site.website.link -%}
                 {{ site.website.link }}
-              {%- else -%}
+                {%- else -%}
                 {{ site.website.url }}
               {%- endif -%}
               </a>
@@ -36,13 +40,10 @@
             {%- if site.email -%}
             <li><a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a></li>
             {%- endif -%}
-        </ul>
-      </div>
-      <div class="footer-col footer-col-2">
-        {%- include social.html -%}
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
 </footer>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BF7S2MHBGH"></script>
