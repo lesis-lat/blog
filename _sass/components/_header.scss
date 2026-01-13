@@ -1,0 +1,41 @@
+.site-header {
+  border-top: 3px solid #000000;
+  padding-top: 10px;
+  background-color: #1d1d1d;
+}
+
+.site-title, .site-title:visited {
+  font-family: 'IBM Plex Sans';
+  font-weight: 500;
+  font-size: 28px;
+  letter-spacing: normal;
+  color: #e7e7e7;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.site-logo {
+  height: 32px;
+  width: 32px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.site-nav .page-link {
+  color: #666666;
+}
+
+@include media-query($on-palm) {
+  .site-nav .menu-icon {
+    display: flex;
+    float: right;
+    width: 36px;
+    height: 17px;
+    padding-top: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+}
