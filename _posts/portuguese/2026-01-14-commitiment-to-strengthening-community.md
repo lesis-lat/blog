@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Nosso compromisso com o fortalecimento da segurança da informação no Brasil'
+title: 'Fortalecendo a comunidade brasileira de cibersegurança através da educação'
 lang: pt
 author: Heitor Gouvêa
 author-info:

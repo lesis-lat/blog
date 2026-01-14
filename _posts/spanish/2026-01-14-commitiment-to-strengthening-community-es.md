@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Nuestro compromiso con el fortalecimiento de la seguridad de la información en Brasil'
+title: 'Fortaleciendo la comunidad de ciberseguridad en Brasil a través de la educación'
 lang: en
 author: Heitor Gouvêa
 author-info:

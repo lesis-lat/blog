@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Our commitment to strengthening information security in Brazil'
+title: 'Strengthening the Brazilian cybersecurity community through education'
 lang: en
 author: Heitor Gouvêa
 author-info:
