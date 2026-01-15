@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Por que patrocinamos eventos de Segurança da Informação'
+title: 'Porque patrocinamos eventos de Segurança da Informação'
 lang: pt
 author: Heitor Gouvêa
 author-info:
