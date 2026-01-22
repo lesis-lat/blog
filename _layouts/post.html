@@ -2,12 +2,12 @@
 layout: default
 ---
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  {% assign translations = site.data.translations.pt %}
   {% if page.lang == 'en' or page.url contains '/en/' %}
-    {% assign t = site.data.translations.en %}
-  {% elsif page.lang == 'es' or page.url contains '/es/' %}
-    {% assign t = site.data.translations.es %}
-  {% else %}
-    {% assign t = site.data.translations.pt %}
+    {% assign translations = site.data.translations.en %}
+  {% endif %}
+  {% if page.lang == 'es' or page.url contains '/es/' %}
+    {% assign translations = site.data.translations.es %}
   {% endif %}
   <header class="post-header">
     <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
@@ -18,7 +18,7 @@ layout: default
       {%- if page.author -%}
        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>
       {%- endif -%}
-      <span> </span> • {{ t.reading_time }} {% include read_time.html %}
+      <span> </span> • {{ translations.reading_time }} {% include read_time.html %}
     </p>
   </header>
   <div class="post-content e-content" itemprop="articleBody">

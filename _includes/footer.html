@@ -1,33 +1,31 @@
 <footer class="site-footer h-card">
   <data class="u-url" href="{{ "/" | relative_url }}"></data>
   <div class="wrapper">
+    {% assign translations = site.data.translations.pt %}
     {% if page.lang == 'en' or page.url contains '/en/' %}
-    {% assign t = site.data.translations.en %}
-    {% elsif page.lang == 'es' or page.url contains '/es/' %}
-    {% assign t = site.data.translations.es %}
-    {% else %}
-    {% assign t = site.data.translations.pt %}
+    {% assign translations = site.data.translations.en %}
+    {% endif %}
+    {% if page.lang == 'es' or page.url contains '/es/' %}
+    {% assign translations = site.data.translations.es %}
     {% endif %}
     
     <div class="footer-grid">
-      <!-- Coluna 1: Identidade -->
       <div class="footer-col footer-identity">
         <img src="/assets/logoBranco.png" alt="Logo LESIS" class="footer-logo" />
-        <p class="footer-tagline">{{ t.tagline | default: "Your security R&D partner" }}</p>
+        <p class="footer-tagline">{{ translations.tagline | default: "Your security R&D partner" }}</p>
         <p class="footer-description">Laboratory of Engineering Studies in Information Security</p>
       </div>
 
-      <!-- Coluna 2: Contato + Social -->
       <div class="footer-col footer-contact">
         <h3 class="footer-col-heading">Contact</h3>
         <div class="footer-contact-info">
           {%- if site.website.url -%}
+          {%- assign website_label = site.website.url -%}
+          {%- if site.website.link -%}
+            {%- assign website_label = site.website.link -%}
+          {%- endif -%}
           <p><a href="{{ site.website.url }}" target="_blank" rel="noopener noreferrer">
-            {%- if site.website.link -%}
-              {{ site.website.link }}
-            {%- else -%}
-              {{ site.website.url }}
-            {%- endif -%}
+            {{ website_label }}
           </a></p>
           {%- endif -%}
           {%- if site.email -%}
@@ -40,7 +38,6 @@
       </div>
     </div>
 
-    <!-- Footer Bottom -->
     <div class="footer-bottom">
       <p class="footer-copyright">&copy; 2026 {{ site.title | escape }} &mdash; All rights reserved</p>
     </div>

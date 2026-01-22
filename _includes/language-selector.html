@@ -1,24 +1,44 @@
 <div class="language-selector">
   {% assign current_page_url = page.url %}
-
+  {% assign is_english = false %}
+  {% assign is_spanish = false %}
   {% if page.url contains '/en/' or page.lang == 'en' %}
-    <span class="language active">English</span>
+    {% assign is_english = true %}
+  {% endif %}
+  {% if page.url contains '/es/' or page.lang == 'es' %}
+    {% assign is_spanish = true %}
+  {% endif %}
+
+  {% if is_english %}
+    {% assign is_english_about = false %}
     {% if page.url contains '/en/about/' %}
+      {% assign is_english_about = true %}
+    {% endif %}
+    <span class="language active">English</span>
+    {% if is_english_about %}
       <a href="{{ '/es/about/' | relative_url }}" class="language">Español</a>
       <a href="{{ '/about/' | relative_url }}" class="language">Português</a>
-    {% else %}
+    {% endif %}
+    {% if is_english_about == false %}
       <a href="{{ '/es/' | relative_url }}" class="language">Español</a>
       <a href="{{ '/' | relative_url }}" class="language">Português</a>
     {% endif %}
-  {% elsif page.url contains '/es/' or page.lang == 'es' %}
+  {% endif %}
+  {% if is_spanish %}
+    {% assign is_spanish_about = false %}
+    {% if page.url contains '/es/about/' %}
+      {% assign is_spanish_about = true %}
+    {% endif %}
     <a href="{{ '/en/' | relative_url }}" class="language">English</a>
     <span class="language active">Español</span>
-    {% if page.url contains '/es/about/' %}
+    {% if is_spanish_about %}
       <a href="{{ '/about/' | relative_url }}" class="language">Português</a>
-    {% else %}
+    {% endif %}
+    {% if is_spanish_about == false %}
       <a href="{{ '/' | relative_url }}" class="language">Português</a>
     {% endif %}
-  {% else %}
+  {% endif %}
+  {% if is_english == false and is_spanish == false %}
     <a href="{{ '/en/' | relative_url }}" class="language">English</a>
     <a href="{{ '/es/' | relative_url }}" class="language">Español</a>
     <span class="language active">Português</span>
