@@ -10,15 +10,15 @@ layout: default
     <h1 class="page-heading">{{ page.title }}</h1>
   {%- endif -%}
   {{ content }}
+  {% assign translations = site.data.translations.pt %}
   {% if page.lang == 'en' or page.url contains '/en/' %}
-    {% assign t = site.data.translations.en %}
-  {% elsif page.lang == 'es' or page.url contains '/es/' %}
-    {% assign t = site.data.translations.es %}
-  {% else %}
-    {% assign t = site.data.translations.pt %}
+    {% assign translations = site.data.translations.en %}
+  {% endif %}
+  {% if page.lang == 'es' or page.url contains '/es/' %}
+    {% assign translations = site.data.translations.es %}
   {% endif %}
   {%- if site.posts.size > 0 -%}
-    <h2 class="post-list-heading">{{ page.list_title | default: t.posts_heading }}</h2>
+    <h2 class="post-list-heading">{{ page.list_title | default: translations.posts_heading }}</h2>
       <ul class="post-list">
         {%- assign filtered_posts = site.posts | where: "lang", page.lang -%}
         {%- for post in filtered_posts -%}
@@ -38,13 +38,13 @@ layout: default
                 </p>
 
                 <span class="read-more">
-                  {{ t.read_more }} →
+                  {{ translations.read_more }} →
                 </span>
               {%- endif -%}
             </a>
           </li>
         {%- endfor -%}
       </ul>
-    <p class="rss-subscribe">{{ t.rss_follow }} <a href="{{ "/feed.xml" | relative_url }}">{{ t.rss_feed }}</a></p>
+    <p class="rss-subscribe">{{ translations.rss_follow }} <a href="{{ "/feed.xml" | relative_url }}">{{ translations.rss_feed }}</a></p>
   {%- endif -%}
 </div>
