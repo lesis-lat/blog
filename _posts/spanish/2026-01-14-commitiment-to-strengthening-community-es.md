@@ -11,7 +11,7 @@ author-info:
 date: 2026-01-14 19:13:00 -0300
 ---
 
-En 2026, LESIS dará un paso más concreto en su compromiso con el desarrollo sostenible del ecosistema de tecnología y seguridad de la información en Brasil. Realizaremos una donación financiera de R$ 10.000 a la ONG [Mente Binária](https://mentebinaria.com.br/), una organización que actúa directamente en la formación de nuevos profesionales para el área de la ciberseguridad.
+En 2026, LESIS dará un paso más concreto en su compromiso con el desarrollo sostenible del ecosistema de tecnología y seguridad de la información en Brasil. Realizaremos una donación financiera a la ONG [Mente Binária](https://mentebinaria.com.br/), una organización que actúa directamente en la formación de nuevos profesionales para el área de la ciberseguridad.
 
 Creemos que la seguridad de la información no se construye únicamente con tecnología, sino con personas capacitadas, acceso al conocimiento y oportunidades reales de desarrollo profesional. En este punto, el trabajo de Mente Binária resulta fundamental: al invertir en educación técnica accesible y de calidad, la organización ayuda a transformar trayectorias individuales, impactando a familias, comunidades y, en última instancia, al país.
 
