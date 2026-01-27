@@ -9,15 +9,15 @@
       {{ site.short_title | escape }}
     </a>
 
+    {% assign translations = site.data.translations.pt %}
+    {% assign about_url = "/about/" %}
     {% if page.lang == 'en' or page.url contains '/en/' %}
-      {% assign t = site.data.translations.en %}
+      {% assign translations = site.data.translations.en %}
       {% assign about_url = "/en/about/" %}
-    {% elsif page.lang == 'es' or page.url contains '/es/' or post.lang == 'es' %}
-      {% assign t = site.data.translations.es %}
+    {% endif %}
+    {% if page.lang == 'es' or page.url contains '/es/' or post.lang == 'es' %}
+      {% assign translations = site.data.translations.es %}
       {% assign about_url = "/es/about/" %}
-    {% else %}
-      {% assign t = site.data.translations.pt %}
-      {% assign about_url = "/about/" %}
     {% endif %}
 
     <nav class="site-nav">
@@ -31,7 +31,6 @@
       </label>
 
       <div class="trigger">
-        <!-- <a class="page-link" href="{{ about_url | relative_url }}">{{ t.about }}</a> -->
         {% include language-selector.html %}
       </div>
     </nav>
