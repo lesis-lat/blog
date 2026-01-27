@@ -11,7 +11,7 @@ author-info:
 date: 2026-01-14 19:13:00 -0300
 ---
 
-In 2026, LESIS will take another concrete step in its commitment to the sustainable development of the technology and information security ecosystem in Brazil. We will make a financial donation of BRL 10,000 to the NGO [Mente Binária](https://mentebinaria.com.br/), an organization that works directly on training new professionals for the cybersecurity field.
+In 2026, LESIS will take another concrete step in its commitment to the sustainable development of the technology and information security ecosystem in Brazil. We will make a financial donation to the NGO [Mente Binária](https://mentebinaria.com.br/), an organization that works directly on training new professionals for the cybersecurity field.
 
 We believe that information security is not built solely with technology, but with well-prepared people, access to knowledge, and real opportunities for professional growth. This is where Mente Binária’s work becomes essential: by investing in accessible, high-quality technical education, the organization helps transform individual trajectories, impacting families, communities, and ultimately the country itself.
 
