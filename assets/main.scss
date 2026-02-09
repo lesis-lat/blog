@@ -48,8 +48,58 @@ pre, code {
   font-weight: 500;
 }
 
+.post-header .post-title {
+  text-align: center;
+}
+
+.post-header .post-meta {
+  text-align: center;
+}
+
 .post-content p {
   color: #222222;
+}
+
+.post-content table {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid #e6decd;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #fffdf8;
+  color: #2a2a2a;
+  text-align: left;
+  box-shadow: 0 8px 20px #00000008;
+}
+
+.post-content table th,
+.post-content table td {
+  padding: 0.75rem 1rem;
+  border: 0;
+  border-bottom: 1px solid #ebe4d5;
+}
+
+.post-content table th {
+  background-color: #f3ede0;
+  color: #252525;
+  font-weight: 600;
+}
+
+.post-content table tr:nth-child(even) td {
+  background-color: #faf6ec;
+}
+
+.post-content table tr:last-child td {
+  border-bottom: 0;
+}
+
+.post-content img[src*="/assets/publications/price-vuln/"] {
+  display: block;
+  max-width: 86%;
+  height: auto;
+  margin: 1.25rem auto;
 }
 
 .author-name {
@@ -122,6 +172,21 @@ pre, code {
 @import "components/footer";
 
 @include media-query($on-palm) {
+  .post-content table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .post-content table th,
+  .post-content table td {
+    padding: 0.65rem 0.85rem;
+  }
+
+  .post-content img[src*="/assets/publications/price-vuln/"] {
+    max-width: 100%;
+  }
+
   .page-content {
     padding: 1rem;
   }
