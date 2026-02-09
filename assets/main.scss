@@ -79,6 +79,12 @@ pre, code {
 }
 
 @media screen and (min-width: 1260px) {
+  .page-content.page-content-post {
+    --post-content-offset: 170px;
+    --post-toc-width: 186px;
+    --post-toc-gap: 20px;
+  }
+
   .page-content.page-content-post .wrapper {
     max-width: -webkit-calc(1200px - (30px * 2));
     max-width: calc(1200px - (30px * 2));
@@ -86,9 +92,9 @@ pre, code {
 
   .post-reading-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 186px;
-    gap: 20px;
-    padding-left: 170px;
+    grid-template-columns: minmax(0, 1fr) var(--post-toc-width);
+    gap: var(--post-toc-gap);
+    padding-left: var(--post-content-offset);
     align-items: start;
   }
 
@@ -96,7 +102,7 @@ pre, code {
     display: block;
     position: sticky;
     top: 110px;
-    width: 186px;
+    width: var(--post-toc-width);
     max-height: calc(100vh - 132px);
     padding: 0.75rem 0.66rem;
     border: 1px solid #e6decd;
@@ -109,6 +115,12 @@ pre, code {
 
   .post-toc.is-hidden {
     display: none;
+  }
+
+  .page-content.page-content-post .post > .about-author {
+    width: calc(100% - var(--post-content-offset) - var(--post-toc-width) - var(--post-toc-gap));
+    margin-left: var(--post-content-offset);
+    margin-right: calc(var(--post-toc-width) + var(--post-toc-gap));
   }
 }
 
