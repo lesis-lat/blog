@@ -60,6 +60,112 @@ pre, code {
   color: #222222;
 }
 
+.post-share {
+  margin-top: 1rem;
+  white-space: nowrap;
+}
+
+.post-reading-layout {
+  position: relative;
+}
+
+.post-content h2,
+.post-content h3 {
+  scroll-margin-top: 95px;
+}
+
+.post-toc {
+  display: none;
+}
+
+@media screen and (min-width: 1260px) {
+  .page-content.page-content-post .wrapper {
+    max-width: -webkit-calc(1200px - (30px * 2));
+    max-width: calc(1200px - (30px * 2));
+  }
+
+  .post-reading-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 186px;
+    gap: 20px;
+    padding-left: 170px;
+    align-items: start;
+  }
+
+  .post-toc {
+    display: block;
+    position: sticky;
+    top: 110px;
+    width: 186px;
+    max-height: calc(100vh - 132px);
+    padding: 0.75rem 0.66rem;
+    border: 1px solid #e6decd;
+    border-radius: 10px;
+    background: #fffdf8;
+    box-shadow: 0 10px 22px #00000010;
+    overflow-y: auto;
+    z-index: 5;
+  }
+
+  .post-toc.is-hidden {
+    display: none;
+  }
+}
+
+.post-toc-title {
+  margin: 0 0 0.55rem;
+  color: #6d635a;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.post-toc-nav {
+  text-align: left;
+}
+
+.post-toc-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.post-toc-item + .post-toc-item {
+  margin-top: 0.24rem;
+}
+
+.post-toc-link {
+  display: block;
+  padding: 0.23rem 0.36rem;
+  border-left: 2px solid transparent;
+  border-radius: 4px;
+  color: #4b433c;
+  font-size: 0.82rem;
+  line-height: 1.35;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.post-toc-link:hover {
+  border-left-color: #8b715f;
+  background: #f7f1e5;
+  color: #2f2a25;
+}
+
+.post-toc-link.is-active {
+  border-left-color: #533e33;
+  background: #f3e9d8;
+  color: #2b251f;
+  font-weight: 600;
+}
+
+.post-toc-item.level-h3 .post-toc-link {
+  padding-left: 0.76rem;
+  font-size: 0.78rem;
+}
+
 .post-content .highlighter-rouge.language-text {
   margin: 0.9rem 0 1.25rem;
   border: 1px solid #e8d7c2;
