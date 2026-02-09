@@ -120,6 +120,8 @@ pre, code {
   padding: 0.75rem 1rem;
   border: 0;
   border-bottom: 1px solid #ebe4d5;
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
 }
 
 .post-content table th {
@@ -136,11 +138,44 @@ pre, code {
   border-bottom: 0;
 }
 
+.post-content table.table-numeric th:first-child,
+.post-content table.table-numeric td:first-child {
+  text-align: left;
+}
+
+.post-content table.table-numeric th:not(:first-child),
+.post-content table.table-numeric td:not(:first-child) {
+  text-align: right;
+  white-space: nowrap;
+}
+
 .post-content img[src*="/assets/publications/price-vuln/"] {
   display: block;
   max-width: 86%;
   height: auto;
   margin: 1.25rem auto;
+}
+
+.post-content .content-caption,
+.post-content figcaption {
+  max-width: 86%;
+  margin: -0.35rem auto 1.2rem;
+  color: #665d56;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.post-content .content-caption strong,
+.post-content figcaption strong {
+  color: #3f352e;
+  font-weight: 600;
+}
+
+.post-content table + .content-caption {
+  max-width: 100%;
+  margin-top: -0.55rem;
+  text-align: center;
 }
 
 .author-name {
@@ -234,6 +269,12 @@ pre, code {
 
   .post-content img[src*="/assets/publications/price-vuln/"] {
     max-width: 100%;
+  }
+
+  .post-content .content-caption,
+  .post-content figcaption {
+    max-width: 100%;
+    font-size: 0.89rem;
   }
 
   .page-content {
