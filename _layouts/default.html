@@ -15,29 +15,112 @@
     {% if page.title %}
       {% assign page_title = page.title %}
     {% endif %}
+    {% assign canonical_path = page.url | replace:'index.html','' %}
+    {% assign canonical_url = canonical_path | absolute_url %}
     {% assign page_description = translations.site_description %}
     {% if page.excerpt %}
       {% assign page_description = page.excerpt | strip_html | normalize_whitespace %}
+    {% endif %}
+    {% assign page_og_type = 'website' %}
+    {% if page.layout == 'post' %}
+      {% assign page_og_type = 'article' %}
     {% endif %}
     {% assign page_og_image = page.og_image %}
     {% if page_og_image == nil and page.image %}
       {% assign page_og_image = page.image %}
     {% endif %}
+    {% assign page_og_image_alt = page.og_image_alt %}
+    {% if page_og_image_alt == nil %}
+      {% assign page_og_image_alt = page_title %}
+    {% endif %}
+    {% assign alt_pt_path = nil %}
+    {% assign alt_en_path = nil %}
+    {% assign alt_es_path = nil %}
+    {% if page.layout == 'post' and page.date %}
+      {% assign page_slug = page.slug %}
+      {% if page_slug == nil %}
+        {% assign page_slug = canonical_path | split:'/' | last | split:'.' | first %}
+      {% endif %}
+      {% assign normalized_page_slug = page_slug | replace: '-en', '' | replace: '-es', '' %}
+      {% assign page_date_key = page.date | date: '%Y-%m-%d' %}
+      {% for post in site.posts %}
+        {% assign post_date_key = post.date | date: '%Y-%m-%d' %}
+        {% assign normalized_post_slug = post.slug | replace: '-en', '' | replace: '-es', '' %}
+        {% if post_date_key == page_date_key and normalized_post_slug == normalized_page_slug %}
+          {% if post.lang == 'pt' %}
+            {% assign alt_pt_path = post.url %}
+          {% elsif post.lang == 'en' %}
+            {% assign alt_en_path = post.url %}
+          {% elsif post.lang == 'es' %}
+            {% assign alt_es_path = post.url %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      {% assign normalized_path = canonical_path %}
+      {% if normalized_path == '/about/' or normalized_path == '/en/about/' or normalized_path == '/es/sobre/' %}
+        {% assign alt_pt_path = '/about/' %}
+        {% assign alt_en_path = '/en/about/' %}
+        {% assign alt_es_path = '/es/sobre/' %}
+      {% elsif normalized_path contains '/en/' %}
+        {% assign suffix_path = normalized_path | replace_first: '/en', '' %}
+        {% if suffix_path == '' %}
+          {% assign suffix_path = '/' %}
+        {% endif %}
+        {% assign alt_pt_path = suffix_path %}
+        {% assign alt_en_path = normalized_path %}
+        {% assign alt_es_path = '/es' | append: suffix_path %}
+      {% elsif normalized_path contains '/es/' %}
+        {% assign suffix_path = normalized_path | replace_first: '/es', '' %}
+        {% if suffix_path == '' %}
+          {% assign suffix_path = '/' %}
+        {% endif %}
+        {% assign alt_pt_path = suffix_path %}
+        {% assign alt_en_path = '/en' | append: suffix_path %}
+        {% assign alt_es_path = normalized_path %}
+      {% else %}
+        {% assign alt_pt_path = normalized_path %}
+        {% assign alt_en_path = '/en' | append: normalized_path %}
+        {% assign alt_es_path = '/es' | append: normalized_path %}
+      {% endif %}
+    {% endif %}
+    {% assign x_default_path = canonical_path %}
+    {% if alt_pt_path %}
+      {% assign x_default_path = alt_pt_path %}
+    {% endif %}
     <title>{{ page_title | escape }}</title>
     <meta name="description" content="{{ page_description | escape }}">
-    <meta property="og:type" content="article">
+    <meta property="og:type" content="{{ page_og_type }}">
+    <meta property="og:site_name" content="{{ site.title | escape }}">
     <meta property="og:title" content="{{ page_title | escape }}">
     <meta property="og:description" content="{{ page_description | escape }}">
-    <meta property="og:url" content="{{ page.url | replace:'index.html','' | absolute_url }}">
+    <meta property="og:url" content="{{ canonical_url }}">
     {% if page_og_image %}
       <meta property="og:image" content="{{ page_og_image | absolute_url }}">
+      <meta property="og:image:alt" content="{{ page_og_image_alt | escape }}">
       <meta name="twitter:card" content="summary_large_image">
       <meta name="twitter:image" content="{{ page_og_image | absolute_url }}">
+      <meta name="twitter:image:alt" content="{{ page_og_image_alt | escape }}">
     {% else %}
       <meta name="twitter:card" content="summary">
     {% endif %}
+    <meta name="twitter:title" content="{{ page_title | escape }}">
+    <meta name="twitter:description" content="{{ page_description | escape }}">
+    {% if site.twitter_username %}
+      <meta name="twitter:site" content="@{{ site.twitter_username }}">
+    {% endif %}
     <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
-    <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+    {% if alt_pt_path %}
+      <link rel="alternate" hreflang="pt" href="{{ alt_pt_path | absolute_url }}">
+    {% endif %}
+    {% if alt_en_path %}
+      <link rel="alternate" hreflang="en" href="{{ alt_en_path | absolute_url }}">
+    {% endif %}
+    {% if alt_es_path %}
+      <link rel="alternate" hreflang="es" href="{{ alt_es_path | absolute_url }}">
+    {% endif %}
+    <link rel="alternate" hreflang="x-default" href="{{ x_default_path | absolute_url }}">
     <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url }}">
     {% if jekyll.environment == 'production' and site.google_analytics %}
       {% include google-analytics.html %}
