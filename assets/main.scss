@@ -60,6 +60,47 @@ pre, code {
   color: #222222;
 }
 
+.post-content .highlighter-rouge.language-text {
+  margin: 0.9rem 0 1.25rem;
+  border: 1px solid #e8d7c2;
+  border-left: 4px solid #533e33;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #fff9f1 0%, #fff4e7 100%);
+  box-shadow: 0 6px 14px #0000000a;
+  overflow: hidden;
+}
+
+.post-content .highlighter-rouge.language-text .highlight {
+  margin: 0;
+  padding: 0.78rem 0.95rem;
+  background: transparent;
+  border: 0;
+}
+
+.post-content .highlighter-rouge.language-text pre,
+.post-content .highlighter-rouge.language-text pre.highlight {
+  margin: 0;
+  padding: 0;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  overflow-x: auto;
+}
+
+.post-content .highlighter-rouge.language-text code {
+  display: block;
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+  color: #3c3028;
+  font-family: 'IBM Plex Sans', 'Gotham', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  text-align: left;
+}
+
 .post-content table {
   width: 100%;
   margin: 1.5rem 0;
@@ -172,6 +213,14 @@ pre, code {
 @import "components/footer";
 
 @include media-query($on-palm) {
+  .post-content .highlighter-rouge.language-text .highlight {
+    padding: 0.68rem 0.8rem;
+  }
+
+  .post-content .highlighter-rouge.language-text code {
+    font-size: 0.9rem;
+  }
+
   .post-content table {
     display: block;
     overflow-x: auto;
