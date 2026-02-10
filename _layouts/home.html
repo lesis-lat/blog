@@ -19,6 +19,16 @@ layout: default
   {% endif %}
   {%- if site.posts.size > 0 -%}
     <h2 class="post-list-heading">{{ page.list_title | default: translations.posts_heading }}</h2>
+      <div class="home-search" data-home-search>
+        <label for="home-post-search" class="home-search-label">{{ translations.search_label }}</label>
+        <input
+          type="search"
+          id="home-post-search"
+          class="home-search-input"
+          placeholder="{{ translations.search_placeholder }}"
+          autocomplete="off"
+          spellcheck="false">
+      </div>
       <ul class="post-list">
         {%- assign filtered_posts = site.posts | where: "lang", page.lang -%}
         {%- for post in filtered_posts -%}
@@ -45,6 +55,8 @@ layout: default
           </li>
         {%- endfor -%}
       </ul>
+    <p id="home-post-search-empty" class="home-search-empty" hidden>{{ translations.search_no_results }}</p>
     <p class="rss-subscribe">{{ translations.rss_follow }} <a href="{{ "/feed.xml" | relative_url }}">{{ translations.rss_feed }}</a></p>
   {%- endif -%}
 </div>
+<script src="{{ '/assets/home-search.js' | relative_url }}" defer></script>
