@@ -8,6 +8,7 @@ website:
 email: contact@lesis.lat
 description: >-
   Our mission is to advance information security through applied research in offensive technologies, developing innovative solutions that reflect the mindset and methods of an attacker. We excel in vulnerability research, custom tooling, and exploitation strategies, always aiming to strengthen critical operations and enhance digital resilience. Our commitment is to deliver actionable knowledge, cutting-edge technology, and results that empower organizations and partners to anticipate emerging threats and operate securely in complex environments.
+og_image: /assets/SitePreview.png
 baseurl: ''
 url: 'https://blog.lesis.lat'
 linkedin_username: lesis-lat
