@@ -29,6 +29,9 @@
     {% if page_og_image == nil and page.image %}
       {% assign page_og_image = page.image %}
     {% endif %}
+    {% if page_og_image == nil and site.og_image %}
+      {% assign page_og_image = site.og_image %}
+    {% endif %}
     {% assign page_og_image_alt = page.og_image_alt %}
     {% if page_og_image_alt == nil %}
       {% assign page_og_image_alt = page_title %}
