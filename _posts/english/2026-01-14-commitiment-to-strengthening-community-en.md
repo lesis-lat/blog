@@ -2,6 +2,7 @@
 layout: post
 title: 'Strengthening the Brazilian cybersecurity community through education'
 lang: en
+category: Community
 author: Heitor Gouvêa
 author-info:
   name:  Heitor Gouvêa

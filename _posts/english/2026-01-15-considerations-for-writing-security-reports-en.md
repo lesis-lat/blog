@@ -2,6 +2,7 @@
 layout: post
 title: 'Considerations for writing security reports'
 lang: en
+category: Guides
 author: Heitor Gouvêa
 author-info:
   name:  Heitor Gouvêa

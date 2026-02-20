@@ -2,6 +2,7 @@
 layout: post
 title: 'Money for nothing, discounts for free: rocking the gift card loop'
 lang: en
+category: Vulnerability
 author: Heitor Gouvêa
 author-info:
   name:  Heitor Gouvêa

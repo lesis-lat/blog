@@ -2,6 +2,7 @@
 layout: post
 title: 'Why we sponsor information security events'
 lang: en
+category: Community
 author: Heitor Gouvêa
 author-info:
   name:  Heitor Gouvêa

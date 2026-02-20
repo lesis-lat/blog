@@ -28,11 +28,27 @@ layout: default
           placeholder="{{ translations.search_placeholder }}"
           autocomplete="off"
           spellcheck="false">
+        {%- assign filtered_posts = site.posts | where: "lang", page.lang -%}
+        {%- assign category_list = filtered_posts | map: "category" | uniq | sort -%}
+        <span class="home-search-label home-category-label">{{ translations.category_label }}</span>
+        <div class="home-category-tags" role="listbox" aria-label="{{ translations.category_label }}">
+          <button type="button" class="home-category-tag is-active" data-category="" aria-pressed="true">
+            {{ translations.category_all }}
+          </button>
+          {%- for category in category_list -%}
+            <button
+              type="button"
+              class="home-category-tag home-category-tag-{{ category | slugify }}"
+              data-category="{{ category }}"
+              aria-pressed="false">
+              {{ category }}
+            </button>
+          {%- endfor -%}
+        </div>
       </div>
       <ul class="post-list">
-        {%- assign filtered_posts = site.posts | where: "lang", page.lang -%}
         {%- for post in filtered_posts -%}
-          <li class="post-card">
+          <li class="post-card" data-category="{{ post.category | escape }}">
             <a href="{{ post.url | relative_url }}" class="post-card-link">
               <span class="post-date">
                 {% include date.html date=post.date %}
@@ -41,6 +57,9 @@ layout: default
               <h3 class="post-title">
                 {{ post.title | escape }}
               </h3>
+              {%- if post.category -%}
+                <span class="post-category post-category-{{ post.category | slugify }}">{{ post.category }}</span>
+              {%- endif -%}
 
               {%- if site.show_excerpts -%}
                 <p class="post-excerpt">

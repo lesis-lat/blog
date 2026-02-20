@@ -2,6 +2,7 @@
 layout: post
 title: 'Consideraciones para la elaboración de informes de seguridad'
 lang: es
+category: Guias
 author: Heitor Gouvêa
 author-info:
   name:  Heitor Gouvêa
