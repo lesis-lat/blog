@@ -2,6 +2,7 @@
 layout: post
 title: 'Considerações sobre a elaboração de relatórios de segurança'
 lang: pt
+category: Guias
 author: Heitor Gouvêa
 author-info:
   name:  Heitor Gouvêa

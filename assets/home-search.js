@@ -10,6 +10,9 @@
   function initHomeSearch() {
     var container = document.querySelector('[data-home-search]');
     var input = document.getElementById('home-post-search');
+    var categoryTags = Array.prototype.slice.call(
+      document.querySelectorAll('.home-category-tag')
+    );
     var list = document.querySelector('.post-list');
     var emptyState = document.getElementById('home-post-search-empty');
 
@@ -25,16 +28,35 @@
     var indexedCards = cards.map(function (card) {
       return {
         element: card,
-        text: normalizeText(card.textContent)
+        text: normalizeText(card.textContent),
+        category: normalizeText(card.getAttribute('data-category'))
       };
     });
 
+    function getSelectedCategory() {
+      var activeTag = categoryTags.filter(function (tag) {
+        return tag.classList.contains('is-active');
+      })[0];
+      return activeTag ? normalizeText(activeTag.getAttribute('data-category')) : '';
+    }
+
+    function setActiveTag(tag) {
+      categoryTags.forEach(function (item) {
+        var isActive = item === tag;
+        item.classList.toggle('is-active', isActive);
+        item.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+    }
+
     function applyFilter() {
       var query = normalizeText(input.value);
+      var selectedCategory = getSelectedCategory();
       var visibleCount = 0;
 
       indexedCards.forEach(function (cardItem) {
-        var matches = query === '' || cardItem.text.indexOf(query) !== -1;
+        var matchesQuery = query === '' || cardItem.text.indexOf(query) !== -1;
+        var matchesCategory = selectedCategory === '' || cardItem.category === selectedCategory;
+        var matches = matchesQuery && matchesCategory;
         cardItem.element.hidden = !matches;
         if (matches) {
           visibleCount += 1;
@@ -48,6 +70,12 @@
 
     input.addEventListener('input', applyFilter);
     input.addEventListener('search', applyFilter);
+    categoryTags.forEach(function (tag) {
+      tag.addEventListener('click', function () {
+        setActiveTag(tag);
+        applyFilter();
+      });
+    });
     applyFilter();
   }
 

@@ -39,6 +39,87 @@
   box-shadow: 0 0 0 3px #a2866d26;
 }
 
+.home-category-label {
+  margin-top: 1rem;
+}
+
+.home-category-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.home-category-tag {
+  border: 1px solid #dfd4bf;
+  border-radius: 999px;
+  padding: 0.35rem 0.85rem;
+  background: #fffdf8;
+  color: #6d635a;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease,
+    background-color 0.2s ease, color 0.2s ease;
+}
+
+.home-category-tag:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px #00000012;
+  border-color: #a2866d;
+}
+
+.home-category-tag.is-active {
+  background: #533e33;
+  border-color: #533e33;
+  color: #fffdf8;
+}
+
+.home-category-tag:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px #a2866d26;
+}
+
+.home-category-tag-research,
+.home-category-tag-pesquisa,
+.home-category-tag-investigacion {
+  background: #e0f2fe;
+  border-color: #e0f2fe;
+  color: #0f4c81;
+}
+
+.home-category-tag-vulnerability,
+.home-category-tag-vulnerabilidade,
+.home-category-tag-vulnerabilidad {
+  background: #fee2e2;
+  border-color: #fee2e2;
+  color: #7f1d1d;
+}
+
+.home-category-tag-community,
+.home-category-tag-comunidade,
+.home-category-tag-comunidad {
+  background: #dcfce7;
+  border-color: #dcfce7;
+  color: #14532d;
+}
+
+.home-category-tag-guides,
+.home-category-tag-guias {
+  background: #fef9c3;
+  border-color: #fef9c3;
+  color: #713f12;
+}
+
+.home-category-tag-case-study,
+.home-category-tag-estudo-de-caso,
+.home-category-tag-estudio-de-caso {
+  background: #ede9fe;
+  border-color: #ede9fe;
+  color: #4c1d95;
+}
+
 .home-search-empty {
   margin-top: -0.8rem;
   margin-bottom: 1.5rem;
@@ -77,6 +158,58 @@
       font-size: 1.4rem;
       line-height: 1.3;
       transition: color 0.2s;
+    }
+
+    .post-category {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.55rem;
+      margin-bottom: 0.9rem;
+      border-radius: 999px;
+      background: #f1e9dd;
+      color: #6d635a;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .post-category-research,
+    .post-category-pesquisa,
+    .post-category-investigacion {
+      background: #e0f2fe;
+      color: #0f4c81;
+    }
+
+    .post-category-vulnerability,
+    .post-category-vulnerabilidade,
+    .post-category-vulnerabilidad {
+      background: #fee2e2;
+      color: #7f1d1d;
+    }
+
+    .post-category-community {
+      background: #dcfce7;
+      color: #14532d;
+    }
+
+    .post-category-comunidade,
+    .post-category-comunidad {
+      background: #dcfce7;
+      color: #14532d;
+    }
+
+    .post-category-guides,
+    .post-category-guias {
+      background: #fef9c3;
+      color: #713f12;
+    }
+
+    .post-category-case-study,
+    .post-category-estudo-de-caso,
+    .post-category-estudio-de-caso {
+      background: #ede9fe;
+      color: #4c1d95;
     }
 
     &:hover .post-title {

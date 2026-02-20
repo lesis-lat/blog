@@ -2,6 +2,7 @@
 layout: post
 title: 'Dinheiro de graça, descontos sem esforço: hackeando o loop dos gift cards'
 lang: pt
+category: Vulnerabilidade
 author: Heitor Gouvêa
 author-info:
   name:  Heitor Gouvêa

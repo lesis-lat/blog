@@ -2,6 +2,7 @@
 layout: post
 title: 'Saldo fantasma, rebajas eternas: la trampa de los gift cards'
 lang: es
+category: Vulnerabilidad
 author: Heitor Gouvêa
 author-info:
   name:  Heitor Gouvêa

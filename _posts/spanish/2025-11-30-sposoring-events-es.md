@@ -2,6 +2,7 @@
 layout: post
 title: 'Por qué patrocinamos eventos de Seguridad de la Información'
 lang: es
+category: Comunidad
 author: Heitor Gouvêa
 author-info:
   name:  Heitor Gouvêa

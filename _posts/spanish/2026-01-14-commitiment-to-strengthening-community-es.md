@@ -2,6 +2,7 @@
 layout: post
 title: 'Fortaleciendo la comunidad de ciberseguridad en Brasil a través de la educación'
 lang: es
+category: Comunidad
 author: Heitor Gouvêa
 author-info:
   name:  Heitor Gouvêa

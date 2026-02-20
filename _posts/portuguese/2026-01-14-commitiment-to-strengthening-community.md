@@ -2,6 +2,7 @@
 layout: post
 title: 'Fortalecendo a comunidade brasileira de cibersegurança através da educação'
 lang: pt
+category: Comunidade
 author: Heitor Gouvêa
 author-info:
   name:  Heitor Gouvêa
