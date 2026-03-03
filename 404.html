@@ -21,3 +21,65 @@ layout: default
   <p><strong>Page not found :(</strong></p>
   <p>The requested page could not be found.</p>
 </div>
+
+<script>
+  (function () {
+    function normalizePath(path) {
+      if (!path) return "/";
+      var normalized = path;
+      if (normalized.length > 1) {
+        normalized = normalized.replace(/\/+$/, "");
+      }
+      return normalized;
+    }
+
+    function addCandidate(map, legacyPath, targetPath) {
+      if (!legacyPath || !targetPath) return;
+      var legacy = normalizePath(legacyPath);
+      if (legacy === normalizePath(targetPath)) return;
+      if (!map[legacy]) map[legacy] = targetPath;
+      if (!legacy.endsWith(".html")) {
+        map[legacy + ".html"] = targetPath;
+      }
+      if (!legacy.endsWith("/")) {
+        map[legacy + "/"] = targetPath;
+      }
+    }
+
+    var redirects = {};
+    {% for post in site.posts %}
+      {% assign yyyy = post.date | date: "%Y" %}
+      {% assign mm = post.date | date: "%m" %}
+      {% assign dd = post.date | date: "%d" %}
+      {% assign post_slug = post.slug %}
+      {% assign slug_normalized = post_slug | replace: "-en", "" | replace: "-es", "" %}
+      {% assign lang_prefix = "" %}
+      {% if post.lang == "en" %}
+        {% assign lang_prefix = "/en" %}
+      {% elsif post.lang == "es" %}
+        {% assign lang_prefix = "/es" %}
+      {% endif %}
+
+      (function () {
+        var target = "{{ post.url | relative_url }}";
+        var oldStyle = "{{ lang_prefix }}/{{ yyyy }}/{{ mm }}/{{ dd }}/{{ post_slug }}/";
+        var oldStyleNormalizedSlug = "{{ lang_prefix }}/{{ yyyy }}/{{ mm }}/{{ dd }}/{{ slug_normalized }}/";
+
+        addCandidate(redirects, oldStyle, target);
+        addCandidate(redirects, oldStyleNormalizedSlug, target);
+
+        {% if post.lang != "pt" %}
+          addCandidate(redirects, "/{{ yyyy }}/{{ mm }}/{{ dd }}/{{ post_slug }}/", target);
+          addCandidate(redirects, "/{{ yyyy }}/{{ mm }}/{{ dd }}/{{ slug_normalized }}/", target);
+        {% endif %}
+      })();
+    {% endfor %}
+
+    var currentPath = normalizePath(window.location.pathname);
+    var targetPath = redirects[currentPath];
+
+    if (targetPath) {
+      window.location.replace(targetPath);
+    }
+  })();
+</script>
