@@ -10,6 +10,14 @@ layout: default
     {% assign translations = site.data.translations.es %}
   {% endif %}
   {% assign toc_label = translations.table_of_contents | default: 'Table of contents' %}
+  {% assign section_notes_label = translations.section_notes | default: 'Section notes' %}
+  {% assign note_label = translations.note_label | default: 'Note' %}
+  {% assign back_to_section_label = translations.back_to_section | default: 'Back to section' %}
+  {% assign newsletter_heading = translations.newsletter_heading | default: 'Join the Newsletter' %}
+  {% assign newsletter_text = translations.newsletter_text | default: 'Subscribe to get our latest content by email.' %}
+  {% assign newsletter_placeholder = translations.newsletter_placeholder | default: 'Email Address' %}
+  {% assign newsletter_button = translations.newsletter_button | default: 'Subscribe' %}
+  {% assign newsletter_guarantee = translations.newsletter_guarantee | default: 'We respect your privacy. Unsubscribe at any time.' %}
   <header class="post-header">
     <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
     <p class="post-meta">
@@ -35,7 +43,30 @@ layout: default
         <ul id="post-toc-list" class="post-toc-list"></ul>
       </nav>
     </aside>
+    <aside class="post-side-notes is-hidden" aria-label="{{ section_notes_label }}">
+      <p class="post-toc-title">{{ section_notes_label }}</p>
+      <div id="post-side-notes-list" class="post-side-notes-list"></div>
+    </aside>
   </div>
+  <section class="post-footer-notes is-hidden" aria-label="{{ section_notes_label }}">
+    <h2 class="post-footer-notes-title">{{ section_notes_label }}</h2>
+    <ol id="post-footer-notes-list" class="post-footer-notes-list"></ol>
+  </section>
+  <section class="post-newsletter" aria-label="{{ newsletter_heading }}">
+    <form action="https://app.kit.com/forms/9200442/subscriptions" class="post-newsletter-form" method="post">
+      <div class="post-newsletter-panel post-newsletter-panel-brand">
+        <h2 class="post-newsletter-heading">{{ newsletter_heading }}</h2>
+        <p class="post-newsletter-copy">{{ newsletter_text }}</p>
+      </div>
+      <div class="post-newsletter-panel post-newsletter-panel-form">
+        <label class="post-newsletter-label" for="newsletter-email">{{ newsletter_placeholder }}</label>
+        <input id="newsletter-email" class="post-newsletter-input" name="email_address" placeholder="{{ newsletter_placeholder }}" required type="email">
+        <button class="post-newsletter-submit" type="submit">{{ newsletter_button }}</button>
+        <p class="post-newsletter-guarantee">{{ newsletter_guarantee }}</p>
+        <a class="post-newsletter-powered-by" href="https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic" rel="nofollow noopener noreferrer" target="_blank">Built with Kit</a>
+      </div>
+    </form>
+  </section>
   {%- if page.author-info -%}
     {% include author.html author=page.author-info %}
   {%- endif -%}
@@ -43,5 +74,11 @@ layout: default
     {%- include disqus_comments.html -%}
   {%- endif -%}
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+  <script>
+    window.POST_NOTE_I18N = {
+      noteLabel: {{ note_label | jsonify }},
+      backToSection: {{ back_to_section_label | jsonify }}
+    };
+  </script>
   <script src="{{ '/assets/post-toc.js' | relative_url }}" defer></script>
 </article>
