@@ -1,0 +1,54 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Logo Blog" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Logo" [ref=e5]
+        - text: Blog
+      - navigation [ref=e6]:
+        - generic [ref=e8]:
+          - link "English" [ref=e9] [cursor=pointer]:
+            - /url: /en/404.html
+          - link "Español" [ref=e10] [cursor=pointer]:
+            - /url: /es/404.html
+          - text: Português
+  - main "Content" [ref=e11]:
+    - generic [ref=e13]:
+      - heading "404" [level=1] [ref=e14]
+      - paragraph [ref=e15]:
+        - strong [ref=e16]: Page not found :(
+      - paragraph [ref=e17]: The requested page could not be found.
+  - contentinfo [ref=e18]:
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - img "Logo LESIS" [ref=e22]
+          - paragraph [ref=e23]: Your security R&D partner
+          - paragraph [ref=e24]: Laboratory of Engineering Studies in Information Security
+        - generic [ref=e25]:
+          - heading "Contact" [level=3] [ref=e26]
+          - generic [ref=e27]:
+            - paragraph [ref=e28]:
+              - link "www.lesis.lat" [ref=e29] [cursor=pointer]:
+                - /url: https://lesis.lat
+            - paragraph [ref=e30]:
+              - link "contact@lesis.lat" [ref=e31] [cursor=pointer]:
+                - /url: mailto:contact@lesis.lat
+          - list [ref=e33]:
+            - listitem [ref=e34]:
+              - link [ref=e35] [cursor=pointer]:
+                - /url: https://www.linkedin.com/company/lesis-lat
+                - img [ref=e36]
+            - listitem [ref=e38]:
+              - link [ref=e39] [cursor=pointer]:
+                - /url: https://github.com/lesis-lat
+                - img [ref=e40]
+            - listitem [ref=e42]:
+              - link [ref=e43] [cursor=pointer]:
+                - /url: https://instagram.com/lesis.lat
+                - img [ref=e44]
+            - listitem [ref=e46]:
+              - link [ref=e47] [cursor=pointer]:
+                - /url: https://www.twitter.com/lesis_lat
+                - img [ref=e48]
+      - paragraph [ref=e51]: © 2026 LESIS - Laboratory of Engineering Studies in Information Security — All rights reserved
