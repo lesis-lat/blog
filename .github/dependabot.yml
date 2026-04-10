@@ -12,7 +12,7 @@ updates:
     pull-request-branch-name:
       separator: "/"
     reviewers:
-      - "htrgouvea"
+      - "EduardaDT"
     assignees:
       - "EduardaDT"
     labels:
@@ -42,7 +42,7 @@ updates:
       timezone: "America/Sao_Paulo"
     open-pull-requests-limit: 5
     reviewers:
-      - "htrgouvea"
+      - "EduardaDT"
     assignees:
       - "EduardaDT"
     labels:
