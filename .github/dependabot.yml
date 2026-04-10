@@ -1,0 +1,61 @@
+version: 2
+
+updates:
+  - package-ecosystem: "bundler"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "03:00"
+      timezone: "America/Sao_Paulo"
+    open-pull-requests-limit: 5
+    pull-request-branch-name:
+      separator: "/"
+    reviewers:
+      - "EduardaDT"
+    assignees:
+      - "EduardaDT"
+    labels:
+      - "dependencies"
+      - "ruby"
+    commit-message:
+      prefix: "chore(deps)"
+      prefix-development: "chore(deps-dev)"
+      include: "scope"
+    groups:
+      production:
+        dependency-type: "production"
+        update-types:
+          - "minor"
+          - "patch"
+      production-major:
+        dependency-type: "production"
+        update-types:
+          - "major"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "04:00"
+      timezone: "America/Sao_Paulo"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "EduardaDT"
+    assignees:
+      - "EduardaDT"
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "ci"
+      include: "scope"
+    groups:
+      minor-patch:
+        update-types:
+          - "minor"
+          - "patch"
+      major:
+        update-types:
+          - "major"
