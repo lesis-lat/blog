@@ -1,8 +1,11 @@
 ---
 ---
 
-@import "minima";
-@import "_ibm-plex-sans";
+@use "minima" as *;
+@use "_ibm-plex-sans";
+@use "components/header";
+@use "components/post-list";
+@use "components/footer";
 
 html, body {
   font-family: 'IBM Plex Sans', "Gotham", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -663,11 +666,6 @@ pre, code {
     }
   }
 }
-
-// Components
-@import "components/header";
-@import "components/post-list";
-@import "components/footer";
 
 @include media-query($on-palm) {
   .post-content .highlighter-rouge.language-text .highlight {
