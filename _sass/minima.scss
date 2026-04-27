@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-@forward "minima/tokens";
-@use "minima/base";
-@use "minima/layout";
-@use "minima/syntax-highlighting";
+@import "minima/tokens";
+@import "minima/base";
+@import "minima/layout";
+@import "minima/syntax-highlighting";

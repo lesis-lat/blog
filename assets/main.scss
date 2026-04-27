@@ -1,11 +1,11 @@
 ---
 ---
 
-@use "minima" as *;
-@use "_ibm-plex-sans";
-@use "components/header";
-@use "components/post-list";
-@use "components/footer";
+@import "minima";
+@import "ibm-plex-sans";
+@import "components/header";
+@import "components/post-list";
+@import "components/footer";
 
 html, body {
   font-family: 'IBM Plex Sans', "Gotham", "Helvetica Neue", Helvetica, Arial, sans-serif;
