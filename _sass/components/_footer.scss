@@ -69,9 +69,19 @@
   transition: color 0.2s, transform 0.2s;
 }
 
+.site-footer a,
+.site-footer a:visited {
+  color: #e7e7e7;
+}
+
+.site-footer a:hover,
+.site-footer a:focus-visible {
+  color: #b8b8b8;
+  text-decoration: none;
+}
+
 .footer-socials a:hover,
 .footer-socials a:focus-visible {
-  color: #fff;
   transform: translateY(-2px);
 }
 

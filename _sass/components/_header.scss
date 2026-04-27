@@ -25,8 +25,15 @@
   margin-right: 8px;
 }
 
-.site-nav .page-link {
-  color: #666666;
+.site-nav .page-link,
+.site-nav .page-link:visited {
+  color: #e7e7e7;
+}
+
+.site-nav .page-link:hover,
+.site-nav .page-link:focus-visible {
+  color: #b8b8b8;
+  text-decoration: none;
 }
 
 @include media-query($on-palm) {
