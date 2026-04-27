@@ -12,7 +12,7 @@
 .home-search-label {
   display: block;
   margin-bottom: 0.45rem;
-  color: #6d635a;
+  color: #5e6970;
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -22,7 +22,7 @@
 .home-search-input {
   width: 100%;
   padding: 0.7rem 0.85rem;
-  border: 1px solid #dfd4bf;
+  border: 1px solid #cfdde4;
   border-radius: 8px;
   background: #fffdf8;
   color: #2e2b29;
@@ -37,8 +37,8 @@
 
 .home-search-input:focus {
   outline: none;
-  border-color: #a2866d;
-  box-shadow: 0 0 0 3px #a2866d26;
+  border-color: #555555;
+  box-shadow: 0 0 0 3px #11111120;
 }
 
 .home-category-label {
@@ -52,11 +52,11 @@
 }
 
 .home-category-tag {
-  border: 1px solid #dfd4bf;
+  border: 1px solid #cfdde4;
   border-radius: 999px;
   padding: 0.35rem 0.85rem;
   background: #fffdf8;
-  color: #6d635a;
+  color: #5e6970;
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.05em;
@@ -69,18 +69,18 @@
 .home-category-tag:hover {
   transform: translateY(-1px);
   box-shadow: 0 6px 16px #00000012;
-  border-color: #a2866d;
+  border-color: #555555;
 }
 
 .home-category-tag.is-active {
-  background: #533e33;
-  border-color: #533e33;
+  background: #111111;
+  border-color: #111111;
   color: #fffdf8;
 }
 
 .home-category-tag:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px #a2866d26;
+  box-shadow: 0 0 0 3px #11111120;
 }
 
 .home-category-tag-research,
@@ -125,7 +125,7 @@
 .home-search-empty {
   margin-top: -0.8rem;
   margin-bottom: 1.5rem;
-  color: #6d635a;
+  color: #5e6970;
   font-size: 0.94rem;
 }
 
@@ -169,7 +169,7 @@
       margin-bottom: 0.9rem;
       border-radius: 999px;
       background: #f1e9dd;
-      color: #6d635a;
+      color: #5e6970;
       font-size: 0.72rem;
       font-weight: 600;
       letter-spacing: 0.05em;
@@ -215,7 +215,7 @@
     }
 
     &:hover .post-title {
-      color: #533e33;
+      color: #000000;
     }
 
     .post-excerpt {
@@ -228,7 +228,7 @@
     .read-more {
       font-size: 0.9rem;
       font-weight: 500;
-      color: #533e33;
+      color: #111111;
       text-decoration: none;
 
       &:hover {
