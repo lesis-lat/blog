@@ -6,6 +6,7 @@ gem "webrick"
 
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12"
+  gem "jekyll-sitemap"
 end
 
 install_if -> { RUBY_PLATFORM =~ %r!mingw|mswin|java! } do

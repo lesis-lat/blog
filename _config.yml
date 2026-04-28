@@ -20,6 +20,10 @@ show_excerpts: true
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
+
+feed:
+  posts_limit: 100
 
 google_analytics: UA-167519399-1
 
