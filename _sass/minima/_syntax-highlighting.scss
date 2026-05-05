@@ -1,11 +1,12 @@
-@import "minima/tokens";
+@use "sass:math";
+@use "minima/tokens" as *;
 
 /**
  * Syntax highlighting styles
  */
 .highlight {
   background: #fff;
-  margin-bottom: ($spacing-unit / 2);
+  margin-bottom: math.div($spacing-unit, 2);
 
   .highlighter-rouge & {
     background: #eef;
