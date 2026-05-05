@@ -53,11 +53,12 @@
   </g>
 
   <g font-family="Arial, sans-serif">
-    <rect x="870" y="326" width="438" height="252" rx="22" fill="#111111"/>
+    <rect x="850" y="326" width="500" height="286" rx="22" fill="#111111"/>
     <text x="908" y="382" fill="#fef9c3" font-size="26" font-weight="700">Likely reconstruction</text>
-    <rect x="908" y="414" width="360" height="70" rx="12" fill="#fffdf8"/>
-    <text x="932" y="459" fill="#111111" font-size="25" font-family="Menlo, Consolas, monospace">heitor.gouvea@gmail.com</text>
-    <text x="908" y="526" fill="#e7e7e7" font-size="22">The problem is not one isolated fragment.</text>
-    <text x="908" y="558" fill="#e7e7e7" font-size="22">It is the sum of inconsistent exposures.</text>
+    <rect x="908" y="414" width="388" height="70" rx="12" fill="#fffdf8"/>
+    <text x="930" y="459" fill="#111111" font-size="24" font-family="Menlo, Consolas, monospace">heitor.gouvea@gmail.com</text>
+    <text x="908" y="526" fill="#e7e7e7" font-size="21">The problem is not one isolated</text>
+    <text x="908" y="556" fill="#e7e7e7" font-size="21">fragment. It is the sum of</text>
+    <text x="908" y="586" fill="#e7e7e7" font-size="21">inconsistent exposures.</text>
   </g>
 </svg>

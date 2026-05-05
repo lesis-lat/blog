@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc" text-rendering="geometricPrecision">
-  <title id="title">Reconstrucao de e-mail a partir de fragmentos mascarados</title>
-  <desc id="desc">Fragmentos de um e-mail mascarado em diferentes plataformas sao combinados em um e-mail reconstruido.</desc>
+  <title id="title">Reconstrução de e-mail a partir de fragmentos mascarados</title>
+  <desc id="desc">Fragmentos de um e-mail mascarado em diferentes plataformas são combinados em um e-mail reconstruído.</desc>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
       <path d="M0 0L10 5L0 10Z" fill="#252525"/>
@@ -10,7 +10,7 @@
   <rect width="1400" height="900" fill="#fffdf8"/>
   <rect x="36" y="36" width="1328" height="828" rx="26" fill="#faf6ec" stroke="#e6decd" stroke-width="2"/>
 
-  <text x="76" y="108" fill="#1f1f1f" font-family="Arial, sans-serif" font-size="44" font-weight="700">Reconstrucao por fragmentos</text>
+  <text x="76" y="108" fill="#1f1f1f" font-family="Arial, sans-serif" font-size="44" font-weight="700">Reconstrução por fragmentos</text>
   <text x="78" y="148" fill="#665d56" font-family="Arial, sans-serif" font-size="24">Mascaramentos diferentes podem revelar partes complementares do mesmo e-mail.</text>
 
   <text x="78" y="224" fill="#5e6970" font-family="Arial, sans-serif" font-size="23" font-weight="700">Fragmentos observados</text>
@@ -53,11 +53,12 @@
   </g>
 
   <g font-family="Arial, sans-serif">
-    <rect x="870" y="326" width="438" height="252" rx="22" fill="#111111"/>
-    <text x="908" y="382" fill="#fef9c3" font-size="26" font-weight="700">Reconstrucao provavel</text>
-    <rect x="908" y="414" width="360" height="70" rx="12" fill="#fffdf8"/>
-    <text x="932" y="459" fill="#111111" font-size="25" font-family="Menlo, Consolas, monospace">heitor.gouvea@gmail.com</text>
-    <text x="908" y="526" fill="#e7e7e7" font-size="22">O problema nao esta em um fragmento isolado.</text>
-    <text x="908" y="558" fill="#e7e7e7" font-size="22">Esta na soma de exposicoes inconsistentes.</text>
+    <rect x="850" y="326" width="500" height="286" rx="22" fill="#111111"/>
+    <text x="908" y="382" fill="#fef9c3" font-size="26" font-weight="700">Reconstrução provável</text>
+    <rect x="908" y="414" width="388" height="70" rx="12" fill="#fffdf8"/>
+    <text x="930" y="459" fill="#111111" font-size="24" font-family="Menlo, Consolas, monospace">heitor.gouvea@gmail.com</text>
+    <text x="908" y="526" fill="#e7e7e7" font-size="21">O problema não está em um</text>
+    <text x="908" y="556" fill="#e7e7e7" font-size="21">fragmento isolado. Está na soma</text>
+    <text x="908" y="586" fill="#e7e7e7" font-size="21">de exposições inconsistentes.</text>
   </g>
 </svg>
