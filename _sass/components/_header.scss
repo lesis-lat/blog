@@ -1,4 +1,4 @@
-@import "minima/tokens";
+@use "minima/tokens" as *;
 
 .site-header {
   border-top: 3px solid #000000;
