@@ -1,4 +1,4 @@
-@use "minima/tokens" as *;
+@import "minima/tokens";
 
 .post-list-heading {
   font-size: 2.5rem;
@@ -38,7 +38,7 @@
 .home-search-input:focus {
   outline: none;
   border-color: #555555;
-  box-shadow: 0 0 0 3px #11111120;
+  box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.13);
 }
 
 .home-category-label {
@@ -68,7 +68,7 @@
 
 .home-category-tag:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 16px #00000012;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
   border-color: #555555;
 }
 
@@ -80,7 +80,7 @@
 
 .home-category-tag:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px #11111120;
+  box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.13);
 }
 
 .home-category-tag-research,
@@ -144,7 +144,7 @@
     transition: box-shadow 0.2s ease, transform 0.2s ease;
 
     &:hover {
-      box-shadow: 0 10px 25px #0000000d;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
       transform: translateY(-2px);
     }
 

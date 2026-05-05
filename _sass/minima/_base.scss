@@ -1,6 +1,4 @@
-@use "sass:color";
-@use "sass:math";
-@use "minima/tokens" as *;
+@import "minima/tokens";
 
 body, h1, h2, h3, h4, h5, h6,
 p, blockquote, pre, hr,
@@ -29,7 +27,7 @@ h1, h2, h3, h4, h5, h6,
 p, blockquote, pre,
 ul, ol, dl, figure,
 %vertical-rhythm {
-  margin-bottom: math.div($spacing-unit, 2);
+  margin-bottom: ($spacing-unit / 2);
 }
 
 main {
@@ -69,7 +67,7 @@ a {
   text-decoration: none;
 
   &:visited {
-    color: color.adjust(#3db55d, $lightness: -15%);
+    color: darken(#3db55d, 15%);
   }
 
   &:hover {
@@ -89,7 +87,7 @@ a {
 blockquote {
   color: $grey-color;
   border-left: 4px solid $grey-color-light;
-  padding-left: math.div($spacing-unit, 2);
+  padding-left: ($spacing-unit / 2);
   @include relative-font-size(1.125);
   letter-spacing: -1px;
   font-style: italic;
@@ -134,8 +132,8 @@ pre {
   @include media-query($on-laptop) {
     max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
     max-width:         calc(#{$content-width} - (#{$spacing-unit}));
-    padding-right: math.div($spacing-unit, 2);
-    padding-left: math.div($spacing-unit, 2);
+    padding-right: ($spacing-unit / 2);
+    padding-left: ($spacing-unit / 2);
   }
 }
 
@@ -161,21 +159,21 @@ table {
   margin-bottom: $spacing-unit;
   width: 100%;
   text-align: $table-text-align;
-  color: color.adjust($text-color, $lightness: 18%);
+  color: lighten($text-color, 18%);
   border-collapse: collapse;
   border: 1px solid $grey-color-light;
   tr {
     &:nth-child(even) {
-      background-color: color.adjust($grey-color-light, $lightness: 6%);
+      background-color: lighten($grey-color-light, 6%);
     }
   }
   th, td {
-    padding: math.div($spacing-unit, 3) math.div($spacing-unit, 2);
+    padding: ($spacing-unit / 3) ($spacing-unit / 2);
   }
   th {
-    background-color: color.adjust($grey-color-light, $lightness: 3%);
-    border: 1px solid color.adjust($grey-color-light, $lightness: -4%);
-    border-bottom-color: color.adjust($grey-color-light, $lightness: -12%);
+    background-color: lighten($grey-color-light, 3%);
+    border: 1px solid darken($grey-color-light, 4%);
+    border-bottom-color: darken($grey-color-light, 12%);
   }
   td {
     border: 1px solid $grey-color-light;
