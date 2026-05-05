@@ -1,12 +1,11 @@
 ---
 ---
 
-@use "minima/tokens" as *;
-@use "minima";
-@use "ibm-plex-sans";
-@use "components/header";
-@use "components/post-list";
-@use "components/footer";
+@import "minima";
+@import "ibm-plex-sans";
+@import "components/header";
+@import "components/post-list";
+@import "components/footer";
 
 html, body {
   font-family: 'IBM Plex Sans', "Gotham", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -142,7 +141,7 @@ pre, code {
     border: 1px solid #e6decd;
     border-radius: 10px;
     background: #fffdf8;
-    box-shadow: 0 10px 22px #00000010;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.06);
     overflow-y: auto;
     z-index: 5;
   }
@@ -158,7 +157,7 @@ pre, code {
     border: 1px solid #e6decd;
     border-radius: 10px;
     background: #fffdf8;
-    box-shadow: 0 10px 22px #00000010;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.06);
   }
 
   .post-side-notes:not(.is-hidden) {
@@ -294,7 +293,7 @@ pre, code {
   border: 1px solid #e8e1d2;
   border-radius: 14px;
   background: #f7f2e8;
-  box-shadow: 0 10px 20px #00000008;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
   overflow: hidden;
 }
 
@@ -517,7 +516,7 @@ pre, code {
   border-left: 4px solid #111111;
   border-radius: 10px;
   background: linear-gradient(180deg, #fbfbfb 0%, #f3f3f3 100%);
-  box-shadow: 0 6px 14px #0000000a;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.04);
   overflow: hidden;
 }
 
@@ -564,7 +563,7 @@ pre, code {
   background-color: #fffdf8;
   color: #2a2a2a;
   text-align: left;
-  box-shadow: 0 8px 20px #00000008;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
 }
 
 .post-content .table-scroll {
@@ -575,7 +574,7 @@ pre, code {
   border: 1px solid #e6decd;
   border-radius: 10px;
   background-color: #fffdf8;
-  box-shadow: 0 8px 20px #00000008;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
 }
 
 .post-content .table-scroll table {
