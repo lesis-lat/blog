@@ -194,7 +194,7 @@ PSI ou um protocolo equivalente é uma opção mais sofisticada quando também h
 
 Essa hierarquia ajuda a explicar por que a resposta inicial de "vamos criptografar o arquivo" era insuficiente. A pergunta não era apenas como transportar dados com segurança. A pergunta era quanto dado precisava ser revelado para atingir o objetivo.
 
-### O que revisar em uma integração desse tipo
+### Conclusão
 
 Uma revisão de segurança para esse tipo de compartilhamento deve começar por perguntas simples. Antes de escolher algoritmo, é necessário entender qual é o objetivo exato da comparação, quem precisa aprender o resultado e qual formato esse resultado precisa ter. O resultado precisa ser uma lista de CPFs, uma lista de usuários elegíveis, um booleano por usuário ou apenas uma contagem agregada?
 
@@ -204,11 +204,7 @@ Outro ponto importante é a natureza do identificador usado. Se o identificador 
 
 Por fim, a revisão deve cobrir quem controla chaves, salts ou segredos, se o processo é auditável e reexecutável, e se existe retenção limitada dos arquivos intermediários e resultados. Essas perguntas evitam que a discussão fique limitada a "o arquivo está criptografado?". Segurança do transporte importa, mas minimização, finalidade, retenção e modelo de confiança importam tanto quanto.
 
-### Conclusão
-
-Criptografia, hash, HMAC e PSI são ferramentas diferentes para problemas diferentes.
-
-Criptografia protege dados contra acesso não autorizado durante armazenamento ou transmissão. Hash permite comparação determinística, mas pode ser fraco quando a entrada é previsível, como acontece com CPFs. HMAC adiciona uma chave e melhora a resistência contra ataques offline. Com uma API bem desenhada, HMAC também pode apoiar um fluxo pragmático de elegibilidade sem entregar a base inteira da instituição financeira ao marketplace. PSI entra como alternativa mais sofisticada quando o requisito também envolve reduzir o que cada parte aprende durante a comparação.
+Criptografia, hash, HMAC, APIs e PSI são ferramentas diferentes para problemas diferentes. A decisão correta depende menos da familiaridade com uma técnica específica e mais do que cada parte precisa aprender durante o processo.
 
 O aprendizado principal desse caso é que "transmitir com segurança" não é o mesmo que "revelar o mínimo necessário". Em integrações entre empresas, especialmente envolvendo identificadores pessoais, a arquitetura deve começar pela minimização: quem precisa saber o quê, por quanto tempo, e com qual garantia técnica?
 
