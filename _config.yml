@@ -17,6 +17,7 @@ instagram_username: lesis.lat
 github_username: lesis-lat
 
 show_excerpts: true
+home_posts_per_page: 6
 theme: minima
 plugins:
   - jekyll-feed
