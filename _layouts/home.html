@@ -46,7 +46,7 @@ layout: default
           {%- endfor -%}
         </div>
       </div>
-      <ul class="post-list">
+      <ul class="post-list" data-posts-per-page="{{ site.home_posts_per_page | default: 6 }}">
         {%- for post in filtered_posts -%}
           <li class="post-card" data-category="{{ post.category | escape }}">
             <a href="{{ post.url | relative_url }}" class="post-card-link">
@@ -74,6 +74,23 @@ layout: default
           </li>
         {%- endfor -%}
       </ul>
+      <nav
+        class="home-pagination"
+        data-home-pagination
+        aria-label="{{ translations.posts_heading }}"
+        hidden>
+        <button type="button" class="home-pagination-button" data-pagination-prev>
+          {{ translations.pagination_previous }}
+        </button>
+        <span
+          class="home-pagination-status"
+          data-pagination-status-template="{{ translations.pagination_status | escape }}"
+          data-pagination-status>
+        </span>
+        <button type="button" class="home-pagination-button" data-pagination-next>
+          {{ translations.pagination_next }}
+        </button>
+      </nav>
     <p id="home-post-search-empty" class="home-search-empty" hidden>{{ translations.search_no_results }}</p>
     <p class="rss-subscribe">{{ translations.rss_follow }} <a href="{{ "/feed.xml" | relative_url }}">{{ translations.rss_feed }}</a></p>
   {%- endif -%}
