@@ -129,6 +129,48 @@
   font-size: 0.94rem;
 }
 
+.home-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  margin: -1rem 0 2.5rem;
+}
+
+.home-pagination[hidden] {
+  display: none;
+}
+
+.home-pagination-button {
+  appearance: none;
+  border: 1px solid #d7dce0;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #252525;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.55rem 0.85rem;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+
+  &:hover:not(:disabled) {
+    background: #f4f6f7;
+    border-color: #bfc8ce;
+  }
+
+  &:disabled {
+    color: #9aa4aa;
+    cursor: not-allowed;
+  }
+}
+
+.home-pagination-status {
+  color: #5e6970;
+  font-size: 0.9rem;
+  min-width: 8.5rem;
+  text-align: center;
+}
+
 .post-list {
   list-style: none;
   padding: 0;
