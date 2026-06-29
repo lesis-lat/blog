@@ -74,6 +74,12 @@ pre, code {
   text-align: center;
 }
 
+@media screen and (max-width: 600px) {
+  .post-header {
+    display: none;
+  }
+}
+
 .post-content p {
   color: #222222;
 }
