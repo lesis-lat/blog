@@ -74,6 +74,12 @@ pre, code {
   text-align: center;
 }
 
+@media screen and (max-width: 600px) {
+  .post:has(.post-content > h1:first-child) .post-header .post-title {
+    display: none;
+  }
+}
+
 .post-content p {
   color: #222222;
 }
