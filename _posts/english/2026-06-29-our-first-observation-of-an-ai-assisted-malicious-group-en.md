@@ -14,8 +14,6 @@ date: 2026-06-29 15:00:00 -0300
 permalink: /blog/our-first-observation-of-an-ai-assisted-malicious-group/
 ---
 
-# Our first observation of an AI-assisted malicious group targeting small and medium-sized Brazilian fintechs
-
 LESIS' work often places us across different fronts of offensive security, incident response, and threat intelligence. On a recent occasion, we were called in to support an investigation involving a Brazilian financial institution. Our initial role was to answer an objective question: what entry vector was used by the malicious actor?
 
 To do that, we conducted an analysis guided by adversary simulation. We started from the same operational premise as the attacker: compromise an application or adjacent resource that could, directly or indirectly, lead to systems with potential financial movement. This approach allowed us to reconstruct part of the attack chain, identify the initial vector, and later locate persistence mechanisms used by the threat actor.
