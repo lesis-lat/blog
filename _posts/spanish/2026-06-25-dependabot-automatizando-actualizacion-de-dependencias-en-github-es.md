@@ -14,8 +14,6 @@ date: 2026-06-25 08:00:00 -0300
 permalink: /blog/dependabot-automatizando-actualizacion-de-dependencias-en-github/
 ---
 
-# Dependabot: automatizando la actualización de dependencias en GitHub
-
 Mantener las dependencias actualizadas es una de las tareas más descuidadas en el ciclo de vida de un proyecto de software. No por descuido o desconocimiento, sino porque el trabajo cotidiano impone prioridades más visibles: funcionalidades, correcciones de bugs, plazos. Las dependencias desactualizadas rara vez generan síntomas inmediatos. Los problemas que introducen suelen aparecer tarde, y cuando aparecen, el costo es alto.
 
 A partir de este diagnóstico, decidimos configurar Dependabot en nuestros repositorios. Este texto describe qué es la herramienta, cómo funciona, cómo hicimos la configuración y qué aprendimos durante el proceso.
