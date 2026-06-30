@@ -14,8 +14,6 @@ date: 2026-06-25 08:00:00 -0300
 permalink: /blog/dependabot-automating-dependency-updates-on-github/
 ---
 
-# Dependabot: automating dependency updates on GitHub
-
 Keeping dependencies up to date is one of the most neglected tasks in the software development lifecycle. Not because of carelessness or lack of awareness, but because everyday work imposes more visible priorities: features, bug fixes, deadlines. Outdated dependencies rarely cause immediate symptoms. The problems they introduce usually appear late, and when they do, the cost is high.
 
 Based on this diagnosis, we decided to configure Dependabot in our repositories. This text describes what the tool is, how it works, how we configured it, and what we learned during the process.
