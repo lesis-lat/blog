@@ -39,6 +39,16 @@
     {% assign alt_pt_path = nil %}
     {% assign alt_en_path = nil %}
     {% assign alt_es_path = nil %}
+    {% if page.layout == 'post' %}
+      {% for item in site.data.post_translations %}
+        {% assign translations_map = item[1] %}
+        {% if translations_map.pt == canonical_path or translations_map.en == canonical_path or translations_map.es == canonical_path %}
+          {% assign alt_pt_path = translations_map.pt %}
+          {% assign alt_en_path = translations_map.en %}
+          {% assign alt_es_path = translations_map.es %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
     {% if page.layout == 'post' and page.date %}
       {% assign page_slug = page.slug %}
       {% if page_slug == nil %}
