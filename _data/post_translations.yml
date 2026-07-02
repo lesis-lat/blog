@@ -1,0 +1,19 @@
+choosing_sharing_identifiers:
+  pt: /blog/escolhendo-o-metodo-correto-para-compartilhar-identificadores/
+  en: /blog/choosing-the-right-method-for-sharing-identifiers/
+  es: /blog/elegir-el-metodo-correcto-para-compartir-identificadores/
+
+dependabot_updates:
+  pt: /blog/dependabot-automatizando-atualizacao-de-dependencias/
+  en: /blog/dependabot-automating-dependency-updates-on-github/
+  es: /blog/dependabot-automatizando-actualizacion-de-dependencias-en-github/
+
+ai_assisted_malicious_group:
+  pt: /blog/nossa-primeira-observação-de-um-grupo-malicioso-assistido-por-ia/
+  en: /blog/our-first-observation-of-an-ai-assisted-malicious-group/
+  es: /blog/nuestra-primera-observacion-de-un-grupo-malicioso-asistido-por-ia/
+
+pii_obfuscation_and_masking:
+  pt: /blog/orientacoes-para-ofuscacao-e-mascaramento-de-pii/
+  en: /blog/orientations-for-pii-obfuscation-and-masking/
+  es: /blog/orientaciones-para-ofuscacion-y-enmascaramiento-de-pii/
