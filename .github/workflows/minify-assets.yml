@@ -1,0 +1,56 @@
+name: Minify assets
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/minify-assets.yml"
+      - "assets/**/*.js"
+      - "!assets/**/*.min.js"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: minify-assets-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  minify:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Minify JavaScript
+        run: |
+          shopt -s nullglob
+          for source in assets/*.js; do
+            case "$source" in
+              *.min.js | assets/applause-button.js) continue ;;
+            esac
+            output="${source%.js}.min.js"
+            npx --yes terser@5.31.0 "$source" -c -m -o "$output"
+          done
+
+      - name: Commit minified assets
+        run: |
+          if [ -z "$(git status --porcelain -- 'assets/*.min.js')" ]; then
+            echo "Minified assets are already up to date."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -- 'assets/*.min.js'
+          git commit -m "chore: minify javascript"
+          git push origin HEAD:main
