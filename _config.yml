@@ -32,6 +32,9 @@ kramdown:
   syntax_highlighter: rouge
   input: GFM
 
+sass:
+  style: compressed
+
 # exclude:
 #   - .sass-cache/
 #   - .jekyll-cache/
