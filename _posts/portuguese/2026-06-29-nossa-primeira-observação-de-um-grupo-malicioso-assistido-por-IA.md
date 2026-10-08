@@ -2,7 +2,8 @@
 layout: post
 title: 'Nossa primeira observação de um grupo malicioso assistido por IA mirando fintechs brasileiras de pequeno e médio porte'
 lang: pt
-category: Estudo de caso
+translation_key: ai-assisted-malicious-group
+category: case-study
 excerpt: 'Investigação da LESIS identifica uma campanha maliciosa contra fintechs brasileiras de pequeno e médio porte, com uso de IA para acelerar tooling ofensivo, adaptação de payloads e apoio à exploração de aplicações.'
 author: LESIS Team
 author-info:

@@ -11,7 +11,7 @@ This is the official blog for LESIS, a research laboratory focused on informatio
 - Jekyll 4.4+ - Static site generator
 - Ruby 3.0+
 - SCSS - Stylesheet language
-- Minima theme with custom modifications
+- Visual identity shared with [lesis.lat](https://lesis.lat) (IBM Plex Sans and Mono)
 - Jekyll Feed for RSS support
 
 ## Project Structure
@@ -24,8 +24,8 @@ This is the official blog for LESIS, a research laboratory focused on informatio
 │   ├── portuguese/
 │   └── spanish/
 ├── _sass/              # Stylesheets
-│   ├── components/     # Component-specific styles
-│   └── minima/         # Theme styles
+│   ├── lesis/          # Fonts and tokens from the lesis.lat design
+│   └── blog/           # Layout, home, post and syntax styles
 ├── assets/             # Static assets (CSS, images, fonts)
 ├── _data/              # Translation and configuration data
 ├── _config.yml         # Site configuration
@@ -106,25 +106,36 @@ Create posts in the appropriate language folder under `_posts/`:
 ---
 layout: post
 lang: en
+translation_key: post-topic
+category: research
 title: Post Title
 date: 2026-02-14
 author: author_name
 image: author_image.jpg
 og_image: /path/to/preview-image.png
 excerpt: Brief post excerpt
+permalink: /blog/post-title/
 ---
 
 Post content in Markdown...
 ```
 
+- `translation_key` must be the same in the PT, EN and ES versions of a post. It links the versions for the language selector and the `hreflang` tags.
+- `category` is a key shared by all languages: `research`, `vulnerability`, `community`, `guides` or `case-study`. Its label in each language lives under `categories` in `_data/translations.yml`.
+- `permalink` keeps the URL independent of the category. Do not change the permalink of a published post.
+
 ## Styling
 
 The site uses SCSS with a modular component architecture:
 
-- `_sass/components/_header.scss` - Header styles
-- `_sass/components/_post-list.scss` - Post card and list styles
-- `_sass/components/_footer.scss` - Footer styles
-- `assets/main.scss` - Main stylesheet that imports components
+The blog keeps its own structure and uses the visual identity of [lesis.lat](https://lesis.lat): IBM Plex Sans and Mono, black and white with the `#f4f3ef` paper tone, mono uppercase labels, 1px rules and square controls.
+
+- `_sass/lesis/` - IBM Plex font faces and colour tokens taken from the lesis.lat stylesheet (`lesis-lat.github.io/assets/css/style.css`).
+- `_sass/blog/_layout.scss` - Page wrapper, header and footer.
+- `_sass/blog/_home.scss` - Post list, search, categories and pagination.
+- `_sass/blog/_post.scss` - Article typography, sidebar (ask AI, table of contents, notes), share bar, newsletter box and author.
+- `_sass/blog/_syntax.scss` - Code highlighting.
+- `assets/main.scss` - Entry point that loads them.
 
 ## Languages
 
@@ -134,7 +145,9 @@ The blog supports three languages:
 - Portuguese (pt)
 - Spanish (es)
 
-Language selection is automatic based on URL path and page metadata.
+The language of a page comes from its `lang` front matter (pages under `/en/` and `/es/` fall back to the URL prefix, everything else to Portuguese). `_includes/i18n.html` resolves it once per layout and exposes `current_lang` and `translations`; interface strings, date formats and locale codes live in `_data/translations.yml`.
+
+Each language has its own Atom feed at `/feed/pt.xml`, `/feed/en.xml` and `/feed/es.xml`. `/feed.xml` keeps all languages together and is read by the post sync of lesis.lat (English entries, `<category term>` as the topic).
 
 ## Deployment
 
@@ -166,7 +179,7 @@ Recent optimizations include:
 - Modular CSS architecture for better maintainability
 - Unused CSS removal
 - Responsive image implementation
-- Font optimization with IBM Plex Sans
+- Self-hosted IBM Plex Sans and Mono subsets in WOFF2
 - Lazy loading support for images
 
 ## Browser Support

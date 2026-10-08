@@ -2,7 +2,8 @@
 layout: post
 title: 'Segurança digital para crianças: preparando a próxima geração'
 lang: pt
-category: Comunidade
+translation_key: digital-safety-for-children
+category: community
 author: Heitor Gouvêa
 author-info:
   name:  Heitor Gouvêa
@@ -10,6 +11,7 @@ author-info:
   description: Researcher with a background in software engineering. Gouvêa’s research focuses on discovering vulnerabilities in modern applications and developing tools and exploits. 
   linkedin: htrgouvea
 date: 2026-04-26 15:30:00 -0300
+permalink: /comunidade/2026/04/26/o-cibernauta-seguranca-digital-para-proxima-geracao.html
 ---
 
 A segurança da informação precisa chegar mais cedo às pessoas. Durante muito tempo, tratamos esse tema como algo restrito a profissionais, empresas e equipes técnicas. Mas a realidade mudou: crianças crescem conectadas, usam dispositivos desde cedo, conversam em ambientes digitais, jogam online, assistem conteúdos, compartilham informações e constroem parte importante de suas relações dentro do ciberespaço.

@@ -3,7 +3,8 @@ layout: post
 title: 'Máquina de estados para gestão de vulnerabilidades'
 og_image: /assets/publications/vuln-state-machine/state-machine.png
 lang: pt
-category: Pesquisa
+translation_key: vulnerability-state-machine
+category: research
 author: Heitor Gouvêa
 author-info:
   name:  Heitor Gouvêa
@@ -11,6 +12,7 @@ author-info:
   description: Pesquisador, com background em engenharia de software. O foco da pesquisa de Gouvêa é a descoberta de vulnerabilidade em aplicações modernas e desenvolvimento de ferramentas e exploits. 
   linkedin: htrgouvea
 date: 2026-04-09 00:00:00 -0300
+permalink: /pesquisa/2026/04/09/vuln-state-machine.html
 ---
 
 Em muitas organizações, o processo de gestão de vulnerabilidades sofre com um problema recorrente — mas frequentemente negligenciado: a inconsistência na definição e no uso de status. É comum ver os mesmos status sendo usados com significados diferentes por equipes distintas, ou existir status redundantes, mal definidos ou desnecessários, que mais confundem do que ajudam. Isso compromete a rastreabilidade, dificulta a comunicação entre áreas, inviabiliza métricas confiáveis e enfraquece a capacidade da organização de responder a riscos reais.

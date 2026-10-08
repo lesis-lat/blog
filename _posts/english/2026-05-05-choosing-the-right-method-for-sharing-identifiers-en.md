@@ -2,7 +2,8 @@
 layout: post
 title: 'Choosing the right method for sharing identifiers'
 lang: en
-category: Case Study
+translation_key: choosing-sharing-identifiers
+category: case-study
 excerpt: 'How to choose between encryption, hashes, HMAC, APIs, and PSI when comparing datasets with personal identifiers.'
 author: Heitor Gouvêa
 author-info:

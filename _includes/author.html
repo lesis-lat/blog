@@ -4,7 +4,7 @@
   </div>
   <div class="author-info-block">
     <h3 class="author-name">
-      <svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#linkedin"></use></svg>
+      {% include icon.html name="linkedin" %}
       <a href="https://www.linkedin.com/in/{{ include.author.linkedin }}">{{ include.author.name }}</a>
     </h3>
     <p class="author-description">{{ include.author.description }}</p>

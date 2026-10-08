@@ -2,7 +2,8 @@
 layout: post
 title: 'Primitivas e vulnerabilidades'
 lang: pt
-category: Pesquisa
+translation_key: primitives-and-vulnerabilities
+category: research
 excerpt: 'Como pensar em primitivas ajuda a transformar discrepâncias entre intenção e comportamento real em análise de impacto.'
 author: Heitor Gouvêa
 author-info:
@@ -11,6 +12,7 @@ author-info:
   description: Pesquisador, com background em engenharia de software. O foco da pesquisa de Gouvêa é a descoberta de vulnerabilidade em aplicações modernas e desenvolvimento de ferramentas e exploits. 
   linkedin: htrgouvea
 date: 2026-04-26 16:20:00 -0300
+permalink: /pesquisa/2026/04/26/primitivas-e-vulnerabilidades.html
 ---
 
 ### Introdução

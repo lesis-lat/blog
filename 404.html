@@ -16,11 +16,33 @@ layout: default
   }
 </style>
 
+{% include i18n.html %}
 <div class="container">
   <h1>404</h1>
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
+  {%- for language in site.data.translations %}
+  <div lang="{{ language[1].html_lang }}" data-not-found-lang="{{ language[0] }}"{% if language[0] != current_lang %} hidden{% endif %}>
+    <p><strong>{{ language[1].not_found_title }}</strong></p>
+    <p>{{ language[1].not_found_text }}</p>
+  </div>
+  {%- endfor %}
 </div>
+
+<script>
+  (function () {
+    var path = window.location.pathname;
+    var lang = (navigator.language || '').slice(0, 2).toLowerCase();
+    if (/^\/en(\/|$)/.test(path)) lang = 'en';
+    if (/^\/es(\/|$)/.test(path)) lang = 'es';
+
+    var message = document.querySelector('[data-not-found-lang="' + lang + '"]');
+    if (!message) return;
+
+    document.querySelectorAll('[data-not-found-lang]').forEach(function (item) {
+      item.hidden = item !== message;
+    });
+    document.documentElement.lang = message.lang;
+  })();
+</script>
 
 <script>
   (function () {

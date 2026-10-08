@@ -1,12 +1,4 @@
 <div class="language-selector">
-  {% assign current_lang = page.lang | default: 'pt' %}
-  {% if page.url contains '/en/' %}
-    {% assign current_lang = 'en' %}
-  {% endif %}
-  {% if page.url contains '/es/' %}
-    {% assign current_lang = 'es' %}
-  {% endif %}
-
   {% assign pt_target = alt_pt_path | default: '/' %}
   {% assign en_target = alt_en_path | default: '/en/' %}
   {% assign es_target = alt_es_path | default: '/es/' %}

@@ -2,7 +2,8 @@
 layout: post
 title: 'Strengthening the Brazilian cybersecurity community through education'
 lang: en
-category: Community
+translation_key: strengthening-community
+category: community
 author: Heitor Gouvêa
 author-info:
   name:  Heitor Gouvêa
@@ -10,6 +11,7 @@ author-info:
   description: Researcher with a background in software engineering. Gouvêa's research focuses on discovering vulnerabilities in modern applications and developing tools and exploits. 
   linkedin: htrgouvea
 date: 2026-01-14 19:13:00 -0300
+permalink: /community/2026/01/14/commitiment-to-strengthening-community-en.html
 ---
 
 In 2026, LESIS will take another concrete step in its commitment to the sustainable development of the technology and information security ecosystem in Brazil. We will make a financial donation to the NGO [Mente Binária](https://mentebinaria.com.br/), an organization that works directly on training new professionals for the cybersecurity field.

@@ -1,45 +1,59 @@
-<footer class="site-footer h-card">
-  <data class="u-url" href="{{ "/" | relative_url }}"></data>
-  <div class="wrapper">
-    {% assign translations = site.data.translations.pt %}
-    {% if page.lang == 'en' or page.url contains '/en/' %}
-    {% assign translations = site.data.translations.en %}
-    {% endif %}
-    {% if page.lang == 'es' or page.url contains '/es/' %}
-    {% assign translations = site.data.translations.es %}
-    {% endif %}
-    
-    <div class="footer-grid">
-      <div class="footer-col footer-identity">
-        <img src="/assets/logoBranco.png" alt="Logo LESIS" class="footer-logo" />
-        <p class="footer-description">Laboratory of Engineering Studies in Information Security</p>
+{%- assign social_instagram = translations.footer.social | replace: "{network}", "Instagram" -%}
+{%- assign social_twitter = translations.footer.social | replace: "{network}", "Twitter" -%}
+{%- assign social_github = translations.footer.social | replace: "{network}", "GitHub" -%}
+{%- assign social_linkedin = translations.footer.social | replace: "{network}", "LinkedIn" -%}
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-cols">
+      <div>
+        <h3>{{ translations.footer.navigation }}</h3>
+        <a href="{{ translations.home_path | relative_url }}">{{ translations.posts_heading }}</a>
+        <a href="{{ translations.about_path | relative_url }}">{{ translations.footer.about }}</a>
+        {%- assign footer_feed_path = '/feed/' | append: current_lang | append: '.xml' %}
+        <a href="{{ footer_feed_path | relative_url }}">{{ translations.footer.rss }}</a>
+        <a href="{{ translations.main_site }}/newsletter/">{{ translations.footer.newsletter }}</a>
+        <a href="{{ translations.main_site }}/privacy-policy.html">{{ translations.footer.privacy }}</a>
+        <a href="{{ translations.main_site }}/terms-of-use.html">{{ translations.footer.terms }}</a>
       </div>
-
-      <div class="footer-col footer-contact">
-        <h3 class="footer-col-heading">Contact</h3>
-        <div class="footer-contact-info">
-          {%- if site.website.url -%}
-          {%- assign website_label = site.website.url -%}
-          {%- if site.website.link -%}
-            {%- assign website_label = site.website.link -%}
-          {%- endif -%}
-          <p><a href="{{ site.website.url }}" target="_blank" rel="noopener noreferrer">
-            {{ website_label }}
-          </a></p>
-          {%- endif -%}
-          {%- if site.email -%}
-          <p><a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a></p>
-          {%- endif -%}
-        </div>
-        <div class="footer-socials">
-          {%- include social.html -%}
-        </div>
+      <div>
+        <h3>{{ translations.footer.company }}</h3>
+        <a href="{{ translations.main_site }}/">{{ translations.footer.website }}</a>
+        <a href="{{ translations.main_site }}/partnership/">{{ translations.footer.partnership }}</a>
+        <a href="{{ translations.main_site }}/press.html">{{ translations.footer.press }}</a>
+        <a href="https://trainings.lesis.lat/">{{ translations.footer.trainings }}</a>
+        <a href="https://platform.lesis.lat/app/login" target="_blank" rel="noopener noreferrer">{{ translations.footer.client_login }}</a>
+      </div>
+      <div>
+        <h3>{{ translations.footer.contact }}</h3>
+        <a href="mailto:contact@lesis.lat">contact@lesis.lat</a>
+        <a href="mailto:business@lesis.lat">business@lesis.lat</a>
+        <a href="mailto:media@lesis.lat">media@lesis.lat</a>
+        <a href="mailto:security@lesis.lat">security@lesis.lat</a>
+        <ul class="social-icons">
+          <li><a href="https://www.instagram.com/lesis.lat/" target="_blank" rel="noopener noreferrer" aria-label="{{ social_instagram }}">{% include icon.html name="instagram" %}</a></li>
+          <li><a href="https://x.com/lesis_lat" target="_blank" rel="noopener noreferrer" aria-label="{{ social_twitter }}">{% include icon.html name="twitter" %}</a></li>
+          <li><a href="https://github.com/lesis-lat" target="_blank" rel="noopener noreferrer" aria-label="{{ social_github }}">{% include icon.html name="github" %}</a></li>
+          <li><a href="https://www.linkedin.com/company/lesis-lat/" target="_blank" rel="noopener noreferrer" aria-label="{{ social_linkedin }}">{% include icon.html name="linkedin" %}</a></li>
+        </ul>
       </div>
     </div>
-
-    <div class="footer-bottom">
-      <p class="footer-copyright">&copy; 2026 {{ site.title | escape }} &mdash; All rights reserved</p>
+    <div class="site-footer-meta">
+      <p class="site-footer-legal">{{ translations.footer.legal }}</p>
+      <ul class="site-footer-lang">
+        {%- for language in site.data.translations %}
+        {%- case language[0] -%}
+          {%- when 'pt' -%}{%- assign footer_lang_href = alt_pt_path -%}
+          {%- when 'en' -%}{%- assign footer_lang_href = alt_en_path -%}
+          {%- when 'es' -%}{%- assign footer_lang_href = alt_es_path -%}
+        {%- endcase -%}
+        {%- assign footer_lang_href = footer_lang_href | default: language[1].home_path %}
+        <li><a href="{{ footer_lang_href | relative_url }}" hreflang="{{ language[1].html_lang }}" lang="{{ language[1].html_lang }}"{% if language[0] == current_lang %} aria-current="page"{% endif %}>{{ language[1].language_name }}</a></li>
+        {%- endfor %}
+      </ul>
     </div>
+  </div>
+  <div class="site-footer-mark" aria-hidden="true">
+    <img src="{{ '/assets/images/wordmark-branco.png' | relative_url }}" alt="" width="1348" height="545" loading="lazy" decoding="async">
   </div>
 </footer>
 

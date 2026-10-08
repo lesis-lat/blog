@@ -2,7 +2,8 @@
 layout: post
 title: 'Dependabot: automatizando la actualización de dependencias en GitHub'
 lang: es
-category: Guías
+translation_key: dependabot-updates
+category: guides
 excerpt: 'Entiende cómo Dependabot automatiza el monitoreo de vulnerabilidades y la actualización de dependencias directamente en GitHub.'
 author: Maria Eduarda
 author-info:

@@ -1,21 +1,5 @@
-{% assign is_english = false %}
-{% assign is_spanish = false %}
-{% if page.lang == 'en' or page.url contains '/en/' or post.lang == 'en' %}
-  {% assign is_english = true %}
-{% endif %}
-{% if page.lang == 'es' or page.url contains '/es/' or post.lang == 'es' %}
-  {% assign is_spanish = true %}
-{% endif %}
-{% if is_english %}
-  {{ include.date | date: "%B %-d, %Y" }}
-{% endif %}
-{% if is_spanish %}
-  {% assign months_es = "enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre" | split: "," %}
-  {% assign month_number = include.date | date: "%-m" | minus: 1 %}
-  {{ include.date | date: "%-d" }} de {{ months_es[month_number] }} de {{ include.date | date: "%Y" }}
-{% endif %}
-{% if is_english == false and is_spanish == false %}
-  {% assign months_pt = "janeiro,fevereiro,março,abril,maio,junho,julho,agosto,setembro,outubro,novembro,dezembro" | split: "," %}
-  {% assign month_number = include.date | date: "%-m" | minus: 1 %}
-  {{ include.date | date: "%-d" }} de {{ months_pt[month_number] }} de {{ include.date | date: "%Y" }}
-{% endif %}
+{%- assign date_day = include.date | date: "%-d" -%}
+{%- assign date_month = include.date | date: "%-m" | minus: 1 -%}
+{%- assign date_year = include.date | date: "%Y" -%}
+{%- assign formatted_date = translations.date_format | replace: '%{day}', date_day | replace: '%{month}', translations.months[date_month] | replace: '%{year}', date_year -%}
+{{ formatted_date }}

@@ -2,7 +2,8 @@
 layout: post
 title: 'Consideraciones para la elaboración de informes de seguridad'
 lang: es
-category: Guias
+translation_key: writing-security-reports
+category: guides
 author: Heitor Gouvêa
 author-info:
   name:  Heitor Gouvêa
@@ -10,6 +11,7 @@ author-info:
   description: Investigador con formación en ingeniería de software. La investigación de Gouvêa se centra en el descubrimiento de vulnerabilidades en aplicaciones modernas y en el desarrollo de herramientas y exploits.
   linkedin: htrgouvea
 date: 2026-01-15 15:15:10 -0300
+permalink: /guias/2026/01/15/considerations-for-writing-security-reports-es.html
 ---
 
 Después de días o semanas de trabajo, identificaste fallas relevantes, comprendiste la superficie de ataque del entorno evaluado y reuniste evidencia suficiente para demostrar riesgos reales para el negocio. Desde el punto de vista técnico, la evaluación terminó. Lo que aún falta es transformar ese conocimiento en un informe claro, accionable y comprensible.

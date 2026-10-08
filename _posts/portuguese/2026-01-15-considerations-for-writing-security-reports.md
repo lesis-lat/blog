@@ -2,7 +2,8 @@
 layout: post
 title: 'Considerações sobre a elaboração de relatórios de segurança'
 lang: pt
-category: Guias
+translation_key: writing-security-reports
+category: guides
 author: Heitor Gouvêa
 author-info:
   name:  Heitor Gouvêa
@@ -10,6 +11,7 @@ author-info:
   description: Researcher with a background in software engineering. Gouvêa’s research focuses on discovering vulnerabilities in modern applications and developing tools and exploits. 
   linkedin: htrgouvea
 date: 2026-01-15 15:15:10 -0300
+permalink: /guias/2026/01/15/considerations-for-writing-security-reports.html
 ---
 
 Após dias ou semanas de trabalho, você identificou falhas relevantes, compreendeu a superfície de ataque do ambiente avaliado e reuniu evidências suficientes para demonstrar riscos reais ao negócio. Tecnicamente, a avaliação terminou. O que ainda falta é transformar esse conhecimento em um relatório claro, acionável e compreensível.
