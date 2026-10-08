@@ -2,7 +2,8 @@
 layout: post
 title: 'Money for nothing, discounts for free: rocking the gift card loop'
 lang: en
-category: Vulnerability
+translation_key: gift-card-loop
+category: vulnerability
 author: Heitor Gouvêa
 author-info:
   name:  Heitor Gouvêa
@@ -10,6 +11,7 @@ author-info:
   description: Researcher with a background in software engineering. Gouvêa’s research focuses on discovering vulnerabilities in modern applications and developing tools and exploits. 
   linkedin: htrgouvea
 date: 2025-10-04 13:29:00 -0300
+permalink: /vulnerability/2025/10/04/rocking-gift-card-en.html
 ---
 
 From time to time, the opportunity arises to conduct vulnerability research on e-commerce platforms. Although the context is similar, each opportunity is unique, as there are always peculiarities in every application. In this post, I aim to demonstrate a case involving gift cards that I find particularly interesting.

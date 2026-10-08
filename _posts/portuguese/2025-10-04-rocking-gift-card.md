@@ -2,7 +2,8 @@
 layout: post
 title: 'Dinheiro de graça, descontos sem esforço: hackeando o loop dos gift cards'
 lang: pt
-category: Vulnerabilidade
+translation_key: gift-card-loop
+category: vulnerability
 author: Heitor Gouvêa
 author-info:
   name:  Heitor Gouvêa
@@ -10,6 +11,7 @@ author-info:
   description: Pesquisador, com background em engenharia de software. O foco da pesquisa de Gouvêa é a descoberta de vulnerabilidade em aplicações modernas e desenvolvimento de ferramentas e exploits. 
   linkedin: htrgouvea
 date: 2025-10-04 13:29:00 -0300
+permalink: /vulnerabilidade/2025/10/04/rocking-gift-card.html
 ---
 
 Com certa frequência, surge a oportunidade de realizar pesquisas de vulnerabilidades em e-commerces. Apesar do contexto ser o mesmo, cada uma das oportunidades é única,  pois sempre há peculiaridades em cada aplicação. Nesta publicação busco demonstrar um caso envolvendo gift cards que considero interessante.

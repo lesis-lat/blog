@@ -2,7 +2,8 @@
 layout: post
 title: 'Our first observation of an AI-assisted malicious group targeting small and medium-sized Brazilian fintech companies'
 lang: en
-category: Case Study
+translation_key: ai-assisted-malicious-group
+category: case-study
 excerpt: 'An investigation by LESIS has identified a malicious campaign targeting small and medium-sized Brazilian fintech companies, using AI to accelerate the development of offensive tools, adapt payloads and support the exploitation of applications.'
 author: LESIS Team
 author-info:

@@ -3,7 +3,8 @@ layout: post
 title: 'State machine for vulnerability management'
 og_image: /assets/publications/vuln-state-machine/state-machine.png
 lang: en
-category: Research
+translation_key: vulnerability-state-machine
+category: research
 author: Heitor Gouvêa
 author-info:
   name:  Heitor Gouvêa
@@ -11,6 +12,7 @@ author-info:
   description: Researcher with a software engineering background. Gouvêa's research focuses on vulnerability discovery in modern applications and the development of tools and exploits.
   linkedin: htrgouvea
 date: 2026-04-09 00:00:00 -0300
+permalink: /research/2026/04/09/vuln-state-machine-en.html
 ---
 
 In many organizations, the vulnerability management process suffers from a recurring — yet frequently overlooked — problem: inconsistency in the definition and use of statuses. It is common to see the same statuses used with different meanings by distinct teams, or to find redundant, poorly defined, or unnecessary statuses that create more confusion than clarity. This compromises traceability, hinders communication across teams, makes reliable metrics impossible, and weakens the organization's ability to respond to real risks.

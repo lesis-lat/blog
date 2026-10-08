@@ -2,7 +2,8 @@
 layout: post
 title: 'Orientações para ofuscação e mascaramento de PII'
 lang: pt
-category: Guias
+translation_key: pii-obfuscation-and-masking
+category: guides
 excerpt: 'Recomendações práticas para mascarar tipos comuns de informações pessoais sem expor fragmentos úteis entre sistemas.'
 author: Heitor Gouvêa
 author-info:

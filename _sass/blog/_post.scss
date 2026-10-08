@@ -1,0 +1,751 @@
+// Header: centered title, meta and the "ask AI" row
+.post-header {
+  margin-bottom: 48px;
+}
+
+.post-title {
+  margin: 0 0 20px;
+  font-size: clamp(34px, 5vw, 48px);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.post-header .post-title,
+.post-header .post-meta {
+  text-align: center;
+}
+
+.post-meta {
+  margin: 0;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  line-height: 1.8;
+  text-transform: uppercase;
+}
+
+// Article typography
+.post-reading-layout {
+  position: relative;
+}
+
+.post-content {
+  min-width: 0;
+  max-width: 100%;
+  color: #111;
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.post-content p {
+  margin: 0 0 1.4em;
+  text-align: justify;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4 {
+  color: var(--ink);
+  text-align: left;
+  scroll-margin-top: calc(var(--header-h) + 24px);
+}
+
+.post-content h2 {
+  margin: 2.2em 0 0.8em;
+  font-size: 1.6em;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.post-content h3 {
+  margin: 2em 0 0.7em;
+  font-size: 1.3em;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.post-content h4 {
+  margin: 1.8em 0 0.6em;
+  font-size: 1.05em;
+  font-weight: 500;
+}
+
+.post-content strong,
+.post-content b {
+  font-weight: 500;
+}
+
+.post-content a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: opacity 0.2s;
+}
+
+.post-content a:hover {
+  opacity: 0.6;
+}
+
+.post-content ul,
+.post-content ol {
+  margin: 0 0 1.4em;
+  padding-left: 1.3em;
+}
+
+.post-content li {
+  margin-bottom: 0.45em;
+}
+
+.post-content li > p {
+  margin-bottom: 0.45em;
+}
+
+.post-content blockquote {
+  margin: 2em 0;
+  padding: 0 0 0 24px;
+  border-left: 1px solid var(--ink);
+  color: #333;
+}
+
+.post-content blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+.post-content img {
+  display: block;
+  height: auto;
+  margin: 32px auto;
+}
+
+.post-content img[src*="/assets/publications/price-vuln/"] {
+  max-width: 86%;
+}
+
+.post-content .content-caption,
+.post-content figcaption {
+  margin: -16px auto 32px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.post-content .content-caption strong,
+.post-content figcaption strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.post-content hr {
+  height: 0;
+  margin: 3em 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+
+.post-content code {
+  padding: 0.1em 0.35em;
+  background: var(--paper-soft);
+  font-family: var(--mono);
+  font-size: 0.82em;
+}
+
+.post-content pre,
+.post-content .highlight {
+  margin: 0;
+}
+
+.post-content div.highlighter-rouge {
+  margin: 0 0 1.6em;
+  background: var(--paper-soft);
+  border-left: 2px solid var(--ink);
+}
+
+.post-content div.highlighter-rouge pre {
+  overflow-x: auto;
+  padding: 14px 18px;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.post-content div.highlighter-rouge code {
+  padding: 0;
+  background: transparent;
+  font-size: inherit;
+}
+
+.post-content .table-scroll {
+  overflow-x: auto;
+  margin: 32px 0;
+}
+
+.post-content table {
+  width: 100%;
+  margin: 32px 0;
+  border-collapse: collapse;
+  font-size: 14px;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.post-content .table-scroll table {
+  margin: 0;
+}
+
+.post-content th {
+  padding: 10px 16px 10px 0;
+  border-bottom: 1px solid var(--ink);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-align: left;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.post-content td {
+  padding: 10px 16px 10px 0;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.post-content table.table-numeric th:not(:first-child),
+.post-content table.table-numeric td:not(:first-child) {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.post-content table + .content-caption {
+  margin-top: -16px;
+}
+
+.post-content .section-footer-note {
+  margin: 1.6em 0;
+  padding-left: 24px;
+  border-left: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.85em;
+}
+
+.post-note-marker {
+  margin-left: 4px;
+  font-family: var(--mono);
+  font-size: 0.55em;
+  vertical-align: super;
+}
+
+.post-content .post-note-marker-link {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+// Labels shared by the ask-AI row, the share bar, the sidebar and the notes
+.post-action-label,
+.post-toc-title {
+  display: block;
+  width: 100%;
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.post-ai-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.post-ai-summary-header {
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.post-ai-summary-header .post-action-label {
+  text-align: center;
+}
+
+.post-action-link,
+.post-content .post-action-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  opacity: 1;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.post-action-link:hover,
+.post-content .post-action-link:hover {
+  border-color: var(--ink);
+  background: rgba(0, 0, 0, 0.04);
+  opacity: 1;
+}
+
+.post-action-link:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.post-action-icon {
+  flex-shrink: 0;
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+}
+
+.post-ai-summary .post-action-link {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+}
+
+.post-ai-summary .post-action-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.post-action-link-chatgpt .post-action-icon { fill: #111; }
+.post-action-link-claude .post-action-icon { fill: #d97757; }
+.post-action-link-perplexity .post-action-icon { fill: #1fb8cd; }
+.post-action-link-grok .post-action-icon { fill: #111; }
+.post-action-link-google .post-action-icon { fill: #4285f4; }
+
+.post-action-link-copy .post-action-icon {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.post-action-link-copy.is-copied,
+.post-content .post-action-link-copy.is-copied {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: #fff;
+}
+
+// Share bar at the end of the article
+.post-share {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 56px;
+  padding-top: 16px;
+  border-top: 1px solid var(--ink);
+}
+
+.post-share-applause {
+  margin-left: auto;
+}
+
+// Sidebar (wide screens): ask AI, table of contents and section notes
+.post-sidebar,
+.post-side-notes,
+.post-footer-notes {
+  display: none;
+}
+
+.post-toc-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.post-toc-link {
+  display: block;
+  padding: 5px 0 5px 12px;
+  border-left: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.35;
+  text-decoration: none;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.post-toc-link:hover {
+  color: var(--ink);
+}
+
+.post-toc-link.is-active {
+  border-left-color: var(--ink);
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.post-toc-item.level-h3 .post-toc-link {
+  padding-left: 24px;
+  font-size: 12px;
+}
+
+.post-side-notes-list {
+  display: grid;
+  gap: 12px;
+}
+
+.post-side-note-title {
+  margin: 0 0 4px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.post-side-note-content {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.post-side-note-content p {
+  margin: 0 0 6px;
+}
+
+.post-footer-notes-title {
+  margin: 40px 0 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.post-footer-notes-list {
+  margin: 0;
+  padding-left: 1.3em;
+  color: #333;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.post-footer-note-item {
+  margin-bottom: 12px;
+}
+
+.post-footer-note-backlink {
+  margin-left: 6px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 11px;
+}
+
+.is-hidden {
+  display: none !important;
+}
+
+// Newsletter: brand panel and form panel
+.post-newsletter {
+  margin: 56px 0;
+  border: 1px solid var(--ink);
+}
+
+.post-newsletter-form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.post-newsletter-panel {
+  padding: 32px;
+}
+
+.post-newsletter-panel-brand {
+  display: flex;
+  flex: 1 1 18rem;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+  background: var(--night);
+}
+
+.post-newsletter-panel-form {
+  display: flex;
+  flex: 1 1 20rem;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  background: var(--paper-soft);
+}
+
+.post-newsletter-heading {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+.post-newsletter-copy {
+  margin: 14px 0 0;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.post-newsletter-label {
+  display: none;
+}
+
+.post-newsletter-input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  border-radius: 0;
+  background: #fff;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+
+.post-newsletter-input::placeholder {
+  color: #8e8e8e;
+}
+
+.post-newsletter-input:focus {
+  outline: none;
+  border-color: var(--ink);
+}
+
+.post-newsletter-submit {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  background: var(--ink);
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.post-newsletter-submit:hover {
+  background: #333;
+}
+
+.post-newsletter-submit:disabled {
+  cursor: default;
+}
+
+.post-newsletter-guarantee,
+.post-newsletter-success {
+  margin: 0;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.post-newsletter-success {
+  color: var(--ink);
+}
+
+.post-newsletter-powered-by,
+.post-newsletter-powered-by:visited {
+  align-self: center;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 11px;
+  text-decoration: none;
+}
+
+.post-newsletter-powered-by:hover {
+  color: var(--ink);
+}
+
+.post-newsletter-form.is-success .post-newsletter-input,
+.post-newsletter-form.is-success .post-newsletter-guarantee,
+.post-newsletter-form.is-success .post-newsletter-powered-by {
+  display: none;
+}
+
+.post-newsletter-form.is-success .post-newsletter-submit {
+  pointer-events: none;
+}
+
+// Author
+.about-author {
+  display: flex;
+  gap: 24px;
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.author-image-block {
+  flex: none;
+}
+
+.author-image {
+  width: 88px;
+  height: 88px;
+}
+
+.author-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 6px;
+  font-size: 19px;
+  font-weight: 400;
+}
+
+.author-name a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.author-name a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.author-description {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+// Wide screens: sidebar next to the article
+@media screen and (min-width: 1260px) {
+  .page-content.page-content-post {
+    --post-content-offset: 170px;
+    --post-toc-width: 186px;
+    --post-toc-gap: 20px;
+  }
+
+  .page-content.page-content-post .wrapper {
+    max-width: calc(1200px - (30px * 2));
+  }
+
+  .page-content.page-content-post .post-header,
+  .page-content.page-content-post .post > .post-newsletter,
+  .page-content.page-content-post .post > .about-author {
+    width: calc(100% - var(--post-content-offset) - var(--post-toc-width) - var(--post-toc-gap));
+    margin-left: var(--post-content-offset);
+  }
+
+  .post-reading-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) var(--post-toc-width);
+    gap: var(--post-toc-gap);
+    padding-left: var(--post-content-offset);
+    align-items: start;
+  }
+
+  .post-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    position: sticky;
+    top: calc(var(--header-h) + 24px);
+    width: var(--post-toc-width);
+    max-height: calc(100vh - var(--header-h) - 48px);
+  }
+
+  .post-ai-summary-sidebar,
+  .post-toc,
+  .post-side-notes {
+    padding-top: 14px;
+    border-top: 1px solid var(--ink);
+  }
+
+  .post-ai-summary-sidebar {
+    flex: none;
+    gap: 6px;
+  }
+
+  .post-ai-summary-sidebar .post-action-link {
+    width: 32px;
+    height: 32px;
+  }
+
+  .post-ai-summary-sidebar .post-action-icon {
+    width: 15px;
+    height: 15px;
+  }
+
+  .post-toc {
+    min-height: 0;
+    overflow-y: auto;
+  }
+
+  .post-side-notes:not(.is-hidden) {
+    display: block;
+    width: var(--post-toc-width);
+    margin-top: 28px;
+  }
+
+  .post-ai-summary-header {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1259px) {
+  .post-footer-notes:not(.is-hidden) {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .post:has(.post-content > h1:first-child) .post-header .post-title {
+    display: none;
+  }
+
+  .post-content {
+    font-size: 16px;
+  }
+
+  .post-content img[src*="/assets/publications/price-vuln/"] {
+    max-width: 100%;
+  }
+
+  .post-content table {
+    white-space: nowrap;
+  }
+
+  .post-share-applause {
+    margin-left: 0;
+  }
+
+  .post-newsletter-panel {
+    padding: 22px;
+  }
+
+  .post-newsletter-heading {
+    font-size: 24px;
+  }
+}

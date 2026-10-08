@@ -2,13 +2,7 @@
 layout: default
 ---
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-  {% assign translations = site.data.translations.pt %}
-  {% if page.lang == 'en' or page.url contains '/en/' %}
-    {% assign translations = site.data.translations.en %}
-  {% endif %}
-  {% if page.lang == 'es' or page.url contains '/es/' %}
-    {% assign translations = site.data.translations.es %}
-  {% endif %}
+  {% include i18n.html %}
   {% assign toc_label = translations.table_of_contents | default: 'Table of contents' %}
   {% assign section_notes_label = translations.section_notes | default: 'Section notes' %}
   {% assign note_label = translations.note_label | default: 'Note' %}
@@ -30,19 +24,21 @@ layout: default
       {%- endif -%}
       <span> </span> • {{ translations.reading_time }} {% include read_time.html %}
     </p>
+    {% include ai-summary.html placement="header" %}
   </header>
   <div class="post-reading-layout">
     <div class="post-content e-content" itemprop="articleBody">
       {{ content }}
-      <div class="post-share">
-        {% include share-buttons.html %}
-      </div>
+      {% include share-buttons.html %}
     </div>
-    <aside class="post-toc is-hidden" aria-label="{{ toc_label }}">
-      <p class="post-toc-title">{{ toc_label }}</p>
-      <nav class="post-toc-nav" aria-label="{{ toc_label }}">
-        <ul id="post-toc-list" class="post-toc-list"></ul>
-      </nav>
+    <aside class="post-sidebar">
+      {% include ai-summary.html placement="sidebar" %}
+      <div class="post-toc is-hidden">
+        <p class="post-toc-title">{{ toc_label }}</p>
+        <nav class="post-toc-nav" aria-label="{{ toc_label }}">
+          <ul id="post-toc-list" class="post-toc-list"></ul>
+        </nav>
+      </div>
     </aside>
     <aside class="post-side-notes is-hidden" aria-label="{{ section_notes_label }}">
       <p class="post-toc-title">{{ section_notes_label }}</p>

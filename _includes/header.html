@@ -1,24 +1,11 @@
 <header class="site-header" role="banner">
-  <link rel="stylesheet" href="../../../assets/applause-button.css" />
-  <script src="../../../assets/applause-button.js"></script>
   <div class="wrapper">
     {%- assign default_paths = site.pages | map: "path" -%}
     {%- assign page_paths = site.header_pages | default: default_paths -%}
-    <a class="site-title" rel="author" href="{{ "/" | relative_url }}">
-      <img src="/assets/iconBranco.png" alt="Logo" class="site-logo" />
-      {{ site.short_title | escape }}
+    <a class="site-title" rel="author" href="{{ translations.home_path | relative_url }}">
+      <span class="site-logo"><img src="{{ '/assets/images/logo-horizontal-branco-640.png' | relative_url }}" alt="LESIS" width="640" height="215"></span>
+      <span class="site-title-text">{{ site.short_title | escape }}</span>
     </a>
-
-    {% assign translations = site.data.translations.pt %}
-    {% assign about_url = "/about/" %}
-    {% if page.lang == 'en' or page.url contains '/en/' %}
-      {% assign translations = site.data.translations.en %}
-      {% assign about_url = "/en/about/" %}
-    {% endif %}
-    {% if page.lang == 'es' or page.url contains '/es/' or post.lang == 'es' %}
-      {% assign translations = site.data.translations.es %}
-      {% assign about_url = "/es/about/" %}
-    {% endif %}
 
     <nav class="site-nav">
       <input type="checkbox" id="nav-trigger" class="nav-trigger" />

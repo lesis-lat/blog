@@ -2,7 +2,8 @@
 layout: post
 title: 'Fortalecendo a comunidade brasileira de cibersegurança através da educação'
 lang: pt
-category: Comunidade
+translation_key: strengthening-community
+category: community
 author: Heitor Gouvêa
 author-info:
   name:  Heitor Gouvêa
@@ -10,6 +11,7 @@ author-info:
   description: Researcher with a background in software engineering. Gouvêa’s research focuses on discovering vulnerabilities in modern applications and developing tools and exploits. 
   linkedin: htrgouvea
 date: 2026-01-14 19:13:00 -0300
+permalink: /comunidade/2026/01/14/commitiment-to-strengthening-community.html
 ---
 
 Em 2026, a LESIS dará mais um passo concreto no seu compromisso com o desenvolvimento sustentável do ecossistema de tecnologia e segurança da informação no Brasil. Realizaremos uma doação financeira para a ONG [Mente Binária](https://mentebinaria.com.br/), uma organização que atua diretamente na formação de novos profissionais para a área de cibersegurança.
