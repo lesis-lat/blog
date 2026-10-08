@@ -2,7 +2,8 @@
 layout: post
 title: 'Orientations for PII obfuscation and masking'
 lang: en
-category: Guides
+translation_key: pii-obfuscation-and-masking
+category: guides
 excerpt: 'Practical recommendations for masking common types of personally identifiable information without exposing useful fragments across systems.'
 author: Heitor Gouvêa
 author-info:

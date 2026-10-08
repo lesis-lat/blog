@@ -2,7 +2,8 @@
 layout: post
 title: 'Nuestra primera detección de un grupo malicioso que utiliza inteligencia artificial y que tiene como objetivo a las empresas fintech brasileñas de pequeño y mediano tamaño'
 lang: es
-category: Estudio de Caso
+translation_key: ai-assisted-malicious-group
+category: case-study
 excerpt: 'Una investigación de LESIS ha identificado una campaña maliciosa dirigida contra empresas fintech brasileñas de pequeño y mediano tamaño, en la que se utiliza la inteligencia artificial para acelerar el desarrollo de herramientas ofensivas, adaptar las cargas útiles y facilitar la explotación de aplicaciones.'
 author: LESIS Team
 author-info:

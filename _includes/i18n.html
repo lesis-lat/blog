@@ -1,0 +1,11 @@
+{%- assign current_lang = page.lang -%}
+{%- unless current_lang -%}
+  {%- if page.url contains '/en/' -%}
+    {%- assign current_lang = 'en' -%}
+  {%- elsif page.url contains '/es/' -%}
+    {%- assign current_lang = 'es' -%}
+  {%- else -%}
+    {%- assign current_lang = 'pt' -%}
+  {%- endif -%}
+{%- endunless -%}
+{%- assign translations = site.data.translations[current_lang] | default: site.data.translations.pt -%}

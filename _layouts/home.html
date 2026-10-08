@@ -10,13 +10,7 @@ layout: default
     <h1 class="page-heading">{{ page.title }}</h1>
   {%- endif -%}
   {{ content }}
-  {% assign translations = site.data.translations.pt %}
-  {% if page.lang == 'en' or page.url contains '/en/' %}
-    {% assign translations = site.data.translations.en %}
-  {% endif %}
-  {% if page.lang == 'es' or page.url contains '/es/' %}
-    {% assign translations = site.data.translations.es %}
-  {% endif %}
+  {% include i18n.html %}
   {%- if site.posts.size > 0 -%}
     <h2 class="post-list-heading">{{ page.list_title | default: translations.posts_heading }}</h2>
       <div class="home-search" data-home-search>
@@ -28,7 +22,7 @@ layout: default
           placeholder="{{ translations.search_placeholder }}"
           autocomplete="off"
           spellcheck="false">
-        {%- assign filtered_posts = site.posts | where: "lang", page.lang -%}
+        {%- assign filtered_posts = site.posts | where: "lang", current_lang -%}
         {%- assign category_list = filtered_posts | map: "category" | uniq | sort -%}
         <span class="home-search-label home-category-label">{{ translations.category_label }}</span>
         <div class="home-category-tags" role="listbox" aria-label="{{ translations.category_label }}">
@@ -41,7 +35,7 @@ layout: default
               class="home-category-tag home-category-tag-{{ category | slugify }}"
               data-category="{{ category }}"
               aria-pressed="false">
-              {{ category }}
+              {{ translations.categories[category] | default: category }}
             </button>
           {%- endfor -%}
         </div>
@@ -58,7 +52,7 @@ layout: default
                 {{ post.title | escape }}
               </h3>
               {%- if post.category -%}
-                <span class="post-category post-category-{{ post.category | slugify }}">{{ post.category }}</span>
+                <span class="post-category post-category-{{ post.category | slugify }}">{{ translations.categories[post.category] | default: post.category }}</span>
               {%- endif -%}
 
               {%- if site.show_excerpts -%}
@@ -92,7 +86,7 @@ layout: default
         </button>
       </nav>
     <p id="home-post-search-empty" class="home-search-empty" hidden>{{ translations.search_no_results }}</p>
-    <p class="rss-subscribe">{{ translations.rss_follow }} <a href="{{ "/feed.xml" | relative_url }}">{{ translations.rss_feed }}</a></p>
+    <p class="rss-subscribe">{{ translations.rss_follow }} {% assign feed_path = '/feed/' | append: current_lang | append: '.xml' %}<a href="{{ feed_path | relative_url }}">{{ translations.rss_feed }}</a></p>
   {%- endif -%}
 </div>
 <script src="{{ '/assets/home-search.min.js' | relative_url }}" defer></script>

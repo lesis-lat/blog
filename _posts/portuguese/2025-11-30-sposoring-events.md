@@ -2,7 +2,8 @@
 layout: post
 title: 'Porque patrocinamos eventos de Segurança da Informação'
 lang: pt
-category: Comunidade
+translation_key: sponsoring-events
+category: community
 author: Heitor Gouvêa
 author-info:
   name:  Heitor Gouvêa
@@ -10,6 +11,7 @@ author-info:
   description: Researcher with a background in software engineering. Gouvêa’s research focuses on discovering vulnerabilities in modern applications and developing tools and exploits. 
   linkedin: htrgouvea
 date: 2025-11-30 09:33:00 -0300
+permalink: /comunidade/2025/11/30/sposoring-events.html
 ---
 
 O ano de 2025 tem sido marcante para a LESIS. Entre projetos, pesquisas e o crescimento de nossa atuação no mercado, também assumimos um compromisso que consideramos fundamental: **contribuir diretamente para e com a comunidade de Segurança da Informação**. 

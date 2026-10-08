@@ -1,0 +1,360 @@
+:root {
+  --header-h: 73px;
+  --logo-w: 86px;
+}
+
+.wrapper {
+  max-width: calc(800px - 60px);
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.page-content {
+  flex: 1;
+  padding: 56px 0 80px;
+}
+
+// Header: logo, "Blog" and the language selector. It stays on top while
+// scrolling; once scrolled it turns translucent and the logo keeps only the icon.
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--paper-soft);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  transition: background-color 0.4s ease;
+}
+
+.site-header.is-scrolled {
+  background: rgba(255, 255, 255, 0.8);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+
+.site-header .wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 72px;
+}
+
+.site-title,
+.site-title:visited {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.site-logo {
+  display: block;
+  overflow: hidden;
+  width: var(--logo-w);
+  line-height: 0;
+  transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.site-logo img {
+  display: block;
+  width: var(--logo-w);
+  max-width: none;
+  height: auto;
+  filter: invert(1);
+}
+
+.site-header.is-scrolled .site-logo {
+  width: calc(var(--logo-w) * 0.317);
+}
+
+.site-title-text {
+  padding-left: 14px;
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.site-nav .nav-trigger,
+.site-nav .menu-icon {
+  display: none;
+}
+
+.site-nav .trigger {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.language-selector {
+  display: flex;
+  gap: 18px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.language-selector .language {
+  color: var(--ink);
+  text-decoration: none;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+.language-selector a.language:hover,
+.language-selector a.language:focus-visible {
+  opacity: 1;
+}
+
+.language-selector .language.active {
+  opacity: 1;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
+}
+
+// Footer: same as lesis.lat
+.site-footer {
+  position: relative;
+  overflow: hidden;
+  padding-top: 52px;
+  color: #fff;
+  background: var(--night);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.site-footer-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 39px;
+}
+
+.site-footer-cols {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+}
+
+.site-footer-cols h3 {
+  margin: 0 0 13px;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.site-footer-cols a {
+  display: block;
+  margin-bottom: 7px;
+  color: #fff;
+  font-size: 12.35px;
+  font-weight: 300;
+  text-decoration: none;
+}
+
+.site-footer-cols > div > a {
+  margin: -4.3px 0 4.3px;
+  padding: 4.3px 0;
+}
+
+.site-footer-cols > div > a + .social-icons {
+  margin-top: 8.7px;
+}
+
+.site-footer-cols a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 16.25px;
+  margin: 13px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-footer .social-icons li a {
+  display: inline;
+  margin: 0;
+  color: #fff;
+  font-size: 14.3px;
+}
+
+.site-footer-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 13px 26px;
+  margin-top: 39px;
+}
+
+.site-footer-legal {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+}
+
+.site-footer-lang {
+  display: flex;
+  gap: 16.25px;
+  margin: 0;
+  padding: 0;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  list-style: none;
+}
+
+.site-footer-lang a {
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.site-footer-lang a:hover,
+.site-footer-lang a[aria-current] {
+  color: #fff;
+}
+
+.site-footer-lang a[aria-current] {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.site-footer-mark {
+  margin-top: 26px;
+  padding: 0 19.5px;
+  line-height: 0;
+  text-align: center;
+  user-select: none;
+  pointer-events: none;
+}
+
+.site-footer-mark img {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 0.07;
+}
+
+@media screen and (max-width: 800px) {
+  .wrapper {
+    padding: 0 16px;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .site-footer-inner {
+    padding: 0 16px;
+  }
+
+  .site-footer-cols {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 26px 19.5px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  :root {
+    --header-h: 65px;
+    --logo-w: 71px;
+  }
+
+  .page-content {
+    padding: 40px 0 56px;
+  }
+
+  .site-header .wrapper {
+    position: relative;
+    min-height: 64px;
+  }
+
+  .site-title-text {
+    font-size: 18px;
+  }
+
+  // Mobile menu: the language list drops down like the lesis.lat menu
+  .site-nav label[for="nav-trigger"] {
+    display: block;
+    padding: 10px 0 10px 12px;
+    cursor: pointer;
+  }
+
+  .site-nav .menu-icon {
+    display: block;
+    line-height: 0;
+  }
+
+  .site-nav .menu-icon svg {
+    fill: var(--ink);
+  }
+
+  .site-nav .trigger {
+    display: block;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    padding: 8px 16px 16px;
+    background: var(--night);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    visibility: hidden;
+    clip-path: inset(0 0 100% 0);
+    pointer-events: none;
+    transition:
+      clip-path 0.25s cubic-bezier(0.4, 0, 1, 1),
+      visibility 0s linear 0.25s;
+  }
+
+  .site-nav .nav-trigger:checked ~ .trigger {
+    visibility: visible;
+    clip-path: inset(0 0 0 0);
+    pointer-events: auto;
+    transition: clip-path 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .site-nav .trigger .language-selector {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .site-nav .trigger .language {
+    padding: 12px 0;
+    color: #fff;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateY(-0.5rem);
+    transition: opacity 0.15s, transform 0.2s;
+  }
+
+  .site-nav .nav-trigger:checked ~ .trigger .language {
+    opacity: 0.6;
+    transform: none;
+    transition:
+      opacity 0.35s ease-out var(--d, 0s),
+      transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0s);
+  }
+
+  .site-nav .nav-trigger:checked ~ .trigger .language.active {
+    opacity: 1;
+  }
+
+  .site-nav .trigger .language:nth-child(1) { --d: 0.06s; }
+  .site-nav .trigger .language:nth-child(2) { --d: 0.1s; }
+  .site-nav .trigger .language:nth-child(3) { --d: 0.14s; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-logo,
+  .site-nav .trigger,
+  .site-nav .trigger .language {
+    transition: none !important;
+  }
+}

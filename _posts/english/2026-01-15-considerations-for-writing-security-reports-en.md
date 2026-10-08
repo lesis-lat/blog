@@ -2,7 +2,8 @@
 layout: post
 title: 'Considerations for writing security reports'
 lang: en
-category: Guides
+translation_key: writing-security-reports
+category: guides
 author: Heitor Gouvêa
 author-info:
   name:  Heitor Gouvêa
@@ -10,6 +11,7 @@ author-info:
   description: Researcher with a background in software engineering. Gouvêa’s research focuses on discovering vulnerabilities in modern applications and developing tools and exploits. 
   linkedin: htrgouvea
 date: 2026-01-15 15:15:10 -0300
+permalink: /guides/2026/01/15/considerations-for-writing-security-reports-en.html
 ---
 
 After days or weeks of work, you have identified relevant security issues, gained a solid understanding of the assessed environment’s attack surface, and gathered sufficient evidence to demonstrate real business risks. From a technical standpoint, the assessment is complete. What remains is to turn that knowledge into a report that is clear, actionable, and easy to understand.
