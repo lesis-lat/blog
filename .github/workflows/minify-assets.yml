@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: minify-assets-${{ github.ref }}
@@ -20,16 +21,16 @@ concurrency:
 jobs:
   minify:
     if: github.actor != 'github-actions[bot]'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          node-version: "20"
+          node-version: "24"
 
       - name: Minify JavaScript
         run: |
@@ -54,3 +55,9 @@ jobs:
           git add -- 'assets/*.min.js'
           git commit -m "chore: minify javascript"
           git push origin HEAD:main
+
+          # Pushes made with GITHUB_TOKEN do not trigger other workflows,
+          # so the Pages deploy has to be dispatched explicitly.
+          gh workflow run pages.yml --ref main
+        env:
+          GH_TOKEN: ${{ github.token }}
