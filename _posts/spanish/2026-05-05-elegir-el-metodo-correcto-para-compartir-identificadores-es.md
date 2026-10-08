@@ -2,7 +2,8 @@
 layout: post
 title: 'Elegir el método correcto para compartir identificadores'
 lang: es
-category: Estudio de Caso
+translation_key: choosing-sharing-identifiers
+category: case-study
 excerpt: 'Cómo elegir entre criptografía, hash, HMAC, APIs y PSI al comparar bases con identificadores personales.'
 author: Heitor Gouvêa
 author-info:

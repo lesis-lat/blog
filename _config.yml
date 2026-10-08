@@ -18,15 +18,12 @@ github_username: lesis-lat
 
 show_excerpts: true
 home_posts_per_page: 6
-theme: minima
 plugins:
   - jekyll-feed
   - jekyll-sitemap
 
 feed:
   posts_limit: 100
-
-google_analytics: UA-167519399-1
 
 kramdown:
   syntax_highlighter: rouge

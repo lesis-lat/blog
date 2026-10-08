@@ -2,7 +2,8 @@
 layout: post
 title: 'Saldo fantasma, rebajas eternas: la trampa de los gift cards'
 lang: es
-category: Vulnerabilidad
+translation_key: gift-card-loop
+category: vulnerability
 author: Heitor Gouvêa
 author-info:
   name:  Heitor Gouvêa
@@ -10,6 +11,7 @@ author-info:
   description: Security Researcher con formación en ingeniería de software. El enfoque de Gouvêa es el descubrimiento de vulnerabilidades en aplicaciones modernas y en el desarrollo de herramientas y exploits.
   linkedin: htrgouvea
 date: 2025-10-04 13:29:00 -0300
+permalink: /vulnerabilidad/2025/10/04/rocking-gift-card-es.html
 ---
 
 Con cierta frecuencia surge la oportunidad de realizar investigaciones de vulnerabilidades en comercios electrónicos. Aunque el contexto sea el mismo, cada una de esas oportunidades es única, ya que siempre existen particularidades en cada aplicación. En esta publicación busco mostrar un caso relacionado con gift cards que considero interesante.
