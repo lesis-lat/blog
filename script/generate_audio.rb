@@ -229,7 +229,13 @@ class AudioGenerator
 
   def load_posts
     posts = Dir.glob(POSTS_GLOB).sort.filter_map { |path| load_post(path) }
-    posts = posts.select { |post| @options[:only].include?(post.key) } if @options[:only]
+    if @options[:only]
+      unknown = @options[:only] - posts.map(&:key)
+      unless unknown.empty?
+        abort "No post has the translation_key #{unknown.join(', ')}. Valid keys: #{posts.map(&:key).uniq.sort.join(', ')}"
+      end
+      posts = posts.select { |post| @options[:only].include?(post.key) }
+    end
 
     duplicates = posts.group_by(&:id).select { |_, group| group.size > 1 }
     unless duplicates.empty?
@@ -586,7 +592,7 @@ OptionParser.new do |parser|
   parser.on("--since SHA", /\A\h{7,40}\z/, "Only posts changed between this commit and HEAD") do |sha|
     options[:since] = sha
   end
-  parser.on("--only KEYS", Array, "Only these translation_keys (comma separated)") { |keys| options[:only] = keys }
+  parser.on("--only KEYS", Array, "Only these translation_keys (comma separated)") { |keys| options[:only] = keys.map(&:strip).reject(&:empty?) }
   parser.on("--jobs N", Integer, "Posts narrated in parallel (default 3)") { |n| options[:jobs] = [n, 1].max }
   parser.on("--text-dir DIR", "Write the spoken text of every post to DIR for review") do |dir|
     options[:text_dir] = File.expand_path(dir)
