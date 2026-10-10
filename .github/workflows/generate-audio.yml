@@ -23,7 +23,7 @@ on:
 
 permissions:
   contents: write
-  actions: write
+  pull-requests: write
 
 concurrency:
   group: generate-audio
@@ -40,6 +40,7 @@ jobs:
       SINCE: ${{ github.event_name == 'push' && github.event.before || '' }}
       FORCE: ${{ inputs.force && '--force' || '' }}
       MAX: ${{ inputs.max || '6' }}
+      BRANCH: audio/narration
 
     steps:
       - name: Checkout repository
@@ -47,6 +48,27 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
+
+      - name: Continue the open audio pull request
+        run: |
+          open=$(gh pr list --state open --head "$BRANCH" --json number,isCrossRepository \
+            --jq '[.[] | select(.isCrossRepository | not)][0].number // empty')
+          if [ -n "$open" ]; then
+            echo "Adding to pull request #$open."
+            git fetch origin "$BRANCH"
+            if git ls-tree -r "origin/$BRANCH" -- assets/audio _data/audio.yml | awk '$1 != "100644"' | grep -q .; then
+              echo "::error::$BRANCH holds something other than plain files under assets/audio or _data/audio.yml; close its pull request and run again."
+              exit 1
+            fi
+            git rm -rq --ignore-unmatch -- assets/audio _data/audio.yml
+            paths=$(git ls-tree --name-only "origin/$BRANCH" -- assets/audio _data/audio.yml)
+            if [ -n "$paths" ]; then
+              git checkout "origin/$BRANCH" -- $paths
+            fi
+          fi
+          echo "OPEN_PR=$open" >> "$GITHUB_ENV"
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@e81a8fa391b11a595c1b7ed84177cc0fe02faf83
@@ -69,7 +91,7 @@ jobs:
         env:
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
 
-      - name: Commit audio
+      - name: Open pull request
         if: ${{ !cancelled() && steps.plan.outputs.changes != '0' }}
         run: |
           for path in assets/audio _data/audio.yml; do
@@ -85,11 +107,26 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git commit -m "chore: generate AI narration for posts"
-          git pull --rebase origin main
-          git push origin HEAD:main
+          git push --force origin "HEAD:$BRANCH"
 
-          if [ -f .github/workflows/pages.yml ]; then
-            gh workflow run pages.yml --ref main
+          sha=$(git rev-parse HEAD)
+          {
+            echo "AI narration from [run $GITHUB_RUN_ID]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID). Listen to the files below, then approve and merge to publish them."
+            echo
+            git diff --name-status --no-renames origin/main...HEAD -- assets/audio | while read -r status file; do
+              if [ "$status" = D ]; then
+                echo "- removed \`$file\`"
+              else
+                echo "- [\`$file\`]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/raw/$sha/$file)"
+              fi
+            done
+          } > "$RUNNER_TEMP/body.md"
+
+          if [ -n "$OPEN_PR" ]; then
+            gh pr edit "$OPEN_PR" --body-file "$RUNNER_TEMP/body.md"
+          elif ! gh pr create --base main --head "$BRANCH" --title "chore: AI narration for posts" --body-file "$RUNNER_TEMP/body.md"; then
+            echo "::error::The audio is on branch $BRANCH, but the pull request could not be opened. Allow GitHub Actions to create pull requests in Settings > Actions > General, or open it by hand: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/compare/main...$BRANCH"
+            exit 1
           fi
         env:
           GH_TOKEN: ${{ github.token }}
