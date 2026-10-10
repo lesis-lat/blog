@@ -1,4 +1,8 @@
-// Header: centered title, meta and the "ask AI" row
+.post {
+  max-width: 840px;
+  margin: 0 auto;
+}
+
 .post-header {
   margin-bottom: 48px;
 }
@@ -11,9 +15,8 @@
   letter-spacing: -0.02em;
 }
 
-.post-header .post-title,
-.post-header .post-meta {
-  text-align: center;
+.post-header .post-title {
+  text-align: justify;
 }
 
 .post-meta {
@@ -37,6 +40,7 @@
   color: #111;
   font-size: 17px;
   line-height: 1.75;
+  overflow-wrap: break-word;
 }
 
 .post-content p {
@@ -269,12 +273,7 @@
 }
 
 .post-ai-summary-header {
-  justify-content: center;
   margin-top: 32px;
-}
-
-.post-ai-summary-header .post-action-label {
-  text-align: center;
 }
 
 .post-action-link,
@@ -639,40 +638,51 @@
   line-height: 1.55;
 }
 
-// Wide screens: sidebar next to the article
 @media screen and (min-width: 1260px) {
   .page-content.page-content-post {
-    --post-content-offset: 170px;
-    --post-toc-width: 186px;
-    --post-toc-gap: 20px;
+    --post-measure: 840px;
+    --post-toc-width: 200px;
+    --post-toc-gap: 48px;
   }
 
-  .page-content.page-content-post .wrapper {
-    max-width: calc(1200px - (30px * 2));
+  .page-content.page-content-post .post {
+    max-width: none;
   }
 
   .page-content.page-content-post .post-header,
   .page-content.page-content-post .post > .post-newsletter,
   .page-content.page-content-post .post > .about-author {
-    width: calc(100% - var(--post-content-offset) - var(--post-toc-width) - var(--post-toc-gap));
-    margin-left: var(--post-content-offset);
+    width: min(var(--post-measure), 100% - 2 * (var(--post-toc-width) + var(--post-toc-gap)));
+    margin-right: auto;
+    margin-left: auto;
   }
 
   .post-reading-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) var(--post-toc-width);
+    grid-template-columns:
+      minmax(var(--post-toc-width), 1fr)
+      minmax(0, var(--post-measure))
+      minmax(var(--post-toc-width), 1fr);
     gap: var(--post-toc-gap);
-    padding-left: var(--post-content-offset);
     align-items: start;
   }
 
+  .post-content,
+  .post-side-notes {
+    grid-column: 2;
+  }
+
+  .post-content {
+    font-size: 18px;
+  }
+
   .post-sidebar {
+    grid-column: 3;
     display: flex;
     flex-direction: column;
     gap: 28px;
     position: sticky;
     top: calc(var(--header-h) + 24px);
-    width: var(--post-toc-width);
     max-height: calc(100vh - var(--header-h) - 48px);
   }
 
