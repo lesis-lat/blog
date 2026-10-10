@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       only:
-        description: "translation_keys to narrate, comma separated (empty: every new or edited post)"
+        description: "translation_key from the post front matter (not the URL), comma separated; empty narrates every post without current audio"
         required: false
         default: ""
       force:

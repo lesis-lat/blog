@@ -50,7 +50,7 @@ TYPOGRAPHIC_SYMBOLS = {
 }.freeze
 SILENT_HTML = %w[audio iframe img noscript picture script style sup svg video].freeze
 HTML_CONTAINERS = %w[article aside blockquote dd details div dl figure footer header li main nav ol section ul].freeze
-HTML_BLOCKS = (HTML_CONTAINERS + %w[dt figcaption h1 h2 h3 h4 h5 h6 p pre summary table]).freeze
+HTML_BLOCKS = (HTML_CONTAINERS + %w[dt figcaption h1 h2 h3 h4 h5 h6 img p picture pre summary table]).freeze
 KRAMDOWN_BLOCKS = %i[blockquote codeblock dl header hr ol p table ul].freeze
 URL_PATTERN = %r{\b(?:https?://|www\.)[^\s<>]+}
 
@@ -82,7 +82,13 @@ class SpeechText
   def block(el, out)
     case el.type
     when :p
-      bare_url?(el) ? note(out, :links) : add(out, inline(el.children))
+      if bare_url?(el)
+        note(out, :links)
+      elsif (images = only_images(el))
+        images.each { |img| image(out, img.attr["alt"]) }
+      else
+        add(out, inline(el.children))
+      end
     when :header, :dt
       add(out, inline(el.children), terminate: true)
     when :codeblock
@@ -99,6 +105,8 @@ class SpeechText
   end
 
   def html_block(el, out)
+    return image(out, el.attr["alt"]) if el.value == "img"
+    return image(out, el.children.find { |child| child.value == "img" }&.attr&.fetch("alt", nil)) if el.value == "picture"
     return if SILENT_HTML.include?(el.value)
     return note(out, :code) if el.value == "pre"
     return note(out, :table) if el.value == "table"
@@ -128,6 +136,17 @@ class SpeechText
     child = children.first
     child = child.children.first if child.type == :a && child.children.size == 1
     child.type == :text && child.value.strip.match?(/\A#{URL_PATTERN}\z/)
+  end
+
+  def only_images(el)
+    children = el.children.reject { |child| child.type == :br || (child.type == :text && child.value.strip.empty?) }
+    images = children.map { |child| child.type == :a && child.children.size == 1 ? child.children.first : child }
+    images if images.any? && images.all? { |child| child.type == :img || (child.type == :html_element && child.value == "img") }
+  end
+
+  def image(out, alt)
+    alt = alt.to_s.gsub(/\s+/, " ").strip.sub(/[.!?…]+\z/, "")
+    alt.empty? ? note(out, :image) : add(out, @notes.fetch(:image_alt).gsub("%{description}", alt))
   end
 
   def inline(children)
@@ -229,7 +248,13 @@ class AudioGenerator
 
   def load_posts
     posts = Dir.glob(POSTS_GLOB).sort.filter_map { |path| load_post(path) }
-    posts = posts.select { |post| @options[:only].include?(post.key) } if @options[:only]
+    if @options[:only]
+      unknown = @options[:only] - posts.map(&:key)
+      unless unknown.empty?
+        abort "No post has the translation_key #{unknown.join(', ')}. Valid keys: #{posts.map(&:key).uniq.sort.join(', ')}"
+      end
+      posts = posts.select { |post| @options[:only].include?(post.key) }
+    end
 
     duplicates = posts.group_by(&:id).select { |_, group| group.size > 1 }
     unless duplicates.empty?
@@ -260,7 +285,8 @@ class AudioGenerator
 
   def speech_text(post, markdown)
     audio = @translations.fetch(post.lang).fetch("audio")
-    notes = { code: audio.fetch("spoken_code"), table: audio.fetch("spoken_table"), links: audio.fetch("spoken_links") }
+    notes = { code: audio.fetch("spoken_code"), table: audio.fetch("spoken_table"), links: audio.fetch("spoken_links"),
+              image: audio.fetch("spoken_image"), image_alt: audio.fetch("spoken_image_alt") }
     body = SpeechText.new(notes).paragraphs(markdown)
     body.shift if normalize(body.first) == normalize(post.title)
 
@@ -586,7 +612,7 @@ OptionParser.new do |parser|
   parser.on("--since SHA", /\A\h{7,40}\z/, "Only posts changed between this commit and HEAD") do |sha|
     options[:since] = sha
   end
-  parser.on("--only KEYS", Array, "Only these translation_keys (comma separated)") { |keys| options[:only] = keys }
+  parser.on("--only KEYS", Array, "Only these translation_keys (comma separated)") { |keys| options[:only] = keys.map(&:strip).reject(&:empty?) }
   parser.on("--jobs N", Integer, "Posts narrated in parallel (default 3)") { |n| options[:jobs] = [n, 1].max }
   parser.on("--text-dir DIR", "Write the spoken text of every post to DIR for review") do |dir|
     options[:text_dir] = File.expand_path(dir)
