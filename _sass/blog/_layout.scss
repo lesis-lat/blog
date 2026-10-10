@@ -1,12 +1,14 @@
 :root {
   --header-h: 73px;
   --logo-w: 86px;
+  --page-max: 1440px;
+  --gutter: 39px;
 }
 
 .wrapper {
-  max-width: calc(800px - 60px);
+  max-width: var(--page-max);
   margin: 0 auto;
-  padding: 0 30px;
+  padding: 0 var(--gutter);
 }
 
 .page-content {
@@ -124,9 +126,9 @@
 }
 
 .site-footer-inner {
-  max-width: 1240px;
+  max-width: var(--page-max);
   margin: 0 auto;
-  padding: 0 39px;
+  padding: 0 var(--gutter);
 }
 
 .site-footer-cols {
@@ -244,16 +246,12 @@
 }
 
 @media screen and (max-width: 800px) {
-  .wrapper {
-    padding: 0 16px;
+  :root {
+    --gutter: 24px;
   }
 }
 
 @media screen and (max-width: 760px) {
-  .site-footer-inner {
-    padding: 0 16px;
-  }
-
   .site-footer-cols {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 26px 19.5px;
@@ -302,7 +300,7 @@
     right: 0;
     left: 0;
     z-index: 10;
-    padding: 8px 16px 16px;
+    padding: 8px var(--gutter) 16px;
     background: var(--night);
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     visibility: hidden;
