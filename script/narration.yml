@@ -8,6 +8,10 @@ voices:
 settings:
 
 pronunciations:
-  pt: {}
+  pt:
+    LESIS: Lésis
+    lesis: lésis
   es: {}
-  en: {}
+  en:
+    LESIS: Lezis
+    lesis: lezis
