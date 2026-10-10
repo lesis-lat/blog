@@ -1,0 +1,95 @@
+name: Generate audio
+
+on:
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "translation_keys to narrate, comma separated (empty: every new or edited post)"
+        required: false
+        default: ""
+      force:
+        description: "Narrate again even if the audio is up to date (use with only)"
+        type: boolean
+        default: false
+      max:
+        description: "Most posts narrated in this run; the run stops before spending anything if more need it"
+        required: false
+        default: "6"
+  push:
+    branches:
+      - main
+    paths:
+      - "_posts/**"
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: generate-audio
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    if: github.ref == 'refs/heads/main' && github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-24.04
+    environment: elevenlabs
+    timeout-minutes: 120
+    env:
+      ONLY: ${{ inputs.only }}
+      SINCE: ${{ github.event_name == 'push' && github.event.before || '' }}
+      FORCE: ${{ inputs.force && '--force' || '' }}
+      MAX: ${{ inputs.max || '6' }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@e81a8fa391b11a595c1b7ed84177cc0fe02faf83
+        with:
+          bundler-cache: true
+
+      - name: Plan
+        id: plan
+        run: bundle exec ruby script/generate_audio.rb --dry-run --max "$MAX" ${ONLY:+--only "$ONLY"} ${SINCE:+--since "$SINCE"} $FORCE
+
+      - name: Install ffmpeg
+        if: steps.plan.outputs.changes != '0'
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends ffmpeg
+
+      - name: Narrate posts
+        if: steps.plan.outputs.changes != '0'
+        run: bundle exec ruby script/generate_audio.rb --max "$MAX" ${ONLY:+--only "$ONLY"} ${SINCE:+--since "$SINCE"} $FORCE
+        env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+
+      - name: Commit audio
+        if: ${{ !cancelled() && steps.plan.outputs.changes != '0' }}
+        run: |
+          for path in assets/audio _data/audio.yml; do
+            if [ -e "$path" ] || git ls-files --error-unmatch -- "$path" >/dev/null 2>&1; then
+              git add -A -- "$path"
+            fi
+          done
+          if git diff --cached --quiet; then
+            echo "No audio changes to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: generate AI narration for posts"
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+          if [ -f .github/workflows/pages.yml ]; then
+            gh workflow run pages.yml --ref main
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
