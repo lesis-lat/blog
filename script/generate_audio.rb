@@ -50,7 +50,7 @@ TYPOGRAPHIC_SYMBOLS = {
 }.freeze
 SILENT_HTML = %w[audio iframe img noscript picture script style sup svg video].freeze
 HTML_CONTAINERS = %w[article aside blockquote dd details div dl figure footer header li main nav ol section ul].freeze
-HTML_BLOCKS = (HTML_CONTAINERS + %w[dt figcaption h1 h2 h3 h4 h5 h6 p pre summary table]).freeze
+HTML_BLOCKS = (HTML_CONTAINERS + %w[dt figcaption h1 h2 h3 h4 h5 h6 img p picture pre summary table]).freeze
 KRAMDOWN_BLOCKS = %i[blockquote codeblock dl header hr ol p table ul].freeze
 URL_PATTERN = %r{\b(?:https?://|www\.)[^\s<>]+}
 
@@ -82,7 +82,13 @@ class SpeechText
   def block(el, out)
     case el.type
     when :p
-      bare_url?(el) ? note(out, :links) : add(out, inline(el.children))
+      if bare_url?(el)
+        note(out, :links)
+      elsif (images = only_images(el))
+        images.each { |img| image(out, img.attr["alt"]) }
+      else
+        add(out, inline(el.children))
+      end
     when :header, :dt
       add(out, inline(el.children), terminate: true)
     when :codeblock
@@ -99,6 +105,8 @@ class SpeechText
   end
 
   def html_block(el, out)
+    return image(out, el.attr["alt"]) if el.value == "img"
+    return image(out, el.children.find { |child| child.value == "img" }&.attr&.fetch("alt", nil)) if el.value == "picture"
     return if SILENT_HTML.include?(el.value)
     return note(out, :code) if el.value == "pre"
     return note(out, :table) if el.value == "table"
@@ -128,6 +136,17 @@ class SpeechText
     child = children.first
     child = child.children.first if child.type == :a && child.children.size == 1
     child.type == :text && child.value.strip.match?(/\A#{URL_PATTERN}\z/)
+  end
+
+  def only_images(el)
+    children = el.children.reject { |child| child.type == :br || (child.type == :text && child.value.strip.empty?) }
+    images = children.map { |child| child.type == :a && child.children.size == 1 ? child.children.first : child }
+    images if images.any? && images.all? { |child| child.type == :img || (child.type == :html_element && child.value == "img") }
+  end
+
+  def image(out, alt)
+    alt = alt.to_s.gsub(/\s+/, " ").strip.sub(/[.!?…]+\z/, "")
+    alt.empty? ? note(out, :image) : add(out, @notes.fetch(:image_alt).gsub("%{description}", alt))
   end
 
   def inline(children)
@@ -266,7 +285,8 @@ class AudioGenerator
 
   def speech_text(post, markdown)
     audio = @translations.fetch(post.lang).fetch("audio")
-    notes = { code: audio.fetch("spoken_code"), table: audio.fetch("spoken_table"), links: audio.fetch("spoken_links") }
+    notes = { code: audio.fetch("spoken_code"), table: audio.fetch("spoken_table"), links: audio.fetch("spoken_links"),
+              image: audio.fetch("spoken_image"), image_alt: audio.fetch("spoken_image_alt") }
     body = SpeechText.new(notes).paragraphs(markdown)
     body.shift if normalize(body.first) == normalize(post.title)
 
