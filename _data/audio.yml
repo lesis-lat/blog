@@ -3,24 +3,24 @@ vulnerability-state-machine:
   en:
     url: "/assets/audio/vulnerability-state-machine/en.mp3"
     hash: 625ade2d3fec90b9
-    duration: 166
-    size: 2658028
+    duration: 172
+    size: 2753741
     model: eleven_v4
     voice: ZoiZ8fuDWInAcwPXaVeq
-    generated_at: '2026-10-10T23:32:20Z'
+    generated_at: '2026-10-10T23:51:47Z'
   es:
     url: "/assets/audio/vulnerability-state-machine/es.mp3"
     hash: d954e60a190cbd9c
-    duration: 178
-    size: 2851194
+    duration: 185
+    size: 2967387
     model: eleven_v4
     voice: QK4xDwo9ESPHA4JNUpX3
-    generated_at: '2026-10-10T23:32:22Z'
+    generated_at: '2026-10-10T23:51:51Z'
   pt:
     url: "/assets/audio/vulnerability-state-machine/pt.mp3"
     hash: e2fdc19650e3a0de
-    duration: 174
-    size: 2784313
+    duration: 181
+    size: 2905103
     model: eleven_v4
     voice: nLSNxtDmAgEDCV5VA6oz
-    generated_at: '2026-10-10T23:32:23Z'
+    generated_at: '2026-10-10T23:51:50Z'
