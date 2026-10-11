@@ -6,16 +6,11 @@ translation_key: pii-obfuscation-and-masking
 category: guides
 excerpt: 'Recomendaciones prácticas para enmascarar tipos comunes de información personal sin exponer fragmentos útiles entre sistemas.'
 author: Heitor Gouvêa
-author-info:
-  name:  Heitor Gouvêa
-  image:  heitor-gouvea.jpeg
-  description: Investigador con experiencia en ingeniería de software. La investigación de Gouvêa se centra en el descubrimiento de vulnerabilidades en aplicaciones modernas y en el desarrollo de herramientas y exploits.
-  linkedin: htrgouvea
 date: 2026-05-04 10:00:00 -0300
 permalink: /blog/orientaciones-para-ofuscacion-y-enmascaramiento-de-pii/
 ---
 
-### Introducción
+## Introducción
 
 Muchas aplicaciones manejan información personal identificable, conocida por la sigla PII: nombres, direcciones, correos electrónicos, teléfonos, documentos, identificadores de dispositivo y otros datos capaces de identificar a una persona directa o indirectamente.
 
@@ -27,7 +22,7 @@ Esa inconsistencia importa. Si la misma PII se enmascara de formas diferentes en
 
 Este artículo propone orientaciones prácticas para enmascarar campos comunes de PII. El objetivo no es definir un estándar legal universal, sino ofrecer una base técnica para personas de ingeniería, seguridad y producto que necesitan un comportamiento consistente al mostrar o procesar datos personales.
 
-### Ofuscación, enmascaramiento y anonimización
+## Ofuscación, enmascaramiento y anonimización
 
 Los términos suelen usarse como sinónimos, pero no significan lo mismo.
 
@@ -41,21 +36,21 @@ Un ejemplo de ofuscación que no es solo enmascaramiento es sustituir un correo 
 
 En la práctica, el enmascaramiento es más útil como control de minimización de datos. Reduce la exposición innecesaria. No reemplaza criptografía, control de acceso, registros de auditoría, límites de retención o eliminación segura.
 
-### Por qué importa la consistencia
+## Por qué importa la consistencia
 
 Considere una persona que usa el mismo alias público en varias redes sociales. Un atacante quiere descubrir el correo electrónico asociado con ese alias. No puede ver el correo completo, pero puede activar flujos de recuperación de contraseña en varias plataformas.
 
 Si cada plataforma enmascara el correo de una forma diferente, el atacante puede recibir fragmentos como estos:
 
 | Plataforma | Correo enmascarado |
-| :---- | :---- |
+| ----- | ----- |
 | Instagram | `h***********a@g***l.com` |
 | Twitter | `*************@gmail.com` |
 | LinkedIn | `*******ouvea@gm********` |
 | Facebook | `hei**********@gma***om` |
 | Telegram | `*****r.******ea@g*****.com` |
 
-![Diagrama de reconstrucción de correo a partir de fragmentos enmascarados](/assets/publications/pii-obfuscation/email-reconstruction-es.svg)
+![Diagrama de reconstrucción de correo a partir de fragmentos enmascarados](/assets/publications/pii-obfuscation/email-reconstruction-es.svg){: width="1400" height="900" loading="lazy" decoding="async"}
 
 <p class="content-caption"><strong>Figura 1:</strong> fragmentos de un mismo correo revelados por diferentes reglas de enmascaramiento pueden combinarse para reconstruir el valor original.</p>
 
@@ -65,7 +60,7 @@ El mismo problema puede ocurrir dentro de una organización. Si dos aplicaciones
 
 Por este motivo, el enmascaramiento debe tratarse como una decisión compartida de política, no como un detalle local de formato de interfaz. El mismo campo debe enmascararse de la misma forma en productos, herramientas internas, APIs y flujos operativos.
 
-### Cuándo enmascarar PII
+## Cuándo enmascarar PII
 
 El enmascaramiento de PII es útil siempre que el valor completo no sea necesario para el usuario, operador o acción del sistema que se está ejecutando.
 
@@ -77,7 +72,7 @@ En analytics y entrenamiento de modelos, los datos de producción pueden contene
 
 En logs y sistemas de observabilidad, el enmascaramiento es especialmente importante porque los logs suelen copiarse, indexarse, retenerse, exportarse y ser accedidos por grupos operativos más amplios. Un campo seguro en una base de datos de producción restringida puede volverse riesgoso cuando se repite en pipelines de logs.
 
-### Principios generales de enmascaramiento
+## Principios generales de enmascaramiento
 
 Las decisiones de enmascaramiento deben seguir algunas reglas simples.
 
@@ -93,12 +88,12 @@ No use enmascaramiento parcial como única protección para almacenamiento sensi
 
 El enmascaramiento debe ocurrir lo más cerca posible de la superficie de exposición: interfaz, logs, exportaciones, mensajes, reportes y entornos derivados. No debe confundirse con transformar el dato original en la base de datos sin una necesidad clara.
 
-### Patrones recomendados
+## Patrones recomendados
 
 Los patrones siguientes ofrecen un punto de partida práctico. Son ejemplos de baseline, no reglas universales. Cada organización debe validar los campos según jurisdicción, amenaza y necesidad operativa, pero el punto central es la consistencia.
 
 | Campo | Valor original | Valor enmascarado | Orientación |
-| :---- | :---- | :---- | :---- |
+| ----- | ----- | ----- | ----- |
 | CPF | `111.222.333-00` | `***.222.33*-**` | Oculte los tres primeros dígitos, el noveno dígito y los dos dígitos verificadores. Preserve la puntuación solo para legibilidad. |
 | Correo electrónico | `user.name@example.com.br` | `u*******e@e*****e.com.br` | Revele solo el primer y último carácter de la parte local y de la etiqueta principal del dominio. Preserve sufijos públicos, como `.com.br`, cuando sea necesario para reconocimiento. |
 | Teléfono | `(11) 91234-5678` | `(11) 9****-**78` | Preserve código de país o área solo cuando sea necesario para enrutamiento o reconocimiento. Revele la menor cantidad posible de dígitos finales exigida por el flujo. |
@@ -110,7 +105,7 @@ Los patrones siguientes ofrecen un punto de partida práctico. Son ejemplos de b
 
 Estos ejemplos son intencionalmente conservadores. La cantidad exacta de caracteres visibles puede cambiar según el flujo, pero cada sistema debe tomar esa decisión explícitamente.
 
-### Orientaciones de implementación
+## Orientaciones de implementación
 
 La lógica de enmascaramiento debe vivir en código compartido, no ser reimplementada independientemente en cada pantalla o servicio. Una pequeña biblioteca o servicio compartido reduce inconsistencias y facilita futuros cambios de política.
 
@@ -134,7 +129,7 @@ La política también debe definir qué ocurre con valores inválidos o inespera
 
 Por último, pruebe el comportamiento de enmascaramiento como lógica relevante para seguridad. Las pruebas unitarias deben cubrir valores normales, valores cortos, valores malformados, formatos internacionalizados, separadores, valores vacíos y valores ya enmascarados. Las pruebas de regresión son útiles porque cambios accidentales en el enmascaramiento pueden aumentar la exposición silenciosamente.
 
-### Hashing y criptografía son controles diferentes
+## Hashing y criptografía son controles diferentes
 
 Enmascaramiento, hashing y criptografía resuelven problemas diferentes.
 
@@ -146,7 +141,7 @@ El enmascaramiento cambia lo que se muestra o exporta. No protege el valor origi
 
 Buena ingeniería de privacidad normalmente combina estos controles: minimizar recolección, restringir acceso, enmascarar visualización, cifrar almacenamiento y transporte sensibles, auditar uso y eliminar datos cuando ya no sean necesarios.
 
-### Conclusión
+## Conclusión
 
 El enmascaramiento de PII es un control práctico para reducir exposición innecesaria de datos personales, pero solo funciona bien cuando es intencional y consistente.
 
@@ -154,7 +149,7 @@ El riesgo principal no es solo mostrar demasiados caracteres en un lugar. Es mos
 
 El enmascaramiento debe tratarse como parte de un programa más amplio de privacidad y seguridad. Apoya la minimización de datos, mejora la privacidad del usuario y reduce la exposición operativa, pero no reemplaza criptografía, control de acceso, revisión legal o buena gobernanza de datos.
 
-### Referencias
+## Referencias
 
 1. [Datos personales - Wikipedia](https://es.wikipedia.org/wiki/Datos_personales)
 2. [Guide to Protecting the Confidentiality of Personally Identifiable Information (PII) - NIST SP 800-122](https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-122.pdf)

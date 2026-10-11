@@ -6,16 +6,11 @@ translation_key: pii-obfuscation-and-masking
 category: guides
 excerpt: 'Practical recommendations for masking common types of personally identifiable information without exposing useful fragments across systems.'
 author: Heitor Gouvêa
-author-info:
-  name:  Heitor Gouvêa
-  image:  heitor-gouvea.jpeg
-  description: Researcher with a software engineering background. Gouvêa's research focuses on vulnerability discovery in modern applications and the development of tools and exploits.
-  linkedin: htrgouvea
 date: 2026-05-04 10:00:00 -0300
 permalink: /blog/orientations-for-pii-obfuscation-and-masking/
 ---
 
-### Introduction
+## Introduction
 
 Many applications handle personally identifiable information (PII): names, addresses, email addresses, phone numbers, identification numbers, device identifiers, and other data that can identify a person directly or indirectly.
 
@@ -27,7 +22,7 @@ That inconsistency matters. If the same PII is masked differently across multipl
 
 This article proposes practical orientations for masking common PII fields. The goal is not to define a universal legal standard, but to provide a technical baseline for engineers, security teams, and product teams that need consistent behavior when displaying or processing personal data.
 
-### Obfuscation, masking, and anonymization
+## Obfuscation, masking, and anonymization
 
 The terms are often used interchangeably, but they do not mean the same thing.
 
@@ -41,21 +36,21 @@ An example of obfuscation that is not only masking is replacing an email address
 
 In practice, masking is most useful as a data minimization control. It reduces unnecessary exposure. It does not replace encryption, access control, audit logging, retention limits, or secure deletion.
 
-### Why consistency matters
+## Why consistency matters
 
 Consider a user who uses the same public alias across multiple social networks. An attacker wants to discover the email address associated with that alias. The attacker cannot see the full email, but can trigger password reset flows on several platforms.
 
 If each platform masks the email differently, the attacker may receive fragments like these:
 
 | Platform | Masked email |
-| :---- | :---- |
+| ----- | ----- |
 | Instagram | `h***********a@g***l.com` |
 | Twitter | `*************@gmail.com` |
 | LinkedIn | `*******ouvea@gm********` |
 | Facebook | `hei**********@gma***om` |
 | Telegram | `*****r.******ea@g*****.com` |
 
-![Diagram of email reconstruction from masked fragments](/assets/publications/pii-obfuscation/email-reconstruction-en.svg)
+![Diagram of email reconstruction from masked fragments](/assets/publications/pii-obfuscation/email-reconstruction-en.svg){: width="1400" height="900" loading="lazy" decoding="async"}
 
 <p class="content-caption"><strong>Figure 1:</strong> fragments of the same email revealed by different masking rules can be combined to reconstruct the original value.</p>
 
@@ -65,7 +60,7 @@ The same problem can happen inside one organization. If two applications read fr
 
 For this reason, masking should be treated as a shared policy decision, not as a local UI formatting detail. The same field should be masked in the same way across products, internal tools, APIs, and operational workflows.
 
-### When to mask PII
+## When to mask PII
 
 PII masking is useful whenever the full value is not required for the user, operator, or system action being performed.
 
@@ -77,7 +72,7 @@ In analytics and model training, production data may contain signals that synthe
 
 In logs and observability systems, masking is especially important because logs are often copied, indexed, retained, exported, and accessed by broader operational groups. A field that is safe in a restricted production database may become risky when repeated across log pipelines.
 
-### General masking principles
+## General masking principles
 
 Masking decisions should be guided by a few simple rules.
 
@@ -93,12 +88,12 @@ Do not use partial masking as the only protection for sensitive storage. If the 
 
 Masking should happen as close as possible to the exposure surface: UI, logs, exports, messages, reports, and derived environments. It should not be confused with transforming the original value in the database without a clear need.
 
-### Recommended patterns
+## Recommended patterns
 
 The following patterns provide a practical starting point. They are baseline examples, not universal rules. Each organization should validate fields according to jurisdiction, threat model, and operational need, but the key point is consistency.
 
 | Field | Raw value | Masked value | Orientation |
-| :---- | :---- | :---- | :---- |
+| ----- | ----- | ----- | ----- |
 | CPF | `111.222.333-00` | `***.222.33*-**` | Hide the first three digits, the ninth digit, and the two check digits. Preserve punctuation only for readability. |
 | Email | `user.name@example.com.br` | `u*******e@e*****e.com.br` | Reveal only the first and last character of the local part and primary domain label. Preserve public suffixes such as `.com.br` when needed for recognition. |
 | Phone number | `(11) 91234-5678` | `(11) 9****-**78` | Preserve country or area code only when needed for routing or recognition. Reveal as few ending digits as the workflow requires. |
@@ -110,7 +105,7 @@ The following patterns provide a practical starting point. They are baseline exa
 
 These examples are intentionally conservative. The exact number of visible characters may change depending on the workflow, but each system should make that decision explicitly.
 
-### Implementation guidance
+## Implementation guidance
 
 Masking logic should live in shared code, not be reimplemented independently in each screen or service. A small library or shared service reduces inconsistency and makes future policy changes easier.
 
@@ -134,7 +129,7 @@ The policy should also define what happens with invalid or unexpected values. A 
 
 Finally, test masking behavior as security-relevant logic. Unit tests should cover normal values, short values, malformed values, internationalized formats, separators, empty values, and already-masked values. Regression tests are useful because accidental changes to masking can silently increase exposure.
 
-### Hashing and encryption are different controls
+## Hashing and encryption are different controls
 
 Masking, hashing, and encryption solve different problems.
 
@@ -146,7 +141,7 @@ Masking changes what is displayed or exported. It does not protect the original 
 
 Strong privacy engineering usually combines these controls: minimize collection, restrict access, mask display, encrypt sensitive storage and transport, audit usage, and delete data when it is no longer needed.
 
-### Conclusion
+## Conclusion
 
 PII masking is a practical control for reducing unnecessary exposure of personal data, but it only works well when it is intentional and consistent.
 
@@ -154,7 +149,7 @@ The main risk is not only showing too many characters in one place. It is showin
 
 Masking should be treated as part of a broader privacy and security program. It supports data minimization, improves user privacy, and reduces operational exposure, but it does not replace cryptography, access control, legal review, or sound data governance.
 
-### References
+## References
 
 1. [Personal data - Wikipedia](https://en.wikipedia.org/wiki/Personal_data)
 2. [Guide to Protecting the Confidentiality of Personally Identifiable Information (PII) - NIST SP 800-122](https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-122.pdf)

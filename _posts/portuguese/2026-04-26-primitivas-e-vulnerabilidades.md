@@ -6,22 +6,17 @@ translation_key: primitives-and-vulnerabilities
 category: research
 excerpt: 'Como pensar em primitivas ajuda a transformar discrepâncias entre intenção e comportamento real em análise de impacto.'
 author: Heitor Gouvêa
-author-info:
-  name:  Heitor Gouvêa
-  image:  heitor-gouvea.jpeg
-  description: Pesquisador, com background em engenharia de software. O foco da pesquisa de Gouvêa é a descoberta de vulnerabilidade em aplicações modernas e desenvolvimento de ferramentas e exploits. 
-  linkedin: htrgouvea
 date: 2026-04-26 16:20:00 -0300
 permalink: /pesquisa/2026/04/26/primitivas-e-vulnerabilidades.html
 ---
 
-### Introdução
+## Introdução
 
 Na última semana, testei o uso de LLMs para apoiar no processo de pesquisa de vulnerabilidades. Isso me fez pensar: como "ensinar" o modelo a realmente ajudar a encontrar bugs válidos?
 
 Refleti sobre o meu próprio processo: como analiso código, modelo ameaças e chego ao ponto em que algo se torna, de fato, uma vulnerabilidade.
 
-### Entendendo, ou criando, primitivas
+## Entendendo, ou criando, primitivas
 
 Em resumo, percebi que tento responder a três perguntas durante as análises:
 
@@ -41,7 +36,7 @@ Pequenas discrepâncias isoladas às vezes não geram impacto relevante, mas qua
 
 Agora estou usando alguns prompts que gerei a partir desse entendimento no dia a dia, de maneira automatizada e integrada ao meu workflow. Eles me apoiam no entendimento mais rápido de componentes, na sugestão de entradas de dados mais contextuais, na criação de entradas de teste e na tradução de discrepâncias em possíveis cenários.
 
-### Um exemplo simples
+## Um exemplo simples
 
 Em uma análise passada, testei uma aplicação web e identifiquei uma tela de login. Fiz vários testes, incluindo o uso de um e-mail válido com senhas incorretas, tentando gerar feedbacks diferentes da aplicação para entender melhor o comportamento do fluxo.
 
@@ -53,7 +48,7 @@ Pela segunda pergunta, o comportamento real tinha detalhes importantes. O bloque
 
 Pela terceira pergunta, o impacto possível ficava mais claro. Um ator malicioso não precisava descobrir a senha nem acessar a conta. Bastava conhecer ou enumerar e-mails válidos e realizar tentativas de login com senhas incorretas para bloquear contas reais. Um controle criado para proteger contra força bruta poderia ser usado como uma primitiva de negação de serviço contra usuários legítimos.
 
-### Conclusão
+## Conclusão
 
 Pensar em primitivas ajuda a transformar a análise em um processo mais explícito. Em vez de olhar para o sistema apenas como um conjunto grande e complexo de funcionalidades, passo a observar pequenas ações, comparar intenção e realidade, e depois entender como essas diferenças podem ser usadas.
 

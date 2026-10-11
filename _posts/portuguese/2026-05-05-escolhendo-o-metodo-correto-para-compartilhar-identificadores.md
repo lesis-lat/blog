@@ -6,16 +6,11 @@ translation_key: choosing-sharing-identifiers
 category: case-study
 excerpt: 'Como escolher entre criptografia, hash, HMAC e PSI ao comparar bases com identificadores pessoais.'
 author: Heitor Gouvêa
-author-info:
-  name:  Heitor Gouvêa
-  image:  heitor-gouvea.jpeg
-  description: Pesquisador, com background em engenharia de software. O foco da pesquisa de Gouvêa é a descoberta de vulnerabilidade em aplicações modernas e desenvolvimento de ferramentas e exploits.
-  linkedin: htrgouvea
 date: 2026-05-05 08:00:00 -0300
 permalink: /blog/escolhendo-o-metodo-correto-para-compartilhar-identificadores/
 ---
 
-### Introdução
+## Introdução
 
 Alguns problemas de segurança aparecem justamente quando duas empresas legítimas querem colaborar.
 
@@ -25,7 +20,7 @@ O problema parece simples: uma empresa tem a lista de clientes elegíveis, a out
 
 Mas existe uma pergunta importante: como permitir essa comparação sem expor mais dados pessoais do que o necessário?
 
-### O cenário
+## O cenário
 
 A necessidade de negócio era direta: uma campanha promocional deveria ser oferecida por um parceiro comercial apenas para clientes da instituição financeira.
 
@@ -39,7 +34,7 @@ Mas o problema principal não era apenas transporte. O problema era minimizaçã
 
 Ao final do processo, o parceiro teria acesso a uma lista completa de CPFs de clientes da instituição financeira, inclusive pessoas que talvez nem tivessem conta no marketplace, nunca participassem da campanha ou nunca precisassem ser conhecidas pelo parceiro. A criptografia protegeria o arquivo no caminho, mas não reduziria o dado revelado ao destinatário.
 
-### Criptografia resolve outro problema
+## Criptografia resolve outro problema
 
 Criptografia é uma ferramenta de confidencialidade. Ela protege dados contra quem não deve acessá-los durante armazenamento ou transmissão. Se um arquivo criptografado é interceptado por alguém sem a chave, o conteúdo permanece protegido.
 
@@ -55,7 +50,7 @@ Mas havia uma segunda pergunta que ainda precisava ser respondida:
 
 Essas perguntas parecem parecidas, mas são problemas diferentes. A primeira é sobre confidencialidade em trânsito e continuava sendo necessária. A segunda é sobre minimização de dados e exposição ao destinatário. O ponto não era substituir criptografia, mas reconhecer que ela precisava ser combinada com um desenho que revelasse menos informação.
 
-### Onde hashes ajudam
+## Onde hashes ajudam
 
 Um hash criptográfico transforma uma entrada em uma saída de tamanho fixo. Para a mesma entrada, o resultado é sempre o mesmo. Para entradas diferentes, espera-se que os resultados sejam diferentes. Bons algoritmos de hash também tornam impraticável recuperar a entrada original a partir da saída, desde que a entrada tenha entropia suficiente.
 
@@ -79,7 +74,7 @@ O ganho de privacidade é intuitivo: em vez de revelar diretamente os CPFs, as e
 
 Essa ideia é útil, mas há uma armadilha importante.
 
-### CPF é enumerável
+## CPF é enumerável
 
 Desenvolvedores muitas vezes aprendem hash no contexto de senhas. Nesse contexto, a entrada idealmente é secreta, escolhida pelo usuário e difícil de adivinhar. Mesmo assim, senhas exigem algoritmos específicos como Argon2, bcrypt ou scrypt, além de salt, custo computacional e boas políticas de armazenamento.
 
@@ -97,7 +92,7 @@ Ela não revela o CPF de forma direta, mas também não deve ser tratada como an
 
 Esse ponto é essencial: hash não é mágica. A segurança depende tanto do algoritmo quanto da natureza da entrada.
 
-### Normalização importa
+## Normalização importa
 
 Antes de qualquer comparação, os dois lados precisam chegar exatamente à mesma representação do identificador.
 
@@ -112,7 +107,7 @@ Essas duas strings têm aparência equivalente para uma pessoa, mas são entrada
 
 Toda estratégia de comparação precisa documentar a normalização antes de documentar o algoritmo. Sem isso, o processo produz falsos negativos, inconsistência operacional e dificuldades de auditoria.
 
-### Salt nem sempre resolve
+## Salt nem sempre resolve
 
 Uma reação comum é adicionar salt:
 
@@ -126,7 +121,7 @@ Se cada empresa usar um salt diferente, os hashes não baterão. Se o salt for c
 
 Salt é útil, mas não resolve sozinho o problema de identificadores previsíveis em uma integração de matching.
 
-### HMAC com API como caminho pragmático
+## HMAC com API como caminho pragmático
 
 Uma alternativa melhor do que hash simples é usar HMAC:
 
@@ -161,7 +156,7 @@ Com isso, o marketplace consegue aplicar a campanha dentro da própria base, mas
 
 Essa abordagem muda o problema para um modelo de consulta controlada. Se a API permite testar CPFs arbitrários, mesmo que com autenticação e HMAC, ela pode virar um oráculo de elegibilidade. Por isso, esse tipo de solução precisa de controles adicionais: aceitar apenas lotes associados à base declarada do parceiro, limitar reprocessamentos, auditar consultas, impor janelas de campanha e definir claramente o que é permitido testar. Em outras palavras, HMAC e API podem formar uma solução prática, mas a garantia passa a depender de governança e controle operacional. Para cenários que exigem uma garantia técnica mais forte sobre o que cada parte aprende, existe uma abordagem mais sofisticada.
 
-### Uma alternativa mais sofisticada: interseção privada de conjuntos
+## Uma alternativa mais sofisticada: interseção privada de conjuntos
 
 Uma alternativa mais sofisticada para esse tipo de problema é conhecida como interseção privada de conjuntos, ou Private Set Intersection (PSI).
 
@@ -181,7 +176,7 @@ PSI, porém, não elimina todos os riscos. Se uma parte puder escolher livrement
 
 Na prática, PSI é mais complexo do que uma API com HMAC. Ele exige biblioteca adequada, entendimento do protocolo, cuidado com normalização, tratamento de erros, auditoria, testes de performance e avaliação do que cada parte aprende durante o processo. Nem todo caso exige esse nível de sofisticação. Mas ele deve ser considerado quando o requisito não é apenas evitar que o marketplace receba a base inteira da instituição financeira, mas também reduzir o quanto a instituição financeira aprende sobre o conjunto do marketplace durante o matching.
 
-### Uma hierarquia prática de soluções
+## Uma hierarquia prática de soluções
 
 Nem toda integração precisa do mesmo nível de proteção. Uma forma pragmática de pensar é organizar as opções por redução de exposição.
 
@@ -195,7 +190,7 @@ PSI ou um protocolo equivalente é uma opção mais sofisticada quando também h
 
 Essa hierarquia ajuda a explicar por que a resposta inicial de "vamos criptografar o arquivo" era insuficiente. A pergunta não era apenas como transportar dados com segurança. A pergunta era quanto dado precisava ser revelado para atingir o objetivo.
 
-### Conclusão
+## Conclusão
 
 Uma revisão de segurança para esse tipo de compartilhamento deve começar por perguntas simples. Antes de escolher algoritmo, é necessário entender qual é o objetivo exato da comparação, quem precisa aprender o resultado e qual formato esse resultado precisa ter. O resultado precisa ser uma lista de CPFs, uma lista de usuários elegíveis, um booleano por usuário ou apenas uma contagem agregada?
 
@@ -211,7 +206,7 @@ O aprendizado principal desse caso é que "transmitir com segurança" não é o 
 
 Às vezes, a melhor solução não é criptografar melhor o arquivo. É evitar que o arquivo exista daquele jeito.
 
-### Referências
+## Referências
 
 1. [Cryptographic hash function - Wikipedia](https://en.wikipedia.org/wiki/Cryptographic_hash_function)
 2. [Hash-based message authentication code - Wikipedia](https://en.wikipedia.org/wiki/HMAC)

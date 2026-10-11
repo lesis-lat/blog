@@ -6,11 +6,6 @@ lang: pt
 translation_key: vulnerability-state-machine
 category: research
 author: Heitor Gouvêa
-author-info:
-  name:  Heitor Gouvêa
-  image:  heitor-gouvea.jpeg
-  description: Pesquisador, com background em engenharia de software. O foco da pesquisa de Gouvêa é a descoberta de vulnerabilidade em aplicações modernas e desenvolvimento de ferramentas e exploits. 
-  linkedin: htrgouvea
 date: 2026-04-09 00:00:00 -0300
 permalink: /pesquisa/2026/04/09/vuln-state-machine.html
 ---
@@ -27,4 +22,4 @@ Essa proposta de máquina de estados é, ao mesmo tempo, enxuta e completa. É o
 
 Abaixo, o diagrama que representa esse fluxo:
 
-![](/assets/publications/vuln-state-machine/state-machine.png)
+![Diagrama de máquina de estados do ciclo de vida de uma vulnerabilidade](/assets/publications/vuln-state-machine/state-machine.webp){: width="1327" height="732" loading="lazy" decoding="async"}

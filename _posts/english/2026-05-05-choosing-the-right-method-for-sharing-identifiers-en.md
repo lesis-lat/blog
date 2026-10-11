@@ -6,16 +6,11 @@ translation_key: choosing-sharing-identifiers
 category: case-study
 excerpt: 'How to choose between encryption, hashes, HMAC, APIs, and PSI when comparing datasets with personal identifiers.'
 author: Heitor Gouvêa
-author-info:
-  name:  Heitor Gouvêa
-  image:  heitor-gouvea.jpeg
-  description: Researcher with a software engineering background. Gouvêa's research focuses on vulnerability discovery in modern applications and the development of tools and exploits.
-  linkedin: htrgouvea
 date: 2026-05-05 08:00:00 -0300
 permalink: /blog/choosing-the-right-method-for-sharing-identifiers/
 ---
 
-### Introduction
+## Introduction
 
 Some security problems appear precisely when two legitimate companies want to collaborate.
 
@@ -25,7 +20,7 @@ The problem seems simple: one company has the list of eligible customers, the ot
 
 But there is an important question: how can this comparison be allowed without exposing more personal data than necessary?
 
-### The Scenario
+## The Scenario
 
 The business need was direct: a promotional campaign should be offered by a commercial partner only to customers of the financial institution.
 
@@ -39,7 +34,7 @@ But the main problem was not only transport. The problem was minimization.
 
 At the end of the process, the partner would have access to a complete list of CPFs from customers of the financial institution, including people who might not even have an account in the marketplace, might never participate in the campaign, and might never need to be known by the partner. Encryption would protect the file in transit, but it would not reduce the data revealed to the recipient.
 
-### Encryption Solves Another Problem
+## Encryption Solves Another Problem
 
 Encryption is a confidentiality tool. It protects data from people who should not access it during storage or transmission. If an encrypted file is intercepted by someone without the key, its content remains protected.
 
@@ -55,7 +50,7 @@ But there was a second question that still had to be answered:
 
 These questions may look similar, but they are different problems. The first is about confidentiality in transit and remained necessary. The second is about data minimization and exposure to the recipient. The point was not to replace encryption, but to recognize that it had to be combined with a design that revealed less information.
 
-### Where Hashes Help
+## Where Hashes Help
 
 A cryptographic hash transforms an input into a fixed-size output. For the same input, the result is always the same. For different inputs, the results are expected to be different. Good hash algorithms also make it impractical to recover the original input from the output, as long as the input has enough entropy.
 
@@ -79,7 +74,7 @@ The privacy gain is intuitive: instead of directly revealing CPFs, the companies
 
 This idea is useful, but there is an important trap.
 
-### CPF Is Enumerable
+## CPF Is Enumerable
 
 Developers often learn about hashes in the context of passwords. In that context, the input is ideally secret, chosen by the user, and hard to guess. Even then, passwords require specific algorithms such as Argon2, bcrypt, or scrypt, as well as salt, computational cost, and good storage policies.
 
@@ -97,7 +92,7 @@ It does not reveal the CPF directly, but it should not be treated as anonymizati
 
 This point is essential: hash is not magic. Security depends both on the algorithm and on the nature of the input.
 
-### Normalization Matters
+## Normalization Matters
 
 Before any comparison, both sides need to arrive at exactly the same representation of the identifier.
 
@@ -112,7 +107,7 @@ These two strings look equivalent to a person, but they are different inputs for
 
 Every comparison strategy needs to document normalization before documenting the algorithm. Without that, the process produces false negatives, operational inconsistency, and audit difficulties.
 
-### Salt Does Not Always Solve It
+## Salt Does Not Always Solve It
 
 A common reaction is to add salt:
 
@@ -126,7 +121,7 @@ If each company uses a different salt, the hashes will not match. If the salt is
 
 Salt is useful, but it does not solve the problem of predictable identifiers in a matching integration by itself.
 
-### HMAC with an API as a Pragmatic Path
+## HMAC with an API as a Pragmatic Path
 
 A better alternative than a simple hash is to use HMAC:
 
@@ -161,7 +156,7 @@ With this, the marketplace can apply the campaign inside its own base, but it do
 
 This approach changes the problem into a controlled query model. If the API allows arbitrary CPFs to be tested, even with authentication and HMAC, it can become an eligibility oracle. For that reason, this type of solution needs additional controls: accepting only batches associated with the partner's declared base, limiting reprocessing, auditing queries, enforcing campaign windows, and clearly defining what may be tested. In other words, HMAC and an API can form a practical solution, but the guarantee then depends on governance and operational control. For scenarios that require a stronger technical guarantee about what each party learns, there is a more sophisticated approach.
 
-### A More Sophisticated Alternative: Private Set Intersection
+## A More Sophisticated Alternative: Private Set Intersection
 
 A more sophisticated alternative for this type of problem is known as private set intersection, or PSI.
 
@@ -181,7 +176,7 @@ PSI, however, does not eliminate every risk. If one party can freely choose the 
 
 In practice, PSI is more complex than an API with HMAC. It requires an appropriate library, understanding of the protocol, care with normalization, error handling, auditing, performance testing, and evaluation of what each party learns during the process. Not every case requires this level of sophistication. But it should be considered when the requirement is not only to prevent the marketplace from receiving the financial institution's entire base, but also to reduce how much the financial institution learns about the marketplace's set during the matching process.
 
-### A Practical Hierarchy of Solutions
+## A Practical Hierarchy of Solutions
 
 Not every integration needs the same level of protection. A pragmatic way to think about it is to organize the options by exposure reduction.
 
@@ -195,7 +190,7 @@ PSI or an equivalent protocol is a more sophisticated option when there is also 
 
 This hierarchy helps explain why the initial answer of "let's encrypt the file" was insufficient. The question was not only how to transport data securely. The question was how much data needed to be revealed to achieve the objective.
 
-### Conclusion
+## Conclusion
 
 A security review for this type of sharing should begin with simple questions. Before choosing an algorithm, it is necessary to understand the exact objective of the comparison, who needs to learn the result, and which format that result needs to have. Does the result need to be a list of CPFs, a list of eligible users, a boolean per user, or only an aggregated count?
 
@@ -211,7 +206,7 @@ The main lesson from this case is that "transmitting securely" is not the same a
 
 Sometimes, the best solution is not to encrypt the file better. It is to avoid having that file exist in that form.
 
-### References
+## References
 
 1. [Cryptographic hash function - Wikipedia](https://en.wikipedia.org/wiki/Cryptographic_hash_function)
 2. [Hash-based message authentication code - Wikipedia](https://en.wikipedia.org/wiki/HMAC)

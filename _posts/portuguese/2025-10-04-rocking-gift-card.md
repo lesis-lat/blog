@@ -5,11 +5,6 @@ lang: pt
 translation_key: gift-card-loop
 category: vulnerability
 author: Heitor Gouvêa
-author-info:
-  name:  Heitor Gouvêa
-  image:  heitor-gouvea.jpeg
-  description: Pesquisador, com background em engenharia de software. O foco da pesquisa de Gouvêa é a descoberta de vulnerabilidade em aplicações modernas e desenvolvimento de ferramentas e exploits. 
-  linkedin: htrgouvea
 date: 2025-10-04 13:29:00 -0300
 permalink: /vulnerabilidade/2025/10/04/rocking-gift-card.html
 ---
@@ -22,15 +17,15 @@ Sites que comercializam qualquer tipo de produto possuem uma enorme complexidade
 
 **Cupom de desconto**: trata-se de um código, geralmente alfanumérico, fornecido aos clientes para reduzir o valor de compra de produtos ou serviços. Ao aplicar o cupom durante o processo de pagamento, o cliente recebe um desconto ou benefício específico, como uma porcentagem de desconto ou frete grátis, tornando a compra mais vantajosa.
 
-###  Rocking the gift card loop
+##  Rocking the gift card loop
 
-![](/assets/publications/ecommerce-giftcard/product-list.png)
+![Gift card listado para venda no catálogo de produtos do e-commerce](/assets/publications/ecommerce-giftcard/product-list.webp){: width="1354" height="662" loading="lazy" decoding="async"}
 
 -  *Figura 1: Listagem de um Gift Card para venda;*
 
 Durante um ciclo de atividades de testes, identifiquei o seguinte cenário: um site oferece a opção de compra de gift cards e, simultaneamente, permite o uso de cupons de desconto ainda nessa mesma compra. Por exemplo, ao comprar de um gift card no valor de R$150,00, é permitido o uso de  um cupom de desconto chamado “15OFF”, que concede desconto de R$ 15. Dessa forma,  o valor a ser pago é de apenas R$135,00 por um gift card que ainda tem a capacidade de compra do valor de R$150,00.
 
-![](/assets/publications/ecommerce-giftcard/checkout.png)
+![Tela de checkout comprando um gift card com cupom de desconto aplicado](/assets/publications/ecommerce-giftcard/checkout.webp){: width="1310" height="1112" loading="lazy" decoding="async"}
 
 - *Figura 2: Comprando um Gift Card com cupom de desconto em e-commerce*  
 
@@ -42,7 +37,7 @@ Para ilustrar, caso o processo seja repetido em 10 ciclos consecutivos, o crédi
 
 Adicionalmente, é importante considerar que cada transação realizada está sujeita à cobrança de taxas operacionais por parte dos intermediadores de pagamento. Assim, além do prejuízo decorrente da geração indevida de saldo, o recorrente processamento de transações aumenta os custos da operação, ampliando o impacto financeiro negativo para a plataforma.
 
-### Conclusão
+## Conclusão
 
 A vulnerabilidade identificada tem origem em falhas de lógica de negócios, e a sua mitigação demanda ajustes estruturais no fluxo de compra. A primeira e mais direta medida consiste em restringir o uso de gift cards como forma de pagamento para a aquisição de novos gift cards. Essa regra simples elimina a possibilidade de encadeamento de transações que resultam na geração artificial de saldo.
 
@@ -52,7 +47,7 @@ Adicionalmente, é altamente recomendável a implementação de mecanismos de pr
 
 Em conjunto, essas medidas representam uma abordagem de mitigação em múltiplas camadas, reduzindo a exposição da empresa ao risco de fraude financeira e garantindo maior confiabilidade.
 
-#### Referências
+### Referências
 
  - [*Common Security Issues in Financially- Oriented Web Applications – NCC Group*](https://soroush.me/downloadable/common-security-issues-in-financially-orientated-web-applications.pdf)
  - [*Gift Card Fraud Prevention Methods & Solutions*](https://datadome.co/threats/gift-card-fraud-prevention/)

@@ -5,11 +5,6 @@ lang: es
 translation_key: gift-card-loop
 category: vulnerability
 author: Heitor Gouvêa
-author-info:
-  name:  Heitor Gouvêa
-  image:  heitor-gouvea.jpeg
-  description: Security Researcher con formación en ingeniería de software. El enfoque de Gouvêa es el descubrimiento de vulnerabilidades en aplicaciones modernas y en el desarrollo de herramientas y exploits.
-  linkedin: htrgouvea
 date: 2025-10-04 13:29:00 -0300
 permalink: /vulnerabilidad/2025/10/04/rocking-gift-card-es.html
 ---
@@ -22,15 +17,15 @@ Los sitios que comercializan cualquier tipo de producto presentan una enorme com
 
 **Cupón de descuento:** se trata de un código, generalmente alfanumérico, entregado a los clientes para reducir el valor de compra de productos o servicios. Al aplicar el cupón durante el proceso de pago, el cliente recibe un descuento o beneficio específico, como un porcentaje de rebaja o envío gratuito, haciendo la compra más ventajosa.
 
-###  Rocking the gift card loop
+##  Rocking the gift card loop
 
-![](/assets/publications/ecommerce-giftcard/product-list.png)
+![Gift card listado para la venta en el catálogo de productos del e-commerce](/assets/publications/ecommerce-giftcard/product-list.webp){: width="1354" height="662" loading="lazy" decoding="async"}
 
 - *Figura 1: Listado de un Gift Card para la venta*
 
 Durante un ciclo de actividades de prueba, identifiqué el siguiente escenario: un sitio ofrece la opción de compra de gift cards y, simultáneamente, permite el uso de cupones de descuento en esa misma compra. Por ejemplo, al adquirir un gift card con valor de R$150,00, se permite aplicar un cupón de descuento llamado “15OFF”, que otorga un descuento de R$15. De esta manera, el monto a pagar es de solo R$135,00 por un gift card que todavía conserva la capacidad de compra de R$150,00.
 
-![](/assets/publications/ecommerce-giftcard/checkout.png)
+![Pantalla de checkout comprando un gift card con un cupón de descuento aplicado](/assets/publications/ecommerce-giftcard/checkout.webp){: width="1310" height="1112" loading="lazy" decoding="async"}
 
 - *Figura 2: Comprando un Gift Card con cupón de descuento en un e-commerce*
 
@@ -41,7 +36,7 @@ Para ilustrar, si el proceso se repite en 10 ciclos consecutivos, el crédito in
 
 Adicionalmente, es importante considerar que cada transacción realizada está sujeta al cobro de tasas operativas por parte de los intermediarios de pago. Así, además del perjuicio derivado de la generación indebida de saldo, el procesamiento recurrente de transacciones incrementa los costos de la operación, ampliando el impacto financiero negativo para la plataforma.
 
-### Conclusión
+## Conclusión
 
 La vulnerabilidad identificada tiene su origen en fallas de lógica de negocio, y su mitigación requiere ajustes estructurales en el flujo de compra. La primera y más directa medida consiste en restringir el uso de gift cards como forma de pago para la adquisición de nuevos gift cards. Esta regla simple elimina la posibilidad de encadenar transacciones que resulten en la generación artificial de saldo.
 De manera complementaria, se recomienda establecer políticas específicas para los cupones de descuento, impidiendo que se apliquen en operaciones de compra de gift cards. Esta práctica es común en el mercado y busca preservar la integridad financiera del sistema, ya que los gift cards funcionan, en la práctica, como instrumentos de valor almacenado y no deberían ser objeto de promociones que reduzcan su costo de adquisición.
@@ -50,7 +45,7 @@ Asimismo, es altamente recomendable implementar mecanismos de prevención y dete
 
 En conjunto, estas medidas representan un enfoque de mitigación en múltiples capas, reduciendo la exposición de la empresa al riesgo de fraude financiero y garantizando una mayor confiabilidad.
 
-#### Referencias
+### Referencias
 
  - [*Common Security Issues in Financially- Oriented Web Applications – NCC Group*](https://soroush.me/downloadable/common-security-issues-in-financially-orientated-web-applications.pdf)
  - [*Gift Card Fraud Prevention Methods & Solutions*](https://datadome.co/threats/gift-card-fraud-prevention/)

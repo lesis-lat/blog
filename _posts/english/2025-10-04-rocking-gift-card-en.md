@@ -5,11 +5,6 @@ lang: en
 translation_key: gift-card-loop
 category: vulnerability
 author: Heitor Gouvêa
-author-info:
-  name:  Heitor Gouvêa
-  image:  heitor-gouvea.jpeg
-  description: Researcher with a background in software engineering. Gouvêa’s research focuses on discovering vulnerabilities in modern applications and developing tools and exploits. 
-  linkedin: htrgouvea
 date: 2025-10-04 13:29:00 -0300
 permalink: /vulnerability/2025/10/04/rocking-gift-card-en.html
 ---
@@ -22,15 +17,15 @@ Websites that sell any type of product have an enormous level of complexity in t
 
 **Discount coupon:** this is a code, usually alphanumeric, provided to customers to reduce the purchase price of products or services. When applied during checkout, the customer receives a discount or specific benefit, such as a percentage off or free shipping, making the purchase more advantageous.
 
-###  Rocking the gift card loop
+##  Rocking the gift card loop
 
-![](/assets/publications/ecommerce-giftcard/product-list.png)
+![Gift card listed for sale in the e-commerce product catalog](/assets/publications/ecommerce-giftcard/product-list.webp){: width="1354" height="662" loading="lazy" decoding="async"}
 
 - *Figure 1: Listing of a Gift Card for sale*
 
 During a testing activity cycle, I identified the following scenario: a site offers the option to purchase gift cards and, at the same time, allows the use of discount coupons in that very purchase. For example, when purchasing a gift card worth R$150.00, it is possible to apply a discount coupon called “15OFF,” which grants a R$15 discount. As a result, the amount paid is only R$135.00 for a gift card that still has a "purchasing power" of R$150.00.
 
-![](/assets/publications/ecommerce-giftcard/checkout.png)
+![Checkout screen buying a gift card with a discount coupon applied](/assets/publications/ecommerce-giftcard/checkout.webp){: width="1310" height="1112" loading="lazy" decoding="async"}
 
 - *Figure 2: Buying a Gift Card with a discount coupon in an e-commerce*
 
@@ -42,7 +37,7 @@ To illustrate, if this process is repeated across 10 consecutive cycles, the ini
 
 Additionally, it is important to note that each transaction carried out is subject to operational fees charged by payment intermediaries. Thus, beyond the financial loss from the illegitimate generation of balance, the recurring processing of transactions increases operational costs, amplifying the negative financial impact on the platform.
 
-### Conclusion
+## Conclusion
 
 The vulnerability identified stems from business logic flaws, and its mitigation requires structural adjustments to the purchase flow. The first and most direct measure is to restrict the use of gift cards as a payment method for acquiring new gift cards. This simple rule eliminates the possibility of chaining transactions that result in the artificial generation of balance.
 
@@ -52,7 +47,7 @@ Furthermore, implementing fraud prevention and detection mechanisms is highly re
 
 Taken together, these measures represent a multilayered mitigation approach, reducing the company’s exposure to financial fraud risk and ensuring greater reliability.
 
-#### References
+### References
 
  - [*Common Security Issues in Financially- Oriented Web Applications – NCC Group*](https://soroush.me/downloadable/common-security-issues-in-financially-orientated-web-applications.pdf)
  - [*Gift Card Fraud Prevention Methods & Solutions*](https://datadome.co/threats/gift-card-fraud-prevention/)

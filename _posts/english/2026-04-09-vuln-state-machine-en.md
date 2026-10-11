@@ -6,11 +6,6 @@ lang: en
 translation_key: vulnerability-state-machine
 category: research
 author: Heitor Gouvêa
-author-info:
-  name:  Heitor Gouvêa
-  image:  heitor-gouvea.jpeg
-  description: Researcher with a software engineering background. Gouvêa's research focuses on vulnerability discovery in modern applications and the development of tools and exploits.
-  linkedin: htrgouvea
 date: 2026-04-09 00:00:00 -0300
 permalink: /research/2026/04/09/vuln-state-machine-en.html
 ---
@@ -27,4 +22,4 @@ This proposed state machine is both lean and complete. It is the most effective 
 
 Below is the diagram representing this flow:
 
-![](/assets/publications/vuln-state-machine/state-machine.png)
+![State machine diagram of a vulnerability's lifecycle](/assets/publications/vuln-state-machine/state-machine.webp){: width="1327" height="732" loading="lazy" decoding="async"}

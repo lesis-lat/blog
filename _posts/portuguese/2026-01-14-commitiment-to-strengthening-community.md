@@ -5,11 +5,6 @@ lang: pt
 translation_key: strengthening-community
 category: community
 author: Heitor Gouvêa
-author-info:
-  name:  Heitor Gouvêa
-  image:  heitor-gouvea.jpeg
-  description: Researcher with a background in software engineering. Gouvêa’s research focuses on discovering vulnerabilities in modern applications and developing tools and exploits. 
-  linkedin: htrgouvea
 date: 2026-01-14 19:13:00 -0300
 permalink: /comunidade/2026/01/14/commitiment-to-strengthening-community.html
 ---

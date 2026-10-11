@@ -6,22 +6,17 @@ translation_key: primitives-and-vulnerabilities
 category: research
 excerpt: 'How thinking in primitives helps turn discrepancies between intent and real behavior into impact analysis.'
 author: Heitor Gouvêa
-author-info:
-  name:  Heitor Gouvêa
-  image:  heitor-gouvea.jpeg
-  description: Researcher with a software engineering background. Gouvêa's research focuses on vulnerability discovery in modern applications and the development of tools and exploits.
-  linkedin: htrgouvea
 date: 2026-04-26 16:20:00 -0300
 permalink: /research/2026/04/26/primitives-and-vulnerabilities-en.html
 ---
 
-### Introduction
+## Introduction
 
 Last week, I tested the use of LLMs to support the vulnerability research process. It made me think: how can we "teach" a model to actually help find valid bugs?
 
 I reflected on my own process: how I analyze code, model threats, and reach the point where something becomes, in fact, a vulnerability.
 
-### Understanding, or creating, primitives
+## Understanding, or creating, primitives
 
 In short, I realized that I try to answer three questions during analysis:
 
@@ -41,7 +36,7 @@ Small isolated discrepancies sometimes do not create relevant impact, but when c
 
 I am now using prompts generated from this understanding in my day-to-day work, in an automated way and integrated into my workflow. They help me understand components faster, suggest more contextual data inputs, propose test inputs, and translate discrepancies into possible scenarios.
 
-### A simple example
+## A simple example
 
 In a past analysis, I tested a web application and identified a login screen. I ran several tests, including using a valid email with wrong passwords, trying to generate different feedback from the application to better understand the behavior of the flow.
 
@@ -53,7 +48,7 @@ Through the second question, the real behavior had important details. The lockou
 
 Through the third question, the possible impact became clearer. A malicious actor did not need to discover the password or access the account. It was enough to know or enumerate valid emails and perform login attempts with incorrect passwords to block real accounts. A control created to protect against brute force could be used as a denial-of-service primitive against legitimate users.
 
-### Conclusion
+## Conclusion
 
 Thinking in primitives helps turn analysis into a more explicit process. Instead of looking at the system only as a large and complex set of features, I start observing small actions, comparing intent and reality, and then understanding how those differences can be used.
 

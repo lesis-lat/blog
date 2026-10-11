@@ -5,11 +5,6 @@ lang: pt
 translation_key: digital-safety-for-children
 category: community
 author: Heitor Gouvêa
-author-info:
-  name:  Heitor Gouvêa
-  image:  heitor-gouvea.jpeg
-  description: Researcher with a background in software engineering. Gouvêa’s research focuses on discovering vulnerabilities in modern applications and developing tools and exploits. 
-  linkedin: htrgouvea
 date: 2026-04-26 15:30:00 -0300
 permalink: /comunidade/2026/04/26/o-cibernauta-seguranca-digital-para-proxima-geracao.html
 ---

@@ -6,16 +6,11 @@ translation_key: pii-obfuscation-and-masking
 category: guides
 excerpt: 'Recomendações práticas para mascarar tipos comuns de informações pessoais sem expor fragmentos úteis entre sistemas.'
 author: Heitor Gouvêa
-author-info:
-  name:  Heitor Gouvêa
-  image:  heitor-gouvea.jpeg
-  description: Pesquisador, com background em engenharia de software. O foco da pesquisa de Gouvêa é a descoberta de vulnerabilidade em aplicações modernas e desenvolvimento de ferramentas e exploits.
-  linkedin: htrgouvea
 date: 2026-05-04 10:00:00 -0300
 permalink: /blog/orientacoes-para-ofuscacao-e-mascaramento-de-pii/
 ---
 
-### Introdução
+## Introdução
 
 Muitas aplicações lidam com informações pessoais identificáveis, conhecidas pela sigla PII: nomes, endereços, e-mails, telefones, documentos, identificadores de dispositivo e outros dados capazes de identificar uma pessoa direta ou indiretamente.
 
@@ -27,7 +22,7 @@ Essa inconsistência importa. Se a mesma PII é mascarada de formas diferentes e
 
 Este artigo propõe orientações práticas para mascarar campos comuns de PII. O objetivo não é definir um padrão legal universal, mas fornecer uma base técnica para pessoas de engenharia, segurança e produto que precisam de comportamento consistente ao exibir ou processar dados pessoais.
 
-### Ofuscação, mascaramento e anonimização
+## Ofuscação, mascaramento e anonimização
 
 Os termos costumam ser usados como sinônimos, mas não significam a mesma coisa.
 
@@ -41,21 +36,21 @@ Um exemplo de ofuscação que não é apenas mascaramento é substituir um e-mai
 
 Na prática, o mascaramento é mais útil como controle de minimização de dados. Ele reduz exposição desnecessária. Ele não substitui criptografia, controle de acesso, trilhas de auditoria, limites de retenção ou descarte seguro.
 
-### Por que consistência importa
+## Por que consistência importa
 
 Considere uma pessoa que usa o mesmo alias público em várias redes sociais. Um atacante quer descobrir o e-mail associado a esse alias. Ele não consegue ver o e-mail completo, mas consegue acionar fluxos de recuperação de senha em várias plataformas.
 
 Se cada plataforma mascara o e-mail de uma forma diferente, o atacante pode receber fragmentos como estes:
 
 | Plataforma | E-mail mascarado |
-| :---- | :---- |
+| ----- | ----- |
 | Instagram | `h***********a@g***l.com` |
 | Twitter | `*************@gmail.com` |
 | LinkedIn | `*******ouvea@gm********` |
 | Facebook | `hei**********@gma***om` |
 | Telegram | `*****r.******ea@g*****.com` |
 
-![Diagrama de reconstrução de e-mail a partir de fragmentos mascarados](/assets/publications/pii-obfuscation/email-reconstruction-pt.svg)
+![Diagrama de reconstrução de e-mail a partir de fragmentos mascarados](/assets/publications/pii-obfuscation/email-reconstruction-pt.svg){: width="1400" height="900" loading="lazy" decoding="async"}
 
 <p class="content-caption"><strong>Figura 1:</strong> fragmentos de um mesmo e-mail revelados por diferentes regras de mascaramento podem ser combinados para reconstruir o valor original.</p>
 
@@ -65,7 +60,7 @@ O mesmo problema pode acontecer dentro de uma organização. Se duas aplicaçõe
 
 Por esse motivo, o mascaramento deve ser tratado como uma decisão compartilhada de política, não como um detalhe local de formatação de interface. O mesmo campo deve ser mascarado da mesma forma em produtos, ferramentas internas, APIs e fluxos operacionais.
 
-### Quando mascarar PII
+## Quando mascarar PII
 
 Mascaramento de PII é útil sempre que o valor completo não é necessário para o usuário, operador ou ação de sistema que está sendo executada.
 
@@ -77,7 +72,7 @@ Em analytics e treinamento de modelos, dados de produção podem conter sinais q
 
 Em logs e sistemas de observabilidade, o mascaramento é especialmente importante porque logs costumam ser copiados, indexados, retidos, exportados e acessados por grupos operacionais mais amplos. Um campo seguro em um banco de produção restrito pode se tornar arriscado quando repetido em pipelines de logs.
 
-### Princípios gerais de mascaramento
+## Princípios gerais de mascaramento
 
 Decisões de mascaramento devem seguir algumas regras simples.
 
@@ -93,12 +88,12 @@ Não use mascaramento parcial como única proteção para armazenamento sensíve
 
 O mascaramento deve acontecer o mais perto possível da superfície de exposição: interface, logs, exportações, mensagens, relatórios e ambientes derivados. Ele não deve ser confundido com transformar o dado original no banco sem uma necessidade clara.
 
-### Padrões recomendados
+## Padrões recomendados
 
 Os padrões abaixo oferecem um ponto de partida prático. Eles são exemplos de baseline, não regras universais. Cada organização deve validar os campos conforme jurisdição, ameaça e necessidade operacional, mas o ponto central é a consistência.
 
 | Campo | Valor original | Valor mascarado | Orientação |
-| :---- | :---- | :---- | :---- |
+| ----- | ----- | ----- | ----- |
 | CPF | `111.222.333-00` | `***.222.33*-**` | Oculte os três primeiros dígitos, o nono dígito e os dois dígitos verificadores. Preserve a pontuação apenas para legibilidade. |
 | E-mail | `user.name@example.com.br` | `u*******e@e*****e.com.br` | Revele apenas o primeiro e o último caractere da parte local e do rótulo principal do domínio. Preserve sufixos públicos, como `.com.br`, quando necessário para reconhecimento. |
 | Telefone | `(11) 91234-5678` | `(11) 9****-**78` | Preserve código de país ou DDD apenas quando necessário para roteamento ou reconhecimento. Revele a menor quantidade possível de dígitos finais exigida pelo fluxo. |
@@ -110,7 +105,7 @@ Os padrões abaixo oferecem um ponto de partida prático. Eles são exemplos de 
 
 Esses exemplos são intencionalmente conservadores. A quantidade exata de caracteres visíveis pode mudar conforme o fluxo, mas cada sistema deve tomar essa decisão explicitamente.
 
-### Orientações de implementação
+## Orientações de implementação
 
 A lógica de mascaramento deve viver em código compartilhado, não ser reimplementada independentemente em cada tela ou serviço. Uma pequena biblioteca ou serviço compartilhado reduz inconsistência e facilita futuras mudanças de política.
 
@@ -134,7 +129,7 @@ A política também deve definir o que acontece com valores inválidos ou inespe
 
 Por fim, teste comportamento de mascaramento como lógica relevante para segurança. Testes unitários devem cobrir valores normais, valores curtos, valores malformados, formatos internacionalizados, separadores, valores vazios e valores já mascarados. Testes de regressão são úteis porque mudanças acidentais no mascaramento podem aumentar exposição silenciosamente.
 
-### Hashing e criptografia são controles diferentes
+## Hashing e criptografia são controles diferentes
 
 Mascaramento, hashing e criptografia resolvem problemas diferentes.
 
@@ -146,7 +141,7 @@ Mascaramento muda o que é exibido ou exportado. Ele não protege o valor origin
 
 Boa engenharia de privacidade normalmente combina esses controles: minimizar coleta, restringir acesso, mascarar exibição, criptografar armazenamento e transporte sensíveis, auditar uso e apagar dados quando eles não forem mais necessários.
 
-### Conclusão
+## Conclusão
 
 Mascaramento de PII é um controle prático para reduzir exposição desnecessária de dados pessoais, mas só funciona bem quando é intencional e consistente.
 
@@ -154,7 +149,7 @@ O risco principal não é apenas mostrar caracteres demais em um lugar. É mostr
 
 Mascaramento deve ser tratado como parte de um programa mais amplo de privacidade e segurança. Ele apoia minimização de dados, melhora a privacidade do usuário e reduz exposição operacional, mas não substitui criptografia, controle de acesso, revisão legal ou boa governança de dados.
 
-### Referências
+## Referências
 
 1. [Dados pessoais - Wikipedia](https://pt.wikipedia.org/wiki/Dados_pessoais)
 2. [Guide to Protecting the Confidentiality of Personally Identifiable Information (PII) - NIST SP 800-122](https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-122.pdf)

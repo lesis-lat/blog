@@ -6,11 +6,6 @@ translation_key: ai-assisted-malicious-group
 category: case-study
 excerpt: 'Investigação da LESIS identifica uma campanha maliciosa contra fintechs brasileiras de pequeno e médio porte, com uso de IA para acelerar tooling ofensivo, adaptação de payloads e apoio à exploração de aplicações.'
 author: LESIS Team
-author-info:
-  name:  LESIS
-  image:  favicon.png
-  description: A LESIS é especializada em pesquisa aplicada com foco em tecnologias de segurança ofensiva que apoiam operações críticas.
-  linkedin: lesis-lat
 date: 2026-06-29 15:00:00 -0300
 permalink: /blog/nossa-primeira-observação-de-um-grupo-malicioso-assistido-por-ia/
 ---

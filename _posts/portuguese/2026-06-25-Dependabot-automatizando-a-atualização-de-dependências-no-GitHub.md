@@ -6,11 +6,6 @@ translation_key: dependabot-updates
 category: guides
 excerpt: 'Entenda como o Dependabot automatiza o monitoramento de vulnerabilidades e a atualização de dependências diretamente no GitHub.'
 author: Maria Eduarda
-author-info:
-  name: Maria Eduarda
-  image: maria.png
-  description: Estudou engenharia de software. Contribui para o desenvolvimento e manutenção de soluções de engenharia que entregam valor aos clientes finais, incluindo ferramentas e sistemas projetados para identificar vulnerabilidades e reduzir riscos.
-  linkedin: Eduardadionisio
 date: 2026-06-25 08:00:00 -0300
 permalink: /blog/dependabot-automatizando-atualizacao-de-dependencias/
 ---
