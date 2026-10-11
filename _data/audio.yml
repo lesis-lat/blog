@@ -149,6 +149,31 @@ strengthening-community:
     model: eleven_v4
     voice: nLSNxtDmAgEDCV5VA6oz
     generated_at: '2026-10-11T00:35:54Z'
+vulnerability-economics:
+  en:
+    url: "/assets/audio/vulnerability-economics/en.mp3"
+    hash: cea189850abed288
+    duration: 1015
+    size: 16245457
+    model: eleven_v4
+    voice: ZoiZ8fuDWInAcwPXaVeq
+    generated_at: '2026-10-11T00:45:03Z'
+  es:
+    url: "/assets/audio/vulnerability-economics/es.mp3"
+    hash: 4fa4594a0d091cba
+    duration: 1296
+    size: 20737317
+    model: eleven_v4
+    voice: QK4xDwo9ESPHA4JNUpX3
+    generated_at: '2026-10-11T00:46:18Z'
+  pt:
+    url: "/assets/audio/vulnerability-economics/pt.mp3"
+    hash: 2f982cba25dfe8b9
+    duration: 1281
+    size: 20492803
+    model: eleven_v4
+    voice: nLSNxtDmAgEDCV5VA6oz
+    generated_at: '2026-10-11T00:46:19Z'
 vulnerability-state-machine:
   en:
     url: "/assets/audio/vulnerability-state-machine/en.mp3"
