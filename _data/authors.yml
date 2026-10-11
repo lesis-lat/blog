@@ -14,6 +14,14 @@
     en: Studied software engineering. Contributes to the development and maintenance of engineering solutions that deliver value to end clients, including tools and systems designed to identify vulnerabilities and reduce risk.
     pt: Estudou engenharia de software. Contribui para o desenvolvimento e manutenção de soluções de engenharia que entregam valor aos clientes finais, incluindo ferramentas e sistemas projetados para identificar vulnerabilidades e reduzir riscos.
     es: Estudió ingeniería de software. Contribuye al desarrollo y mantenimiento de soluciones de ingeniería que entregan valor a los clientes finales, incluyendo herramientas y sistemas diseñados para identificar vulnerabilidades y reducir riesgos.
+"Lucas Vieira Araujo":
+  name: Lucas Vieira Araujo
+  image: lucas-vieira-araujo.jpeg
+  url: https://www.linkedin.com/in/lvash/
+  bio:
+    en: Security Researcher based in Northeast Brazil with over 4 years of experience in penetration testing and red teaming, passionate about offensive security, cryptography, and open-source projects.
+    pt: Pesquisador de segurança do Nordeste do Brasil, com mais de 4 anos de experiência em pentest e red teaming, apaixonado por segurança ofensiva, criptografia e projetos open source.
+    es: Investigador de seguridad del Nordeste de Brasil, con más de 4 años de experiencia en pentest y red teaming, apasionado por la seguridad ofensiva, la criptografía y los proyectos de código abierto.
 "LESIS Team":
   name: LESIS
   organization: true
