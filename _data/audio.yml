@@ -49,6 +49,31 @@ digital-safety-for-children:
     model: eleven_v4
     voice: nLSNxtDmAgEDCV5VA6oz
     generated_at: '2026-10-11T00:25:56Z'
+gift-card-loop:
+  en:
+    url: "/assets/audio/gift-card-loop/en.mp3"
+    hash: 1b9341287853efbb
+    duration: 312
+    size: 4992353
+    model: eleven_v4
+    voice: ZoiZ8fuDWInAcwPXaVeq
+    generated_at: '2026-10-11T00:38:37Z'
+  es:
+    url: "/assets/audio/gift-card-loop/es.mp3"
+    hash: 19c9e353dde9bcb6
+    duration: 342
+    size: 5471329
+    model: eleven_v4
+    voice: QK4xDwo9ESPHA4JNUpX3
+    generated_at: '2026-10-11T00:38:41Z'
+  pt:
+    url: "/assets/audio/gift-card-loop/pt.mp3"
+    hash: 7164f143b9473b43
+    duration: 336
+    size: 5369854
+    model: eleven_v4
+    voice: nLSNxtDmAgEDCV5VA6oz
+    generated_at: '2026-10-11T00:38:43Z'
 primitives-and-vulnerabilities:
   en:
     url: "/assets/audio/primitives-and-vulnerabilities/en.mp3"
