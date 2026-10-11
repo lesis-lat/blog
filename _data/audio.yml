@@ -4,7 +4,7 @@ ai-assisted-malicious-group:
     url: "/assets/audio/ai-assisted-malicious-group/en.mp3"
     hash: 1729b59c731b02cd
     duration: 470
-    size: 7521456
+    size: 3760868
     model: eleven_v4
     voice: ZoiZ8fuDWInAcwPXaVeq
     generated_at: '2026-10-11T00:31:40Z'
@@ -12,7 +12,7 @@ ai-assisted-malicious-group:
     url: "/assets/audio/ai-assisted-malicious-group/es.mp3"
     hash: 67daea86540b58bb
     duration: 528
-    size: 8448301
+    size: 4224405
     model: eleven_v4
     voice: QK4xDwo9ESPHA4JNUpX3
     generated_at: '2026-10-11T00:31:53Z'
@@ -20,7 +20,7 @@ ai-assisted-malicious-group:
     url: "/assets/audio/ai-assisted-malicious-group/pt.mp3"
     hash: 749a0a5f88ed7313
     duration: 516
-    size: 8263457
+    size: 4131930
     model: eleven_v4
     voice: nLSNxtDmAgEDCV5VA6oz
     generated_at: '2026-10-11T00:31:57Z'
@@ -29,7 +29,7 @@ choosing-sharing-identifiers:
     url: "/assets/audio/choosing-sharing-identifiers/en.mp3"
     hash: 642a6236eac378f0
     duration: 1014
-    size: 16226244
+    size: 8113238
     model: eleven_v4
     voice: ZoiZ8fuDWInAcwPXaVeq
     generated_at: '2026-10-11T00:52:57Z'
@@ -37,7 +37,7 @@ choosing-sharing-identifiers:
     url: "/assets/audio/choosing-sharing-identifiers/es.mp3"
     hash: 42afbf7b65fe4b10
     duration: 1126
-    size: 18016429
+    size: 9008364
     model: eleven_v4
     voice: QK4xDwo9ESPHA4JNUpX3
     generated_at: '2026-10-11T00:53:11Z'
@@ -45,7 +45,7 @@ choosing-sharing-identifiers:
     url: "/assets/audio/choosing-sharing-identifiers/pt.mp3"
     hash: a29319ebb3fcbcbb
     duration: 1083
-    size: 17332658
+    size: 8666483
     model: eleven_v4
     voice: nLSNxtDmAgEDCV5VA6oz
     generated_at: '2026-10-11T00:53:19Z'
@@ -54,7 +54,7 @@ dependabot-updates:
     url: "/assets/audio/dependabot-updates/en.mp3"
     hash: f5b859b4c11f6e10
     duration: 549
-    size: 8789482
+    size: 4394850
     model: eleven_v4
     voice: ZoiZ8fuDWInAcwPXaVeq
     generated_at: '2026-10-11T01:09:45Z'
@@ -62,7 +62,7 @@ dependabot-updates:
     url: "/assets/audio/dependabot-updates/es.mp3"
     hash: 6b2dfadfbad6ff48
     duration: 639
-    size: 10217319
+    size: 5108813
     model: eleven_v4
     voice: QK4xDwo9ESPHA4JNUpX3
     generated_at: '2026-10-11T01:09:56Z'
@@ -70,7 +70,7 @@ dependabot-updates:
     url: "/assets/audio/dependabot-updates/pt.mp3"
     hash: 2237c4f9995f6ce9
     duration: 615
-    size: 9839478
+    size: 4919889
     model: eleven_v4
     voice: nLSNxtDmAgEDCV5VA6oz
     generated_at: '2026-10-11T01:10:01Z'
@@ -79,7 +79,7 @@ digital-safety-for-children:
     url: "/assets/audio/digital-safety-for-children/en.mp3"
     hash: 9edcc150b1842a7e
     duration: 216
-    size: 3450077
+    size: 1725159
     model: eleven_v4
     voice: ZoiZ8fuDWInAcwPXaVeq
     generated_at: '2026-10-11T00:25:47Z'
@@ -87,7 +87,7 @@ digital-safety-for-children:
     url: "/assets/audio/digital-safety-for-children/es.mp3"
     hash: 6e1129bb67068f38
     duration: 244
-    size: 3913248
+    size: 1956781
     model: eleven_v4
     voice: QK4xDwo9ESPHA4JNUpX3
     generated_at: '2026-10-11T00:25:56Z'
@@ -95,7 +95,7 @@ digital-safety-for-children:
     url: "/assets/audio/digital-safety-for-children/pt.mp3"
     hash: 40dfa8368a5cc609
     duration: 231
-    size: 3692142
+    size: 1846225
     model: eleven_v4
     voice: nLSNxtDmAgEDCV5VA6oz
     generated_at: '2026-10-11T00:25:56Z'
@@ -104,7 +104,7 @@ gift-card-loop:
     url: "/assets/audio/gift-card-loop/en.mp3"
     hash: 1b9341287853efbb
     duration: 312
-    size: 4992353
+    size: 2496301
     model: eleven_v4
     voice: ZoiZ8fuDWInAcwPXaVeq
     generated_at: '2026-10-11T00:38:37Z'
@@ -112,7 +112,7 @@ gift-card-loop:
     url: "/assets/audio/gift-card-loop/es.mp3"
     hash: 19c9e353dde9bcb6
     duration: 342
-    size: 5471329
+    size: 2735786
     model: eleven_v4
     voice: QK4xDwo9ESPHA4JNUpX3
     generated_at: '2026-10-11T00:38:41Z'
@@ -120,7 +120,7 @@ gift-card-loop:
     url: "/assets/audio/gift-card-loop/pt.mp3"
     hash: 7164f143b9473b43
     duration: 336
-    size: 5369854
+    size: 2685093
     model: eleven_v4
     voice: nLSNxtDmAgEDCV5VA6oz
     generated_at: '2026-10-11T00:38:43Z'
@@ -129,7 +129,7 @@ pii-obfuscation-and-masking:
     url: "/assets/audio/pii-obfuscation-and-masking/en.mp3"
     hash: f7bb8f524f8548f3
     duration: 836
-    size: 13384117
+    size: 6692172
     model: eleven_v4
     voice: ZoiZ8fuDWInAcwPXaVeq
     generated_at: '2026-10-11T00:58:56Z'
@@ -137,7 +137,7 @@ pii-obfuscation-and-masking:
     url: "/assets/audio/pii-obfuscation-and-masking/es.mp3"
     hash: 3d8a3e26e9fe399b
     duration: 967
-    size: 15475651
+    size: 7737973
     model: eleven_v4
     voice: QK4xDwo9ESPHA4JNUpX3
     generated_at: '2026-10-11T00:59:36Z'
@@ -145,7 +145,7 @@ pii-obfuscation-and-masking:
     url: "/assets/audio/pii-obfuscation-and-masking/pt.mp3"
     hash: 0d9e2ea380243550
     duration: 934
-    size: 14948175
+    size: 7474229
     model: eleven_v4
     voice: nLSNxtDmAgEDCV5VA6oz
     generated_at: '2026-10-11T00:59:29Z'
@@ -154,7 +154,7 @@ primitives-and-vulnerabilities:
     url: "/assets/audio/primitives-and-vulnerabilities/en.mp3"
     hash: 41ffdae6bce49f70
     duration: 230
-    size: 3684106
+    size: 1842160
     model: eleven_v4
     voice: ZoiZ8fuDWInAcwPXaVeq
     generated_at: '2026-10-11T00:01:52Z'
@@ -162,7 +162,7 @@ primitives-and-vulnerabilities:
     url: "/assets/audio/primitives-and-vulnerabilities/es.mp3"
     hash: bf037b0551be2d93
     duration: 260
-    size: 4166848
+    size: 2083530
     model: eleven_v4
     voice: QK4xDwo9ESPHA4JNUpX3
     generated_at: '2026-10-11T00:01:53Z'
@@ -170,7 +170,7 @@ primitives-and-vulnerabilities:
     url: "/assets/audio/primitives-and-vulnerabilities/pt.mp3"
     hash: dfed833819a6f858
     duration: 249
-    size: 3986289
+    size: 1993251
     model: eleven_v4
     voice: nLSNxtDmAgEDCV5VA6oz
     generated_at: '2026-10-11T00:01:59Z'
@@ -179,7 +179,7 @@ sponsoring-events:
     url: "/assets/audio/sponsoring-events/en.mp3"
     hash: b34354077f11cbd6
     duration: 178
-    size: 2854887
+    size: 1427556
     model: eleven_v4
     voice: ZoiZ8fuDWInAcwPXaVeq
     generated_at: '2026-10-11T00:21:26Z'
@@ -187,7 +187,7 @@ sponsoring-events:
     url: "/assets/audio/sponsoring-events/es.mp3"
     hash: bda26950750aa667
     duration: 200
-    size: 3208141
+    size: 1604223
     model: eleven_v4
     voice: QK4xDwo9ESPHA4JNUpX3
     generated_at: '2026-10-11T00:21:35Z'
@@ -195,7 +195,7 @@ sponsoring-events:
     url: "/assets/audio/sponsoring-events/pt.mp3"
     hash: 83b8a6c58a8a2b08
     duration: 195
-    size: 3118270
+    size: 1559282
     model: eleven_v4
     voice: nLSNxtDmAgEDCV5VA6oz
     generated_at: '2026-10-11T00:21:35Z'
@@ -204,7 +204,7 @@ strengthening-community:
     url: "/assets/audio/strengthening-community/en.mp3"
     hash: 02ddc19b6b5c8006
     duration: 123
-    size: 1961735
+    size: 980994
     model: eleven_v4
     voice: ZoiZ8fuDWInAcwPXaVeq
     generated_at: '2026-10-11T00:35:51Z'
@@ -212,7 +212,7 @@ strengthening-community:
     url: "/assets/audio/strengthening-community/es.mp3"
     hash: ba117b481a4b16b5
     duration: 135
-    size: 2164955
+    size: 1082650
     model: eleven_v4
     voice: QK4xDwo9ESPHA4JNUpX3
     generated_at: '2026-10-11T00:35:55Z'
@@ -220,7 +220,7 @@ strengthening-community:
     url: "/assets/audio/strengthening-community/pt.mp3"
     hash: 8e603cbbd07d2242
     duration: 134
-    size: 2138196
+    size: 1069265
     model: eleven_v4
     voice: nLSNxtDmAgEDCV5VA6oz
     generated_at: '2026-10-11T00:35:54Z'
@@ -229,7 +229,7 @@ vulnerability-economics:
     url: "/assets/audio/vulnerability-economics/en.mp3"
     hash: cea189850abed288
     duration: 1015
-    size: 16245457
+    size: 8122838
     model: eleven_v4
     voice: ZoiZ8fuDWInAcwPXaVeq
     generated_at: '2026-10-11T00:45:03Z'
@@ -237,7 +237,7 @@ vulnerability-economics:
     url: "/assets/audio/vulnerability-economics/es.mp3"
     hash: 4fa4594a0d091cba
     duration: 1296
-    size: 20737317
+    size: 10368795
     model: eleven_v4
     voice: QK4xDwo9ESPHA4JNUpX3
     generated_at: '2026-10-11T00:46:18Z'
@@ -245,7 +245,7 @@ vulnerability-economics:
     url: "/assets/audio/vulnerability-economics/pt.mp3"
     hash: 2f982cba25dfe8b9
     duration: 1281
-    size: 20492803
+    size: 10246534
     model: eleven_v4
     voice: nLSNxtDmAgEDCV5VA6oz
     generated_at: '2026-10-11T00:46:19Z'
@@ -254,7 +254,7 @@ vulnerability-state-machine:
     url: "/assets/audio/vulnerability-state-machine/en.mp3"
     hash: 625ade2d3fec90b9
     duration: 172
-    size: 2753741
+    size: 1376983
     model: eleven_v4
     voice: ZoiZ8fuDWInAcwPXaVeq
     generated_at: '2026-10-10T23:51:47Z'
@@ -262,7 +262,7 @@ vulnerability-state-machine:
     url: "/assets/audio/vulnerability-state-machine/es.mp3"
     hash: d954e60a190cbd9c
     duration: 185
-    size: 2967387
+    size: 1483841
     model: eleven_v4
     voice: QK4xDwo9ESPHA4JNUpX3
     generated_at: '2026-10-10T23:51:51Z'
@@ -270,7 +270,7 @@ vulnerability-state-machine:
     url: "/assets/audio/vulnerability-state-machine/pt.mp3"
     hash: e2fdc19650e3a0de
     duration: 181
-    size: 2905103
+    size: 1452695
     model: eleven_v4
     voice: nLSNxtDmAgEDCV5VA6oz
     generated_at: '2026-10-10T23:51:50Z'
@@ -279,7 +279,7 @@ writing-security-reports:
     url: "/assets/audio/writing-security-reports/en.mp3"
     hash: 44ed9adfe885c578
     duration: 451
-    size: 7215456
+    size: 3607841
     model: eleven_v4
     voice: ZoiZ8fuDWInAcwPXaVeq
     generated_at: '2026-10-11T00:13:02Z'
@@ -287,7 +287,7 @@ writing-security-reports:
     url: "/assets/audio/writing-security-reports/es.mp3"
     hash: bfd6ca415d4fe5f1
     duration: 515
-    size: 8248313
+    size: 4124310
     model: eleven_v4
     voice: QK4xDwo9ESPHA4JNUpX3
     generated_at: '2026-10-11T00:13:21Z'
@@ -295,7 +295,7 @@ writing-security-reports:
     url: "/assets/audio/writing-security-reports/pt.mp3"
     hash: 9f41c19004b0801d
     duration: 516
-    size: 8259596
+    size: 4129950
     model: eleven_v4
     voice: nLSNxtDmAgEDCV5VA6oz
     generated_at: '2026-10-11T00:13:19Z'
