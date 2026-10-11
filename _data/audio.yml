@@ -49,3 +49,28 @@ vulnerability-state-machine:
     model: eleven_v4
     voice: nLSNxtDmAgEDCV5VA6oz
     generated_at: '2026-10-10T23:51:50Z'
+writing-security-reports:
+  en:
+    url: "/assets/audio/writing-security-reports/en.mp3"
+    hash: 44ed9adfe885c578
+    duration: 451
+    size: 7215456
+    model: eleven_v4
+    voice: ZoiZ8fuDWInAcwPXaVeq
+    generated_at: '2026-10-11T00:13:02Z'
+  es:
+    url: "/assets/audio/writing-security-reports/es.mp3"
+    hash: bfd6ca415d4fe5f1
+    duration: 515
+    size: 8248313
+    model: eleven_v4
+    voice: QK4xDwo9ESPHA4JNUpX3
+    generated_at: '2026-10-11T00:13:21Z'
+  pt:
+    url: "/assets/audio/writing-security-reports/pt.mp3"
+    hash: 9f41c19004b0801d
+    duration: 516
+    size: 8259596
+    model: eleven_v4
+    voice: nLSNxtDmAgEDCV5VA6oz
+    generated_at: '2026-10-11T00:13:19Z'
