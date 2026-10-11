@@ -9,3 +9,4 @@
   {%- endif -%}
 {%- endunless -%}
 {%- assign translations = site.data.translations[current_lang] | default: site.data.translations.pt -%}
+{%- assign asset_version = site.time | date: '%s' -%}

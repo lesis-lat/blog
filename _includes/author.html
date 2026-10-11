@@ -1,12 +1,13 @@
+{%- assign author_bio = include.author.bio[current_lang] | default: include.author.bio.en -%}
 <div class="about-author">
   <div class="author-image-block">
-    <div class="author-image" style="background: url('/assets/authors/{{ include.author.image }}'); background-size: cover; background-repeat: no-repeat; background-position: center;"></div>
+    <img class="author-image" src="{{ '/assets/authors/' | append: include.author.image | relative_url }}" alt="" width="88" height="88" loading="lazy" decoding="async">
   </div>
   <div class="author-info-block">
-    <h3 class="author-name">
+    <p class="author-name">
       {% include icon.html name="linkedin" %}
-      <a href="https://www.linkedin.com/in/{{ include.author.linkedin }}">{{ include.author.name }}</a>
-    </h3>
-    <p class="author-description">{{ include.author.description }}</p>
+      <a href="{{ include.author.url }}" rel="noopener noreferrer">{{ include.author.name | escape }}</a>
+    </p>
+    <p class="author-description">{{ author_bio | escape }}</p>
   </div>
 </div>

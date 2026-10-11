@@ -77,8 +77,7 @@
   line-height: 1.2;
 }
 
-.site-nav .nav-trigger,
-.site-nav .menu-icon {
+.site-nav .menu-toggle {
   display: none;
 }
 
@@ -99,7 +98,7 @@
 .language-selector .language {
   color: var(--ink);
   text-decoration: none;
-  opacity: 0.5;
+  opacity: 0.65;
   transition: opacity 0.2s;
 }
 
@@ -278,15 +277,21 @@
   }
 
   // Mobile menu: the language list drops down like the lesis.lat menu
-  .site-nav label[for="nav-trigger"] {
+  .site-nav .menu-toggle {
     display: block;
     padding: 10px 0 10px 12px;
+    border: 0;
+    background: transparent;
     cursor: pointer;
   }
 
   .site-nav .menu-icon {
     display: block;
     line-height: 0;
+  }
+
+  html:not(.js) .site-nav .menu-toggle {
+    display: none;
   }
 
   .site-nav .menu-icon svg {
@@ -311,11 +316,18 @@
       visibility 0s linear 0.25s;
   }
 
-  .site-nav .nav-trigger:checked ~ .trigger {
+  .site-nav.is-open .trigger {
     visibility: visible;
     clip-path: inset(0 0 0 0);
     pointer-events: auto;
     transition: clip-path 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  html:not(.js) .site-nav .trigger {
+    position: static;
+    visibility: visible;
+    clip-path: none;
+    pointer-events: auto;
   }
 
   .site-nav .trigger .language-selector {
@@ -332,15 +344,17 @@
     transition: opacity 0.15s, transform 0.2s;
   }
 
-  .site-nav .nav-trigger:checked ~ .trigger .language {
-    opacity: 0.6;
+  .site-nav.is-open .trigger .language,
+  html:not(.js) .site-nav .trigger .language {
+    opacity: 0.78;
     transform: none;
     transition:
       opacity 0.35s ease-out var(--d, 0s),
       transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0s);
   }
 
-  .site-nav .nav-trigger:checked ~ .trigger .language.active {
+  .site-nav.is-open .trigger .language.active,
+  html:not(.js) .site-nav .trigger .language.active {
     opacity: 1;
   }
 

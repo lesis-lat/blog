@@ -358,6 +358,14 @@
   width: 100%;
 }
 
+.js .post-audio-native {
+  display: none;
+}
+
+html:not(.js) .post-audio-player {
+  display: none;
+}
+
 .post-audio-player {
   display: flex;
   align-items: center;
@@ -464,6 +472,8 @@
 }
 
 .post-share-applause {
+  width: 48px;
+  height: 48px;
   margin-left: auto;
 }
 
@@ -629,11 +639,10 @@
 }
 
 .post-newsletter-input::placeholder {
-  color: #8e8e8e;
+  color: #757575;
 }
 
 .post-newsletter-input:focus {
-  outline: none;
   border-color: var(--ink);
 }
 
@@ -661,7 +670,8 @@
 }
 
 .post-newsletter-guarantee,
-.post-newsletter-success {
+.post-newsletter-success,
+.post-newsletter-error {
   margin: 0;
   color: var(--muted);
   font-family: var(--mono);
@@ -672,6 +682,10 @@
 
 .post-newsletter-success {
   color: var(--ink);
+}
+
+.post-newsletter-error {
+  color: #7f1d1d;
 }
 
 .post-newsletter-powered-by,
@@ -711,8 +725,22 @@
 }
 
 .author-image {
+  display: block;
   width: 88px;
   height: 88px;
+  object-fit: cover;
+}
+
+.not-found {
+  max-width: 600px;
+  margin: 10px auto;
+}
+
+.not-found h1 {
+  margin: 30px 0;
+  font-size: 4em;
+  line-height: 1;
+  letter-spacing: -1px;
 }
 
 .author-name {
@@ -834,10 +862,6 @@
 }
 
 @media screen and (max-width: 600px) {
-  .post:has(.post-content > h1:first-child) .post-header .post-title {
-    display: none;
-  }
-
   .post-content {
     font-size: 16px;
   }

@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+<article class="post h-entry">
   {% include i18n.html %}
   {% assign toc_label = translations.table_of_contents | default: 'Table of contents' %}
   {% assign section_notes_label = translations.section_notes | default: 'Section notes' %}
@@ -13,22 +13,31 @@ layout: default
   {% assign newsletter_button = translations.newsletter_button | default: 'Subscribe' %}
   {% assign newsletter_guarantee = translations.newsletter_guarantee | default: 'We respect your privacy. Unsubscribe at any time.' %}
   {% assign newsletter_success = translations.newsletter_success | default: 'Thanks. Check your inbox to confirm your subscription.' %}
+  {% assign newsletter_error = translations.newsletter_error | default: 'Something went wrong. Please try again.' %}
+  {% assign author_profile = site.data.authors[page.author] %}
+  {% assign post_description = page.excerpt | strip_html | normalize_whitespace | truncate: 300 %}
+  {% assign post_image = page.og_image | default: site.og_image %}
+  {% assign post_audio = site.data.audio[page.translation_key][page.lang] %}
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "BlogPosting", "headline": {{ page.title | jsonify }}, "description": {{ post_description | jsonify }}, "inLanguage": {{ translations.html_lang | jsonify }}, "datePublished": {{ page.date | date_to_xmlschema | jsonify }}, "dateModified": {{ page.last_modified_at | default: page.date | date_to_xmlschema | jsonify }}, "url": {{ page.url | absolute_url | jsonify }}, "mainEntityOfPage": {{ page.url | absolute_url | jsonify }}, "image": {{ post_image | absolute_url | jsonify }}, "articleSection": {{ translations.categories[page.category] | default: page.category | jsonify }}, "author": {% if author_profile.organization %}{"@type": "Organization", "name": {{ author_profile.name | jsonify }}, "url": {{ author_profile.url | jsonify }}}{% else %}{"@type": "Person", "name": {{ page.author | default: site.author | jsonify }}{% if author_profile.url %}, "url": {{ author_profile.url | jsonify }}{% endif %}}{% endif %}, "publisher": {% include json-ld-organization.html %}{% if post_audio %}, "audio": {"@type": "AudioObject", "name": {{ page.title | jsonify }}, "contentUrl": {{ post_audio.url | absolute_url | jsonify }}, "encodingFormat": "audio/mpeg", "duration": "PT{{ post_audio.duration }}S", "inLanguage": {{ translations.html_lang | jsonify }}}{% endif %}}
+  </script>
+  <script type="application/json" id="post-i18n">{"noteLabel": {{ note_label | jsonify }}, "backToSection": {{ back_to_section_label | jsonify }}, "newsletterSuccess": {{ newsletter_success | jsonify }}, "newsletterButton": {{ newsletter_button | jsonify }}, "newsletterError": {{ newsletter_error | jsonify }}}</script>
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+    <h1 class="post-title p-name">{{ page.title | escape }}</h1>
     <p class="post-meta">
-      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        {% include date.html date=page.date %} 
+      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}">
+        {% include date.html date=page.date %}
       </time>
       {%- if page.author -%}
-       • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>
+       • <span class="p-author h-card">{{ page.author | escape }}</span>
       {%- endif -%}
-      <span> </span> • {{ translations.reading_time }} {% include read_time.html %}
+      • {{ translations.reading_time }} {% include read_time.html %}
     </p>
     {% include audio-player.html %}
     {% include ai-summary.html placement="header" %}
   </header>
   <div class="post-reading-layout">
-    <div class="post-content e-content" itemprop="articleBody">
+    <div class="post-content e-content">
       {{ content }}
       {% include share-buttons.html %}
     </div>
@@ -62,76 +71,15 @@ layout: default
         <button class="post-newsletter-submit" type="submit">{{ newsletter_button }}</button>
         <p class="post-newsletter-guarantee">{{ newsletter_guarantee }}</p>
         <a class="post-newsletter-powered-by" href="https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic" rel="nofollow noopener noreferrer" target="_blank">Built with Kit</a>
-        <p class="post-newsletter-success" data-newsletter-success hidden>{{ newsletter_success }}</p>
+        <p class="post-newsletter-success" data-newsletter-success role="status" hidden>{{ newsletter_success }}</p>
+        <p class="post-newsletter-error" data-newsletter-error role="alert" hidden>{{ newsletter_error }}</p>
       </div>
     </form>
   </section>
-  {%- if page.author-info -%}
-    {% include author.html author=page.author-info %}
-  {%- endif -%}
-  {%- if site.disqus.shortname -%}
-    {%- include disqus_comments.html -%}
+  {%- if author_profile -%}
+    {% include author.html author=author_profile %}
   {%- endif -%}
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
-  <script>
-    window.POST_NOTE_I18N = {
-      noteLabel: {{ note_label | jsonify }},
-      backToSection: {{ back_to_section_label | jsonify }}
-    };
-  </script>
-  <script>
-    window.POST_NEWSLETTER_I18N = {
-      success: {{ newsletter_success | jsonify }}
-    };
-  </script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      document.querySelectorAll('.post-content table').forEach(function (table) {
-        if (table.parentElement && table.parentElement.classList.contains('table-scroll')) {
-          return;
-        }
-
-        var wrapper = document.createElement('div');
-        wrapper.className = 'table-scroll';
-        table.parentNode.insertBefore(wrapper, table);
-        wrapper.appendChild(table);
-      });
-
-      var form = document.querySelector('[data-newsletter-form]');
-      if (!form) {
-        return;
-      }
-
-      var successMessage = form.querySelector('[data-newsletter-success]');
-      var submitButton = form.querySelector('.post-newsletter-submit');
-
-      form.addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        var formData = new FormData(form);
-
-        if (submitButton) {
-          submitButton.disabled = true;
-          submitButton.textContent = window.POST_NEWSLETTER_I18N.success;
-        }
-
-        fetch(form.action, {
-          method: 'POST',
-          mode: 'no-cors',
-          body: formData
-        }).then(function () {
-          form.classList.add('is-success');
-          if (successMessage) {
-            successMessage.hidden = false;
-          }
-        }).catch(function () {
-          if (submitButton) {
-            submitButton.disabled = false;
-            submitButton.textContent = {{ newsletter_button | jsonify }};
-          }
-        });
-      });
-    });
-  </script>
-  <script src="{{ '/assets/post-toc.min.js' | relative_url }}" defer></script>
+  <script src="{{ '/assets/post-toc.js' | relative_url }}?v={{ asset_version }}" defer></script>
+  <script src="{{ '/assets/post-page.js' | relative_url }}?v={{ asset_version }}" defer></script>
 </article>

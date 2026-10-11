@@ -1,0 +1,4 @@
+Contact: mailto:security@lesis.lat
+Expires: 2027-10-11T00:00:00.000Z
+Preferred-Languages: pt, en, es
+Canonical: https://blog.lesis.lat/.well-known/security.txt

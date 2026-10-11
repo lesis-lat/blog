@@ -4,20 +4,20 @@
   {% assign es_target = alt_es_path | default: '/es/' %}
 
   {% if current_lang == 'en' %}
-    <span class="language active">English</span>
+    <span class="language active" lang="en" aria-current="page">English</span>
   {% else %}
-    <a href="{{ en_target | relative_url }}" class="language">English</a>
+    <a href="{{ en_target | relative_url }}" class="language" lang="en" hreflang="en">English</a>
   {% endif %}
 
   {% if current_lang == 'es' %}
-    <span class="language active">Español</span>
+    <span class="language active" lang="es" aria-current="page">Español</span>
   {% else %}
-    <a href="{{ es_target | relative_url }}" class="language">Español</a>
+    <a href="{{ es_target | relative_url }}" class="language" lang="es" hreflang="es">Español</a>
   {% endif %}
 
   {% if current_lang == 'pt' %}
-    <span class="language active">Português</span>
+    <span class="language active" lang="pt-BR" aria-current="page">Português</span>
   {% else %}
-    <a href="{{ pt_target | relative_url }}" class="language">Português</a>
+    <a href="{{ pt_target | relative_url }}" class="language" lang="pt-BR" hreflang="pt-BR">Português</a>
   {% endif %}
 </div>

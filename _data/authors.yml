@@ -1,0 +1,25 @@
+"Heitor Gouvêa":
+  name: Heitor Gouvêa
+  image: heitor-gouvea.jpeg
+  url: https://www.linkedin.com/in/htrgouvea
+  bio:
+    en: Researcher with a software engineering background. Gouvêa's research focuses on vulnerability discovery in modern applications and the development of tools and exploits.
+    pt: Pesquisador com background em engenharia de software. O foco da pesquisa de Gouvêa é a descoberta de vulnerabilidades em aplicações modernas e o desenvolvimento de ferramentas e exploits.
+    es: Investigador con formación en ingeniería de software. La investigación de Gouvêa se centra en el descubrimiento de vulnerabilidades en aplicaciones modernas y en el desarrollo de herramientas y exploits.
+"Maria Eduarda":
+  name: Maria Eduarda
+  image: maria.jpeg
+  url: https://www.linkedin.com/in/eduardadionisio
+  bio:
+    en: Studied software engineering. Contributes to the development and maintenance of engineering solutions that deliver value to end clients, including tools and systems designed to identify vulnerabilities and reduce risk.
+    pt: Estudou engenharia de software. Contribui para o desenvolvimento e manutenção de soluções de engenharia que entregam valor aos clientes finais, incluindo ferramentas e sistemas projetados para identificar vulnerabilidades e reduzir riscos.
+    es: Estudió ingeniería de software. Contribuye al desarrollo y mantenimiento de soluciones de ingeniería que entregan valor a los clientes finales, incluyendo herramientas y sistemas diseñados para identificar vulnerabilidades y reducir riesgos.
+"LESIS Team":
+  name: LESIS
+  organization: true
+  image: favicon.png
+  url: https://www.linkedin.com/company/lesis-lat/
+  bio:
+    en: LESIS specialises in applied research focusing on offensive security technologies that support critical operations.
+    pt: A LESIS é especializada em pesquisa aplicada com foco em tecnologias de segurança ofensiva que apoiam operações críticas.
+    es: LESIS está especializada en investigación aplicada centrada en tecnologías de seguridad ofensiva que respaldan operaciones críticas.

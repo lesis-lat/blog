@@ -8,11 +8,11 @@ This is the official blog for LESIS, a research laboratory focused on informatio
 
 ## Technology Stack
 
-- Jekyll 4.4+ - Static site generator
-- Ruby 3.0+
+- Jekyll 4.4 - Static site generator, built by GitHub Actions
+- Ruby 3.2 (`.ruby-version`, pinned by `Gemfile.lock`)
 - SCSS - Stylesheet language
 - Visual identity shared with [lesis.lat](https://lesis.lat) (IBM Plex Sans and Mono)
-- Jekyll Feed for RSS support
+- jekyll-sitemap for `sitemap.xml` and `robots.txt`; the Atom feeds come from `_includes/atom-feed.xml`
 
 ## Project Structure
 
@@ -35,20 +35,20 @@ This is the official blog for LESIS, a research laboratory focused on informatio
 
 ## Features
 
-- Multi-language support (English, Portuguese, Spanish)
+- Multi-language support (English, Portuguese, Spanish) with `hreflang` links between the versions of a post
 - Responsive design with mobile optimization
-- SEO optimized with meta tags and structured data
-- Social media preview with OG tags
-- Author profiles with social links
-- Post categorization and filtering
-- RSS feed generation
+- Per-page metadata (description, Open Graph, Twitter cards) and JSON-LD: `WebSite` on the home pages, `BlogPosting` with author, publisher and audio on every post
+- Author profiles from `_data/authors.yml`, with a bio per language
+- Post categorization, search and client-side pagination on the home page
+- Atom feeds per language and a combined one, with the narrated MP3 as an enclosure
 - AI-narrated audio version of every post, in every language
+- Content Security Policy without inline scripts, `security.txt`, and no third-party code besides Google Analytics
 
 ## Getting Started
 
 ### Prerequisites
 
-- Ruby 3.0 or higher
+- Ruby 3.2 (the version in `.ruby-version`)
 - Bundler
 
 ### Installation
@@ -111,9 +111,8 @@ lang: en
 translation_key: post-topic
 category: research
 title: Post Title
-date: 2026-02-14
-author: author_name
-image: author_image.jpg
+date: 2026-02-14 10:00:00 -0300
+author: Heitor Gouvêa
 og_image: /path/to/preview-image.png
 excerpt: Brief post excerpt
 permalink: /blog/post-title/
@@ -126,6 +125,16 @@ Post content in Markdown...
 - `category` is a key shared by all languages: `research`, `vulnerability`, `community`, `guides` or `case-study`. Its label in each language lives under `categories` in `_data/translations.yml`.
 - `permalink` keeps the URL independent of the category. Do not change the permalink of a published post.
 - `audio: false` leaves a post without the narrated version.
+- `author` must match a key of `_data/authors.yml`, which holds the photo, the profile link and the bio in the three languages; the author block under the post and the JSON-LD both read from there. Add new authors to that file, not to the posts.
+- `date` carries the Brazilian offset (`-0300`) and the site is built with `timezone: America/Sao_Paulo`, so the day shown never shifts.
+- Headings inside a post start at `##`: the title is the only `h1`.
+- Images: export them as WebP at most 1680 px wide, strip metadata (`exiftool -all= file.webp`), and write them with alt text and their dimensions so the page does not jump while loading:
+
+```markdown
+![Bar chart of programs by platform](/assets/publications/topic/chart.webp){: width="1680" height="1073" loading="lazy" decoding="async"}
+```
+
+Author photos live in `assets/authors/` at 176×176 px, also without metadata. A photo straight from a phone carries GPS coordinates and the device model, and GitHub serves the file byte for byte.
 
 ## Audio Narration
 
@@ -137,7 +146,8 @@ Every post gets an MP3 narrated with ElevenLabs `eleven_v4` (through the Text to
 - `script/narration.yml` holds the model, the voice ID for each language, optional generation settings (`stability`, `similarity`) and pronunciation fixes. Pick voices in the ElevenLabs Voice Library (filter by language and accent, "Add to my voices") and paste their IDs; the run logs each voice's name and accent before narrating.
 - `.github/workflows/generate-audio.yml` runs on every push to `main` that touches `_posts/` and narrates only the posts that push changed (`--since` with the commit before the push), so posts still waiting for audio, like the archive, never ride along. Since `main` only takes reviewed pull requests, it puts the audio and the manifest in a pull request from `audio/narration`: listen to the files linked there, approve and merge it to publish. While that pull request is open, later runs add to it and never narrate again what it already holds; the code always comes from `main`, and only plain MP3 files and the manifest are taken from that branch. Run it by hand to narrate anything else: `only` takes translation_keys, and leaving it empty narrates every post without current audio, within `max`.
 - `script/generate_audio.rb` turns the Markdown into spoken text: it opens with the title, the author and the AI notice, reads links by their label, says where the article shows an image (reading its alt text when it has one), drops citation markers like `[1]`, and replaces code blocks, tables and bare URLs with a short note pointing to the text version. Posts are sent in chunks of a few paragraphs (at most 2,000 characters, the reliable size for Text to Dialogue), stitched together with `previous_request_ids` and the words on either side of each join (`previous_text`, `future_text`) so the delivery carries across the joins.
-- Each chunk comes back as 192 kbps MP3 and is decoded before the joins. The audio is normalized to -16 LUFS (two-pass `loudnorm`) and stored at `assets/audio/<translation_key>/<lang>.mp3` as mono 44.1 kHz MP3 at 128 kbps, about 1 MB per minute. Both the MP3s and `_data/audio.yml` are generated: do not edit them by hand.
+- Each chunk comes back as 192 kbps MP3 and is decoded before the joins. The audio is normalized to -16 LUFS (two-pass `loudnorm`) and stored at `assets/audio/<translation_key>/<lang>.mp3` as mono 44.1 kHz MP3 at 64 kbps, about 0.5 MB per minute, which is plenty for a single voice. Both the MP3s and `_data/audio.yml` are generated: do not edit them by hand.
+- The player is served as a custom control when JavaScript runs and as the native `<audio>` element otherwise; each language feed lists the MP3 as an Atom enclosure, so podcast apps can subscribe to `/feed/<lang>.xml`.
 
 ### API key
 
@@ -160,6 +170,25 @@ Review what will be read before spending credits (no key needed):
 ```bash
 bundle exec ruby script/generate_audio.rb --dry-run --max 999 --text-dir /tmp/lesis-speech
 ```
+
+## Security
+
+The site is static, so its attack surface is the browser. The rules that keep it small:
+
+- **No inline scripts.** Every script is a file under `assets/` loaded with `defer`; strings that scripts need come from `data-*` attributes or `<script type="application/json">` blocks, which are never executed. The single exception is the one-line statement in `_layouts/default.html` that adds the `js` class to `<html>` before the first paint; its SHA-256 hash is listed in the policy, so changing that line means recomputing the hash (`printf '%s' "<the statement>" | openssl dgst -sha256 -binary | openssl base64`).
+- **Content Security Policy** in a `<meta http-equiv>` tag in `_layouts/default.html`: scripts only from the site and Google Tag Manager, styles and fonts only from the site, connections only to the site, Google Analytics, Kit (newsletter) and applause-button.com (claps). Adding a third party means adding its origin there.
+- **Response headers** cannot be set by GitHub Pages, so they are set in Cloudflare, which proxies `blog.lesis.lat` (*Rules → Transform Rules → Modify Response Header*, host equals `blog.lesis.lat`):
+
+  | Header | Value |
+  | --- | --- |
+  | `Content-Security-Policy` | the policy from `default.html`, plus `; frame-ancestors 'none'` |
+  | `Referrer-Policy` | `strict-origin-when-cross-origin` |
+  | `X-Frame-Options` | `DENY` |
+  | `Permissions-Policy` | `camera=(), microphone=(), geolocation=(), payment=()` |
+
+  Also in Cloudflare: *SSL/TLS → Edge Certificates → HSTS* with a max-age of 12 months (the current header says 30 days, which the preload list rejects), and *Scrape Shield → Email Address Obfuscation* off, since the addresses in the footer are public and the injected script only hides them from readers without JavaScript. A cache rule that caches `/assets/*` for a year is safe because every stylesheet and script URL carries a `?v=` build token.
+- **Images without metadata.** Strip EXIF before committing any photo (see *Writing Posts*).
+- **Reports.** `SECURITY.md` and `/.well-known/security.txt` point to security@lesis.lat.
 
 ## Styling
 
@@ -188,14 +217,11 @@ Each language has its own Atom feed at `/feed/pt.xml`, `/feed/en.xml` and `/feed
 
 ## Deployment
 
-The site is designed to be deployed to any static hosting platform:
+Every push to `main` runs `.github/workflows/pages.yml`, which builds the site with the Ruby and gems from `Gemfile.lock` and deploys the result to GitHub Pages; *Settings → Pages → Source* must stay on "GitHub Actions". The build job only reads the repository; the deploy job alone has the `pages` and `id-token` permissions. Actions are pinned to commit SHAs and Dependabot keeps them current.
 
-- GitHub Pages
-- Netlify
-- Vercel
-- Traditional web servers
+`blog.lesis.lat` is served through Cloudflare in front of GitHub Pages: HTML is passed through, assets are cached at the edge, and the security headers above are added there.
 
-Simply upload the contents of the `_site` directory.
+There is no asset build step: the JavaScript under `assets/` is served as written and compressed by Cloudflare, and the SCSS is compiled by Jekyll with `style: compressed`. `README.md`, `SECURITY.md` and `script/` are excluded from the published site.
 
 ## Dependency Management
 
@@ -211,13 +237,11 @@ Pull requests are automatically created and require review before merging. Updat
 
 ## Performance
 
-Recent optimizations include:
-
-- Modular CSS architecture for better maintainability
-- Unused CSS removal
-- Responsive image implementation
-- Self-hosted IBM Plex Sans and Mono subsets in WOFF2
-- Lazy loading support for images
+- One compressed stylesheet and about 20 KB of first-party JavaScript, all deferred and loaded only on the pages that use it; the clap button loads when the reader reaches the end of the article.
+- Self-hosted IBM Plex Sans and Mono subsets in WOFF2, with the faces used above the fold preloaded.
+- Post images in WebP with explicit dimensions and lazy loading; author photos at 176×176 px.
+- Narration at 64 kbps mono, `preload="none"`, cached at the Cloudflare edge and versioned by content hash.
+- Stylesheet and script URLs carry a build token (`?v=`), so a deploy never pairs new HTML with a cached old stylesheet.
 
 ## Browser Support
 

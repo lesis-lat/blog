@@ -1,23 +1,10 @@
 ---
 permalink: /404.html
 layout: default
+title: "404"
 ---
-
-<style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
-
 {% include i18n.html %}
-<div class="container">
+<div class="not-found">
   <h1>404</h1>
   {%- for language in site.data.translations %}
   <div lang="{{ language[1].html_lang }}" data-not-found-lang="{{ language[0] }}"{% if language[0] != current_lang %} hidden{% endif %}>
@@ -26,82 +13,31 @@ layout: default
   </div>
   {%- endfor %}
 </div>
-
-<script>
-  (function () {
-    var path = window.location.pathname;
-    var lang = (navigator.language || '').slice(0, 2).toLowerCase();
-    if (/^\/en(\/|$)/.test(path)) lang = 'en';
-    if (/^\/es(\/|$)/.test(path)) lang = 'es';
-
-    var message = document.querySelector('[data-not-found-lang="' + lang + '"]');
-    if (!message) return;
-
-    document.querySelectorAll('[data-not-found-lang]').forEach(function (item) {
-      item.hidden = item !== message;
-    });
-    document.documentElement.lang = message.lang;
-  })();
-</script>
-
-<script>
-  (function () {
-    function normalizePath(path) {
-      if (!path) return "/";
-      var normalized = path;
-      if (normalized.length > 1) {
-        normalized = normalized.replace(/\/+$/, "");
-      }
-      return normalized;
-    }
-
-    function addCandidate(map, legacyPath, targetPath) {
-      if (!legacyPath || !targetPath) return;
-      var legacy = normalizePath(legacyPath);
-      if (legacy === normalizePath(targetPath)) return;
-      if (!map[legacy]) map[legacy] = targetPath;
-      if (!legacy.endsWith(".html")) {
-        map[legacy + ".html"] = targetPath;
-      }
-      if (!legacy.endsWith("/")) {
-        map[legacy + "/"] = targetPath;
-      }
-    }
-
-    var redirects = {};
-    {% for post in site.posts %}
-      {% assign yyyy = post.date | date: "%Y" %}
-      {% assign mm = post.date | date: "%m" %}
-      {% assign dd = post.date | date: "%d" %}
-      {% assign post_slug = post.slug %}
-      {% assign slug_normalized = post_slug | replace: "-en", "" | replace: "-es", "" %}
-      {% assign lang_prefix = "" %}
-      {% if post.lang == "en" %}
-        {% assign lang_prefix = "/en" %}
-      {% elsif post.lang == "es" %}
-        {% assign lang_prefix = "/es" %}
-      {% endif %}
-
-      (function () {
-        var target = "{{ post.url | relative_url }}";
-        var oldStyle = "{{ lang_prefix }}/{{ yyyy }}/{{ mm }}/{{ dd }}/{{ post_slug }}/";
-        var oldStyleNormalizedSlug = "{{ lang_prefix }}/{{ yyyy }}/{{ mm }}/{{ dd }}/{{ slug_normalized }}/";
-
-        addCandidate(redirects, oldStyle, target);
-        addCandidate(redirects, oldStyleNormalizedSlug, target);
-
-        {% if post.lang != "pt" %}
-          addCandidate(redirects, "/{{ yyyy }}/{{ mm }}/{{ dd }}/{{ post_slug }}/", target);
-          addCandidate(redirects, "/{{ yyyy }}/{{ mm }}/{{ dd }}/{{ slug_normalized }}/", target);
-        {% endif %}
-      })();
-    {% endfor %}
-
-    var currentPath = normalizePath(window.location.pathname);
-    var targetPath = redirects[currentPath];
-
-    if (targetPath) {
-      window.location.replace(targetPath);
-    }
-  })();
-</script>
+<script type="application/json" id="not-found-redirects">[
+{%- for post in site.posts -%}
+  {%- assign yyyy = post.date | date: "%Y" -%}
+  {%- assign mm = post.date | date: "%m" -%}
+  {%- assign dd = post.date | date: "%d" -%}
+  {%- assign slug_normalized = post.slug -%}
+  {%- assign lang_prefix = "" -%}
+  {%- if post.lang != "pt" -%}
+    {%- assign lang_prefix = "/" | append: post.lang -%}
+    {%- assign lang_suffix = "-" | append: post.lang -%}
+    {%- assign cut = post.slug.size | minus: 3 -%}
+    {%- assign tail = post.slug | slice: cut, 3 -%}
+    {%- if tail == lang_suffix -%}
+      {%- assign slug_normalized = post.slug | slice: 0, cut -%}
+    {%- endif -%}
+  {%- endif -%}
+  {%- assign date_path = "/" | append: yyyy | append: "/" | append: mm | append: "/" | append: dd | append: "/" -%}
+  {%- assign old_style = lang_prefix | append: date_path | append: post.slug | append: "/" -%}
+  {%- assign old_style_normalized = lang_prefix | append: date_path | append: slug_normalized | append: "/" -%}
+  {%- unless forloop.first -%},{%- endunless -%}
+  {"target": {{ post.url | relative_url | jsonify }}, "legacy": [{{ old_style | jsonify }}, {{ old_style_normalized | jsonify }}
+  {%- if post.lang != "pt" -%}
+    , {{ date_path | append: post.slug | append: "/" | jsonify }}, {{ date_path | append: slug_normalized | append: "/" | jsonify }}
+  {%- endif -%}
+  ]}
+{%- endfor -%}
+]</script>
+<script src="{{ '/assets/not-found.js' | relative_url }}?v={{ asset_version }}" defer></script>

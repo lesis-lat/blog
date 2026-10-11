@@ -13,7 +13,7 @@
 <div class="post-audio" data-post-audio data-title="{{ page.title | escape }}" data-artist="{{ page.author | default: site.author | escape }}" data-artwork="{{ page.og_image | default: site.og_image | absolute_url }}">
   <span id="post-audio-label" class="post-action-label">{{ audio_t.label }}</span>
   <audio class="post-audio-native" controls preload="none" src="{{ audio_src }}" aria-labelledby="post-audio-label"></audio>
-  <div class="post-audio-player" role="group" aria-labelledby="post-audio-label" hidden>
+  <div class="post-audio-player" role="group" aria-labelledby="post-audio-label">
     <button type="button" class="post-audio-toggle" data-post-audio-toggle aria-label="{{ audio_t.play }}" data-label-play="{{ audio_t.play }}" data-label-pause="{{ audio_t.pause }}">
       <svg class="post-audio-icon post-audio-icon-play" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5v14l11-7z"/></svg>
       <svg class="post-audio-icon post-audio-icon-pause" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 5h4v14H7zm6 0h4v14h-4z"/></svg>
@@ -23,12 +23,6 @@
     <button type="button" class="post-audio-speed" data-post-audio-speed data-label="{{ audio_t.speed }}" aria-label="{{ audio_t.speed }} 1×">1×</button>
   </div>
   <p class="post-audio-notice">{{ audio_t.ai_notice }} · {{ audio_length }}</p>
-  <div itemprop="audio" itemscope itemtype="http://schema.org/AudioObject">
-    <meta itemprop="contentUrl" content="{{ audio.url | absolute_url }}">
-    <meta itemprop="encodingFormat" content="audio/mpeg">
-    <meta itemprop="duration" content="PT{{ audio.duration }}S">
-    <meta itemprop="inLanguage" content="{{ page.lang }}">
-  </div>
 </div>
-<script src="{{ '/assets/post-audio.min.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/post-audio.js' | relative_url }}?v={{ asset_version }}" defer></script>
 {%- endif -%}

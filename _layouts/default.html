@@ -3,17 +3,27 @@
 <html lang="{{ translations.html_lang }}">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-G50p3OQJdzmNSHgmrckkRv9E5DVGNkEspwW0gLrWXBE=' https://www.googletagmanager.com; style-src 'self'; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; font-src 'self'; media-src 'self'; connect-src 'self' https://api.applause-button.com https://app.kit.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; form-action 'self' https://app.kit.com; frame-src 'self'; base-uri 'none'; object-src 'none'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% assign page_title = site.title %}
+    <script>document.documentElement.className+=' js'</script>
+    {% assign site_title = translations.site_title | default: site.title %}
+    {% assign is_not_found = false %}
+    {% if page.url == '/404.html' %}
+      {% assign is_not_found = true %}
+    {% endif %}
     {% if page.title %}
       {% assign page_title = page.title %}
+      {% assign document_title = page.title | append: ' · ' | append: site_title %}
+    {% else %}
+      {% assign page_title = site_title %}
+      {% assign document_title = site_title | append: ' · ' | append: translations.site_tagline %}
     {% endif %}
     {% assign canonical_path = page.url | replace:'index.html','' %}
     {% assign canonical_url = canonical_path | absolute_url %}
     {% assign page_description = translations.site_description %}
     {% if page.excerpt %}
-      {% assign page_description = page.excerpt | strip_html | normalize_whitespace %}
+      {% assign page_description = page.excerpt | strip_html | normalize_whitespace | truncate: 300 %}
     {% endif %}
     {% assign page_og_type = 'website' %}
     {% if page.layout == 'post' %}
@@ -47,7 +57,7 @@
           {% assign alt_es_path = post_version.url %}
         {% endif %}
       {% endfor %}
-    {% elsif page.url != '/404.html' %}
+    {% elsif is_not_found == false %}
       {% assign normalized_path = canonical_path %}
       {% if normalized_path == '/about/' or normalized_path == '/en/about/' or normalized_path == '/es/sobre/' %}
         {% assign alt_pt_path = '/about/' %}
@@ -79,10 +89,13 @@
     {% if alt_pt_path %}
       {% assign x_default_path = alt_pt_path %}
     {% endif %}
-    <title>{{ page_title | escape }}</title>
+    <title>{{ document_title | escape }}</title>
     <meta name="description" content="{{ page_description | escape }}">
+    {% if is_not_found %}
+      <meta name="robots" content="noindex">
+    {% endif %}
     <meta property="og:type" content="{{ page_og_type }}">
-    <meta property="og:site_name" content="{{ site.title | escape }}">
+    <meta property="og:site_name" content="{{ site_title | escape }}">
     <meta property="og:title" content="{{ page_title | escape }}">
     <meta property="og:description" content="{{ page_description | escape }}">
     <meta property="og:url" content="{{ canonical_url }}">
@@ -95,6 +108,13 @@
     {% endif %}
     {% if alt_es_path and current_lang != 'es' %}
       <meta property="og:locale:alternate" content="{{ site.data.translations.es.og_locale }}">
+    {% endif %}
+    {% if page.layout == 'post' %}
+      <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+      <meta property="article:modified_time" content="{{ page.last_modified_at | default: page.date | date_to_xmlschema }}">
+      {% if page.author %}
+        <meta property="article:author" content="{{ page.author | escape }}">
+      {% endif %}
     {% endif %}
     {% if page_og_image %}
       <meta property="og:image" content="{{ page_og_image | absolute_url }}">
@@ -110,37 +130,43 @@
     {% if site.twitter_username %}
       <meta name="twitter:site" content="@{{ site.twitter_username }}">
     {% endif %}
-    <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}?v={{ asset_version }}">
     <link rel="preload" href="{{ '/assets/fonts/woff2/plex-sans-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ '/assets/fonts/woff2/plex-mono-300-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="{{ '/assets/fonts/woff2/plex-mono-400-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="icon" href="{{ '/assets/images/favicon-32.png' | relative_url }}" type="image/png" sizes="32x32">
     <link rel="apple-touch-icon" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
-    {% if page.layout == 'post' %}
-      <link rel="stylesheet" href="{{ '/assets/applause-button.css' | relative_url }}">
-      <script src="{{ '/assets/applause-button.js' | relative_url }}"></script>
-    {% endif %}
-    <link rel="canonical" href="{{ canonical_url }}">
-    {% if alt_pt_path %}
-      <link rel="alternate" hreflang="{{ site.data.translations.pt.html_lang }}" href="{{ alt_pt_path | absolute_url }}">
-    {% endif %}
-    {% if alt_en_path %}
-      <link rel="alternate" hreflang="{{ site.data.translations.en.html_lang }}" href="{{ alt_en_path | absolute_url }}">
-    {% endif %}
-    {% if alt_es_path %}
-      <link rel="alternate" hreflang="{{ site.data.translations.es.html_lang }}" href="{{ alt_es_path | absolute_url }}">
-    {% endif %}
-    <link rel="alternate" hreflang="x-default" href="{{ x_default_path | absolute_url }}">
+    {% unless is_not_found %}
+      <link rel="canonical" href="{{ canonical_url }}">
+      {% if alt_pt_path %}
+        <link rel="alternate" hreflang="{{ site.data.translations.pt.html_lang }}" href="{{ alt_pt_path | absolute_url }}">
+      {% endif %}
+      {% if alt_en_path %}
+        <link rel="alternate" hreflang="{{ site.data.translations.en.html_lang }}" href="{{ alt_en_path | absolute_url }}">
+      {% endif %}
+      {% if alt_es_path %}
+        <link rel="alternate" hreflang="{{ site.data.translations.es.html_lang }}" href="{{ alt_es_path | absolute_url }}">
+      {% endif %}
+      <link rel="alternate" hreflang="x-default" href="{{ x_default_path | absolute_url }}">
+    {% endunless %}
     {% assign feed_path = '/feed/' | append: current_lang | append: '.xml' %}
-    <link rel="alternate" type="application/atom+xml" title="{{ site.title | escape }}" href="{{ feed_path | relative_url }}">
+    <link rel="alternate" type="application/atom+xml" title="{{ site_title | escape }}" href="{{ feed_path | relative_url }}">
+    {% if page.layout == 'home' %}
+      <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "WebSite", "name": {{ site_title | jsonify }}, "url": {{ canonical_url | jsonify }}, "inLanguage": {{ translations.html_lang | jsonify }}, "description": {{ page_description | jsonify }}, "publisher": {% include json-ld-organization.html %}}
+      </script>
+    {% endif %}
   </head>
   <body>
+    <a class="skip-link" href="#main">{{ translations.skip_to_content }}</a>
     {% include header.html %}
-    <main class="page-content{% if page.layout == 'post' %} page-content-post{% endif %}" aria-label="Content">
+    <main id="main" class="page-content{% if page.layout == 'post' %} page-content-post{% endif %}">
       <div class="wrapper">
         {{ content }}
       </div>
     </main>
     {% include footer.html %}
-    <script src="{{ '/assets/header.min.js' | relative_url }}" defer></script>
+    <script src="{{ '/assets/header.js' | relative_url }}?v={{ asset_version }}" defer></script>
   </body>
 </html>

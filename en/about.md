@@ -5,8 +5,10 @@ permalink: /en/about/
 lang: en
 ---
 
-LESIS - Lab. of Engineering Studies in Information Security
+LESIS - Laboratory of Engineering Studies in Information Security
 
 We are an applied security research entity, focused on developing effective offensive technology to support critical operations. We propose solutions based on a thorough attacker's perspective and a research-based thinking.
+
+This blog gathers our publications in Portuguese, English and Spanish: research, case studies, guides and community news.
 
 You can contact us via email: contact@lesis.lat

@@ -70,10 +70,9 @@
 
     function setActiveHeading() {
       var currentId = headings[0].id;
-      var offset = window.scrollY + 145;
 
       headings.forEach(function (heading) {
-        if (heading.offsetTop <= offset) {
+        if (heading.getBoundingClientRect().top <= 145) {
           currentId = heading.id;
         }
       });
@@ -143,7 +142,13 @@
     var sideNotesList = document.getElementById('post-side-notes-list');
     var footerNotes = document.querySelector('.post-footer-notes');
     var footerNotesList = document.getElementById('post-footer-notes-list');
-    var i18n = window.POST_NOTE_I18N || {};
+    var i18nNode = document.getElementById('post-i18n');
+    var i18n = {};
+    try {
+      i18n = i18nNode ? JSON.parse(i18nNode.textContent) : {};
+    } catch (error) {
+      i18n = {};
+    }
     var noteLabel = i18n.noteLabel || 'Note';
     var backLabel = i18n.backToSection || 'Back to section';
 

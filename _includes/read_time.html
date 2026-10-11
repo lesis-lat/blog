@@ -1,3 +1,3 @@
-{%- assign reading_minutes = content | number_of_words | divided_by: 300 | at_least: 1 -%}
+{%- assign reading_minutes = content | strip_html | number_of_words | divided_by: 220 | at_least: 1 -%}
 {%- assign reading_time_text = translations.reading_time_value | replace: '%{minutes}', reading_minutes -%}
 <span class="reading-time" title="{{ translations.reading_time | remove: ':' }}">{{ reading_time_text }}</span>
