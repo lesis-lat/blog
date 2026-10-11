@@ -28,9 +28,7 @@ layout: default
       <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}">
         {% include date.html date=page.date %}
       </time>
-      {%- if page.author -%}
-       • <span class="p-author h-card">{{ page.author | escape }}</span>
-      {%- endif -%}
+      {%- if page.author %} • <span class="p-author h-card">{{ page.author | escape }}</span>{% endif %}
       • {{ translations.reading_time }} {% include read_time.html %}
     </p>
     {% include audio-player.html %}
