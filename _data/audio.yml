@@ -24,6 +24,31 @@ ai-assisted-malicious-group:
     model: eleven_v4
     voice: nLSNxtDmAgEDCV5VA6oz
     generated_at: '2026-10-11T00:31:57Z'
+choosing-sharing-identifiers:
+  en:
+    url: "/assets/audio/choosing-sharing-identifiers/en.mp3"
+    hash: 642a6236eac378f0
+    duration: 1014
+    size: 16226244
+    model: eleven_v4
+    voice: ZoiZ8fuDWInAcwPXaVeq
+    generated_at: '2026-10-11T00:52:57Z'
+  es:
+    url: "/assets/audio/choosing-sharing-identifiers/es.mp3"
+    hash: 42afbf7b65fe4b10
+    duration: 1126
+    size: 18016429
+    model: eleven_v4
+    voice: QK4xDwo9ESPHA4JNUpX3
+    generated_at: '2026-10-11T00:53:11Z'
+  pt:
+    url: "/assets/audio/choosing-sharing-identifiers/pt.mp3"
+    hash: a29319ebb3fcbcbb
+    duration: 1083
+    size: 17332658
+    model: eleven_v4
+    voice: nLSNxtDmAgEDCV5VA6oz
+    generated_at: '2026-10-11T00:53:19Z'
 digital-safety-for-children:
   en:
     url: "/assets/audio/digital-safety-for-children/en.mp3"
