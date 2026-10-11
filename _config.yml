@@ -1,4 +1,4 @@
-title: LESIS - Laboratory of Engineering Studies in Information Security 
+title: LESIS - Laboratory of Engineering Studies in Information Security
 short_title: Blog
 author: LESIS
 tagline: Your security R&D partner
@@ -11,6 +11,7 @@ description: >-
 og_image: /assets/SitePreview.png
 baseurl: ''
 url: 'https://blog.lesis.lat'
+timezone: America/Sao_Paulo
 linkedin_username: lesis-lat
 twitter_username: lesis_lat
 instagram_username: lesis.lat
@@ -19,11 +20,7 @@ github_username: lesis-lat
 show_excerpts: true
 home_posts_per_page: 6
 plugins:
-  - jekyll-feed
   - jekyll-sitemap
-
-feed:
-  posts_limit: 100
 
 kramdown:
   syntax_highlighter: rouge
@@ -31,6 +28,12 @@ kramdown:
 
 sass:
   style: compressed
+  sourcemap: never
+
+include:
+  - .well-known
 
 exclude:
   - script/
+  - README.md
+  - SECURITY.md
