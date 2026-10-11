@@ -10,6 +10,8 @@ date: 2026-10-11 09:00:00 -0300
 permalink: /blog/cf-proxy-rotacao-de-ip-com-cloudflare-workers/
 ---
 
+## Introdução
+
 Durante um pentest, é comum ter que trocar o endereço de IP por algum motivo em um dado momento. Talvez você esteja tentando fazer requisições sucessivas a um endpoint com rate limit baseado em IP, talvez o seu IP atual tenha sido bloqueado por um firewall por causa de um teste anterior (ou simplesmente porque o seu provedor tem uma má reputação). Seja qual for o motivo, você provavelmente já teve que se conectar a uma VPN ou proxy em algum momento da vida.
 
 Mas, quando isso acontece durante uma avaliação de segurança, o problema normalmente não para por aí. Se você foi bloqueado uma vez, é muito provável que seja bloqueado de novo logo em seguida e precise de uma forma de trocar o endereço mais uma vez. Com o tempo, isso fica bem chato, especialmente se o alvo está banindo o seu IP com muita frequência e você está fazendo um teste sensível ao tempo. Nessa situação, a melhor opção seria automatizar a rotação dos endereços de IP para que duas requisições consecutivas nunca venham da mesma origem.
@@ -95,5 +97,9 @@ Para testar se era esse o caso, publiquei um worker que faria requisições para
 Nesse ponto eu já podia seguir com a avaliação, mas ficou claro para mim que esse pequeno truque poderia ter aplicações reais em muitos outros cenários, então decidi transformá-lo em uma ferramenta.
 
 Depois, melhorei o worker para se comportar como um proxy de verdade, abrindo conexões com hosts remotos e encaminhando o tráfego. Usar WebSockets foi a escolha natural, já que eles permitem transmitir dados entre os dois lados da conexão com mais facilidade. A primeira versão fornecia apenas um proxy HTTP; alguns dias depois, adicionei suporte a SOCKS5. E foi assim que o `cf-proxy` surgiu.
+
+## Conclusão
+
+Rotacionar o IP durante uma avaliação não precisa significar pagar por um proxy residencial obscuro nem fazer malabarismo com uma dúzia de instâncias na nuvem. O `cf-proxy` transforma os Cloudflare Workers em um proxy rotativo barato, que te entrega um endereço novo e em geral confiável em quase toda requisição, e o mesmo truque que esconde a sua origem também pode te levar para além de um WAF, direto ao servidor atrás dele. Não é uma bala de prata, já que você não alcança hosts dentro das faixas da própria Cloudflare e a porta 25 fica de fora, mas, para os casos que ele cobre, é difícil de bater em preço e simplicidade. O código está no [GitHub](https://github.com/LvMalware/cf-proxy), caso você queira experimentar.
 
 [^provisioning]: Os workers são provisionados em locais fisicamente próximos à origem da requisição para minimizar a latência, então costumam estar na mesma região global (ou pelo menos no mesmo país) que o seu próprio IP de origem.

@@ -10,6 +10,8 @@ date: 2026-10-11 09:00:00 -0300
 permalink: /blog/cf-proxy-ip-rotation-with-cloudflare-workers/
 ---
 
+## Introduction
+
 During a pentest it is often the case that you have to change your IP address momentarily for some reason. Maybe you are trying to perform successive requests to an endpoint with an IP-based rate limit, maybe your current IP has been blocked by a firewall as a result of a previous test (or just because your provider has a bad reputation). Whatever the reason may be, you probably had to connect to a VPN or proxy at some point in your life.
 
 But when this happens during a security assessment, the problem usually doesn't stop there. If you were blocked once it is very likely that you will be blocked again soon, and you will need a way to change your address yet again. Eventually this becomes very annoying, especially if your target is banning your IP address too often and you are performing a time-sensitive test. In this situation the best option would be to automate the rotation of IP addresses so that no two consecutive requests come from the same origin.
@@ -95,5 +97,9 @@ To test if this was the case I deployed a worker that would make requests to tha
 At this point I could already proceed with the assessment, but it became clear to me that this small hack could have real applications in many other scenarios, so I decided to turn it into a tool.
 
 Later I improved the worker to behave like a real proxy, making connections to remote hosts and forwarding the traffic. Using WebSockets was the natural choice, since they allow streaming data between both sides of the connection more easily. The first version only provided an HTTP proxy, then I added SOCKS5 support a few days later. And that's how `cf-proxy` came to be.
+
+## Conclusion
+
+IP rotation during an assessment doesn't have to mean paying for a shady residential proxy or juggling a dozen cloud instances. `cf-proxy` turns Cloudflare Workers into a cheap rotating proxy that hands you a fresh, generally trusted address on almost every request, and the same trick that hides your origin can also take you past a WAF and straight to the server behind it. It isn't a silver bullet, as you can't reach hosts inside Cloudflare's own ranges and port 25 is off the table, but for the cases it does cover it is hard to beat on price and setup. The code is on [GitHub](https://github.com/LvMalware/cf-proxy) if you want to try it.
 
 [^provisioning]: Workers are provisioned in locations that are physically close to the origin of the request to minimize latency, so they are often in the same global region (or at least the same country) as your own origin IP.
