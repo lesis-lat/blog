@@ -99,6 +99,31 @@ gift-card-loop:
     model: eleven_v4
     voice: nLSNxtDmAgEDCV5VA6oz
     generated_at: '2026-10-11T00:38:43Z'
+pii-obfuscation-and-masking:
+  en:
+    url: "/assets/audio/pii-obfuscation-and-masking/en.mp3"
+    hash: f7bb8f524f8548f3
+    duration: 836
+    size: 13384117
+    model: eleven_v4
+    voice: ZoiZ8fuDWInAcwPXaVeq
+    generated_at: '2026-10-11T00:58:56Z'
+  es:
+    url: "/assets/audio/pii-obfuscation-and-masking/es.mp3"
+    hash: 3d8a3e26e9fe399b
+    duration: 967
+    size: 15475651
+    model: eleven_v4
+    voice: QK4xDwo9ESPHA4JNUpX3
+    generated_at: '2026-10-11T00:59:36Z'
+  pt:
+    url: "/assets/audio/pii-obfuscation-and-masking/pt.mp3"
+    hash: 0d9e2ea380243550
+    duration: 934
+    size: 14948175
+    model: eleven_v4
+    voice: nLSNxtDmAgEDCV5VA6oz
+    generated_at: '2026-10-11T00:59:29Z'
 primitives-and-vulnerabilities:
   en:
     url: "/assets/audio/primitives-and-vulnerabilities/en.mp3"
