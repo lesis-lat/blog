@@ -49,6 +49,31 @@ choosing-sharing-identifiers:
     model: eleven_v4
     voice: nLSNxtDmAgEDCV5VA6oz
     generated_at: '2026-10-11T00:53:19Z'
+dependabot-updates:
+  en:
+    url: "/assets/audio/dependabot-updates/en.mp3"
+    hash: f5b859b4c11f6e10
+    duration: 549
+    size: 8789482
+    model: eleven_v4
+    voice: ZoiZ8fuDWInAcwPXaVeq
+    generated_at: '2026-10-11T01:09:45Z'
+  es:
+    url: "/assets/audio/dependabot-updates/es.mp3"
+    hash: 6b2dfadfbad6ff48
+    duration: 639
+    size: 10217319
+    model: eleven_v4
+    voice: QK4xDwo9ESPHA4JNUpX3
+    generated_at: '2026-10-11T01:09:56Z'
+  pt:
+    url: "/assets/audio/dependabot-updates/pt.mp3"
+    hash: 2237c4f9995f6ce9
+    duration: 615
+    size: 9839478
+    model: eleven_v4
+    voice: nLSNxtDmAgEDCV5VA6oz
+    generated_at: '2026-10-11T01:10:01Z'
 digital-safety-for-children:
   en:
     url: "/assets/audio/digital-safety-for-children/en.mp3"
