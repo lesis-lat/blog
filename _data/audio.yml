@@ -24,6 +24,31 @@ primitives-and-vulnerabilities:
     model: eleven_v4
     voice: nLSNxtDmAgEDCV5VA6oz
     generated_at: '2026-10-11T00:01:59Z'
+sponsoring-events:
+  en:
+    url: "/assets/audio/sponsoring-events/en.mp3"
+    hash: b34354077f11cbd6
+    duration: 178
+    size: 2854887
+    model: eleven_v4
+    voice: ZoiZ8fuDWInAcwPXaVeq
+    generated_at: '2026-10-11T00:21:26Z'
+  es:
+    url: "/assets/audio/sponsoring-events/es.mp3"
+    hash: bda26950750aa667
+    duration: 200
+    size: 3208141
+    model: eleven_v4
+    voice: QK4xDwo9ESPHA4JNUpX3
+    generated_at: '2026-10-11T00:21:35Z'
+  pt:
+    url: "/assets/audio/sponsoring-events/pt.mp3"
+    hash: 83b8a6c58a8a2b08
+    duration: 195
+    size: 3118270
+    model: eleven_v4
+    voice: nLSNxtDmAgEDCV5VA6oz
+    generated_at: '2026-10-11T00:21:35Z'
 vulnerability-state-machine:
   en:
     url: "/assets/audio/vulnerability-state-machine/en.mp3"
