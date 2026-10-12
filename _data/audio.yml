@@ -27,28 +27,28 @@ ai-assisted-malicious-group:
 cf-proxy-ip-rotation:
   en:
     url: "/assets/audio/cf-proxy-ip-rotation/en.mp3"
-    hash: 036d15f8f6348c19
-    duration: 638
-    size: 5103101
+    hash: 00c9a921e18c1f1a
+    duration: 651
+    size: 5207583
     model: eleven_v4
     voice: ZoiZ8fuDWInAcwPXaVeq
-    generated_at: '2026-10-11T20:52:32Z'
+    generated_at: '2026-10-12T13:25:34Z'
   es:
     url: "/assets/audio/cf-proxy-ip-rotation/es.mp3"
-    hash: 74565bbf8383a8ee
-    duration: 705
-    size: 5641442
+    hash: 2131b31c6c49e5fd
+    duration: 718
+    size: 5745166
     model: eleven_v4
     voice: QK4xDwo9ESPHA4JNUpX3
-    generated_at: '2026-10-11T20:52:57Z'
+    generated_at: '2026-10-12T13:25:55Z'
   pt:
     url: "/assets/audio/cf-proxy-ip-rotation/pt.mp3"
-    hash: d635c6782b85b761
-    duration: 709
-    size: 5669028
+    hash: 18c3adb6ae9403f2
+    duration: 719
+    size: 5749552
     model: eleven_v4
     voice: nLSNxtDmAgEDCV5VA6oz
-    generated_at: '2026-10-11T20:52:54Z'
+    generated_at: '2026-10-12T13:26:09Z'
 choosing-sharing-identifiers:
   en:
     url: "/assets/audio/choosing-sharing-identifiers/en.mp3"
