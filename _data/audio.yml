@@ -177,28 +177,28 @@ pii-obfuscation-and-masking:
 primitives-and-vulnerabilities:
   en:
     url: "/assets/audio/primitives-and-vulnerabilities/en.mp3"
-    hash: 41ffdae6bce49f70
-    duration: 230
-    size: 1842160
+    hash: 605da7ecb7f11e38
+    duration: 225
+    size: 1799319
     model: eleven_v4
     voice: ZoiZ8fuDWInAcwPXaVeq
-    generated_at: '2026-10-11T00:01:52Z'
+    generated_at: '2026-10-12T14:30:42Z'
   es:
     url: "/assets/audio/primitives-and-vulnerabilities/es.mp3"
-    hash: bf037b0551be2d93
-    duration: 260
-    size: 2083530
+    hash: 02f5f272a0d8468c
+    duration: 259
+    size: 2074544
     model: eleven_v4
     voice: QK4xDwo9ESPHA4JNUpX3
-    generated_at: '2026-10-11T00:01:53Z'
+    generated_at: '2026-10-12T14:30:59Z'
   pt:
     url: "/assets/audio/primitives-and-vulnerabilities/pt.mp3"
-    hash: dfed833819a6f858
-    duration: 249
-    size: 1993251
+    hash: 7249cc2d8a49e420
+    duration: 250
+    size: 2000983
     model: eleven_v4
     voice: nLSNxtDmAgEDCV5VA6oz
-    generated_at: '2026-10-11T00:01:59Z'
+    generated_at: '2026-10-12T14:30:52Z'
 sponsoring-events:
   en:
     url: "/assets/audio/sponsoring-events/en.mp3"
