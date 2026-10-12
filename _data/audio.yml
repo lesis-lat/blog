@@ -152,28 +152,28 @@ gift-card-loop:
 pii-obfuscation-and-masking:
   en:
     url: "/assets/audio/pii-obfuscation-and-masking/en.mp3"
-    hash: f7bb8f524f8548f3
+    hash: 95f369647c6a11e1
     duration: 836
-    size: 6692172
+    size: 6686948
     model: eleven_v4
     voice: ZoiZ8fuDWInAcwPXaVeq
-    generated_at: '2026-10-11T00:58:56Z'
+    generated_at: '2026-10-12T13:51:17Z'
   es:
     url: "/assets/audio/pii-obfuscation-and-masking/es.mp3"
-    hash: 3d8a3e26e9fe399b
+    hash: ef1d77c65d03213a
     duration: 967
-    size: 7737973
+    size: 7740690
     model: eleven_v4
     voice: QK4xDwo9ESPHA4JNUpX3
-    generated_at: '2026-10-11T00:59:36Z'
+    generated_at: '2026-10-12T13:51:53Z'
   pt:
     url: "/assets/audio/pii-obfuscation-and-masking/pt.mp3"
-    hash: 0d9e2ea380243550
-    duration: 934
-    size: 7474229
+    hash: 6fa370aea12268f2
+    duration: 937
+    size: 7497843
     model: eleven_v4
     voice: nLSNxtDmAgEDCV5VA6oz
-    generated_at: '2026-10-11T00:59:29Z'
+    generated_at: '2026-10-12T13:51:57Z'
 primitives-and-vulnerabilities:
   en:
     url: "/assets/audio/primitives-and-vulnerabilities/en.mp3"
