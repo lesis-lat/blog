@@ -228,27 +228,27 @@ strengthening-community:
   en:
     url: "/assets/audio/strengthening-community/en.mp3"
     hash: 02ddc19b6b5c8006
-    duration: 124
-    size: 989144
+    duration: 121
+    size: 971381
     model: eleven_v4
     voice: ZoiZ8fuDWInAcwPXaVeq
-    generated_at: '2026-10-12T13:53:38Z'
+    generated_at: '2026-10-12T15:17:54Z'
   es:
     url: "/assets/audio/strengthening-community/es.mp3"
     hash: ba117b481a4b16b5
-    duration: 137
-    size: 1096234
+    duration: 139
+    size: 1109608
     model: eleven_v4
     voice: QK4xDwo9ESPHA4JNUpX3
-    generated_at: '2026-10-12T13:53:46Z'
+    generated_at: '2026-10-12T15:17:56Z'
   pt:
     url: "/assets/audio/strengthening-community/pt.mp3"
     hash: 8e603cbbd07d2242
-    duration: 135
-    size: 1077624
+    duration: 136
+    size: 1090372
     model: eleven_v4
     voice: nLSNxtDmAgEDCV5VA6oz
-    generated_at: '2026-10-12T13:53:44Z'
+    generated_at: '2026-10-12T15:18:03Z'
 vulnerability-economics:
   en:
     url: "/assets/audio/vulnerability-economics/en.mp3"
