@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Never the same IP twice: building cf-proxy on Cloudflare Workers'
+title: 'Working the cloud: IP rotation with serverless computing'
 lang: en
 translation_key: cf-proxy-ip-rotation
 category: research
@@ -91,6 +91,8 @@ During another security assessment a few days later, I had identified a possible
 Looking at various sources, I found that the domain hosting the target application used to resolve to a specific IP address up until some point in the past, after which it started to point to Cloudflare. Because the same IP seemed to have been hosting that application for a long time before, it seemed reasonable that they hadn't actually changed the host, but rather just placed the WAF in front of it. But even though the host seemed to still be alive, it didn't accept connections on any of the ports I tried. My assumption was that they had put a firewall rule in place to only accept traffic from Cloudflare's ASN, so people wouldn't be able to talk to the web server directly (like I was trying to do).
 
 If only I could make it look like my traffic was coming from Cloudflare... wait... I can!
+
+![Captain Phillips meme captioned "Look at me, I'm your ISP now", signed Cloudflare](/assets/publications/cf-proxy/meme-cf.webp){: width="500" height="500" loading="lazy" decoding="async"}
 
 To test if this was the case I deployed a worker that would make requests to that IP address on ports 80 and 443, which confirmed there was something responding on port 80. Now I had a way to bypass the WAF by using a worker to make the requests directly to the origin server on my behalf, so I just modified the worker to receive some parameters to define things like request method, path, body, and so on.
 

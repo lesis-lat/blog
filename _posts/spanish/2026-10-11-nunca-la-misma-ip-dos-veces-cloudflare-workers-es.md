@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Nunca la misma IP dos veces: construyendo cf-proxy con Cloudflare Workers'
+title: 'Poniendo la nube a trabajar: rotación de IP con computación serverless'
 lang: es
 translation_key: cf-proxy-ip-rotation
 category: research
@@ -91,6 +91,8 @@ Durante otra evaluación de seguridad unos días después, había identificado u
 Revisando varias fuentes, descubrí que el dominio que alojaba la aplicación objetivo solía resolver a una dirección IP concreta hasta cierto momento en el pasado, tras el cual empezó a apuntar a Cloudflare. Como la misma IP parecía haber alojado esa aplicación durante mucho tiempo antes, era razonable suponer que no habían cambiado el host, sino que solo habían puesto el WAF por delante. Pero aunque el host parecía seguir vivo, no aceptaba conexiones en ninguno de los puertos que probé. Mi suposición era que habían puesto una regla de firewall para aceptar tráfico solo del ASN de Cloudflare, de modo que no se pudiera hablar directamente con el servidor web (como yo estaba intentando).
 
 Si tan solo pudiera hacer que mi tráfico pareciera venir de Cloudflare... un momento... ¡puedo hacerlo!
+
+![Meme de la película Capitán Phillips con el texto "Look at me, I'm your ISP now" (mírame, ahora tu proveedor soy yo), firmado Cloudflare](/assets/publications/cf-proxy/meme-cf.webp){: width="500" height="500" loading="lazy" decoding="async"}
 
 Para comprobar si era así, desplegué un worker que haría peticiones a esa dirección IP en los puertos 80 y 443, lo que confirmó que había algo respondiendo en el puerto 80. Ahora tenía una forma de sortear el WAF usando un worker para hacer las peticiones directamente al servidor de origen en mi nombre, así que solo modifiqué el worker para que recibiera algunos parámetros que definieran cosas como el método de la petición, la ruta, el cuerpo, etc.
 
