@@ -277,28 +277,28 @@ vulnerability-economics:
 vulnerability-state-machine:
   en:
     url: "/assets/audio/vulnerability-state-machine/en.mp3"
-    hash: 625ade2d3fec90b9
-    duration: 172
-    size: 1376983
+    hash: 4ab3b6d58a8e5c53
+    duration: 174
+    size: 1389313
     model: eleven_v4
     voice: ZoiZ8fuDWInAcwPXaVeq
-    generated_at: '2026-10-10T23:51:47Z'
+    generated_at: '2026-10-12T15:20:17Z'
   es:
     url: "/assets/audio/vulnerability-state-machine/es.mp3"
-    hash: d954e60a190cbd9c
-    duration: 185
-    size: 1483841
+    hash: 5caa39c70fd740c6
+    duration: 187
+    size: 1497424
     model: eleven_v4
     voice: QK4xDwo9ESPHA4JNUpX3
-    generated_at: '2026-10-10T23:51:51Z'
+    generated_at: '2026-10-12T15:20:26Z'
   pt:
     url: "/assets/audio/vulnerability-state-machine/pt.mp3"
-    hash: e2fdc19650e3a0de
-    duration: 181
-    size: 1452695
+    hash: fcef76c962ebd4af
+    duration: 190
+    size: 1517896
     model: eleven_v4
     voice: nLSNxtDmAgEDCV5VA6oz
-    generated_at: '2026-10-10T23:51:50Z'
+    generated_at: '2026-10-12T15:20:27Z'
 writing-security-reports:
   en:
     url: "/assets/audio/writing-security-reports/en.mp3"
