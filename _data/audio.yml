@@ -3,27 +3,27 @@ ai-assisted-malicious-group:
   en:
     url: "/assets/audio/ai-assisted-malicious-group/en.mp3"
     hash: 1729b59c731b02cd
-    duration: 470
-    size: 3760868
+    duration: 473
+    size: 3787618
     model: eleven_v4
     voice: ZoiZ8fuDWInAcwPXaVeq
-    generated_at: '2026-10-11T00:31:40Z'
+    generated_at: '2026-10-12T15:31:17Z'
   es:
     url: "/assets/audio/ai-assisted-malicious-group/es.mp3"
     hash: 67daea86540b58bb
-    duration: 528
-    size: 4224405
+    duration: 521
+    size: 4171742
     model: eleven_v4
     voice: QK4xDwo9ESPHA4JNUpX3
-    generated_at: '2026-10-11T00:31:53Z'
+    generated_at: '2026-10-12T15:31:29Z'
   pt:
     url: "/assets/audio/ai-assisted-malicious-group/pt.mp3"
     hash: 749a0a5f88ed7313
-    duration: 516
-    size: 4131930
+    duration: 515
+    size: 4118764
     model: eleven_v4
     voice: nLSNxtDmAgEDCV5VA6oz
-    generated_at: '2026-10-11T00:31:57Z'
+    generated_at: '2026-10-12T15:31:37Z'
 cf-proxy-ip-rotation:
   en:
     url: "/assets/audio/cf-proxy-ip-rotation/en.mp3"
