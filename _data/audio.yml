@@ -78,27 +78,27 @@ dependabot-updates:
   en:
     url: "/assets/audio/dependabot-updates/en.mp3"
     hash: f5b859b4c11f6e10
-    duration: 549
-    size: 4394850
+    duration: 548
+    size: 4382312
     model: eleven_v4
     voice: ZoiZ8fuDWInAcwPXaVeq
-    generated_at: '2026-10-11T01:09:45Z'
+    generated_at: '2026-10-12T14:00:26Z'
   es:
     url: "/assets/audio/dependabot-updates/es.mp3"
     hash: 6b2dfadfbad6ff48
-    duration: 639
-    size: 5108813
+    duration: 633
+    size: 5065763
     model: eleven_v4
     voice: QK4xDwo9ESPHA4JNUpX3
-    generated_at: '2026-10-11T01:09:56Z'
+    generated_at: '2026-10-12T14:00:52Z'
   pt:
     url: "/assets/audio/dependabot-updates/pt.mp3"
     hash: 2237c4f9995f6ce9
-    duration: 615
-    size: 4919889
+    duration: 613
+    size: 4901081
     model: eleven_v4
     voice: nLSNxtDmAgEDCV5VA6oz
-    generated_at: '2026-10-11T01:10:01Z'
+    generated_at: '2026-10-12T14:00:52Z'
 digital-safety-for-children:
   en:
     url: "/assets/audio/digital-safety-for-children/en.mp3"
