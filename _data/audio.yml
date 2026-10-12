@@ -52,28 +52,28 @@ cf-proxy-ip-rotation:
 choosing-sharing-identifiers:
   en:
     url: "/assets/audio/choosing-sharing-identifiers/en.mp3"
-    hash: 642a6236eac378f0
-    duration: 1014
-    size: 8113238
+    hash: 51c64c17cca29fd3
+    duration: 1012
+    size: 8093176
     model: eleven_v4
     voice: ZoiZ8fuDWInAcwPXaVeq
-    generated_at: '2026-10-11T00:52:57Z'
+    generated_at: '2026-10-12T13:42:48Z'
   es:
     url: "/assets/audio/choosing-sharing-identifiers/es.mp3"
-    hash: 42afbf7b65fe4b10
-    duration: 1126
-    size: 9008364
+    hash: 58c21cd451c16473
+    duration: 1127
+    size: 9013170
     model: eleven_v4
     voice: QK4xDwo9ESPHA4JNUpX3
-    generated_at: '2026-10-11T00:53:11Z'
+    generated_at: '2026-10-12T13:43:22Z'
   pt:
     url: "/assets/audio/choosing-sharing-identifiers/pt.mp3"
-    hash: a29319ebb3fcbcbb
-    duration: 1083
-    size: 8666483
+    hash: d48f3c9d5fd3bbf7
+    duration: 1081
+    size: 8649974
     model: eleven_v4
     voice: nLSNxtDmAgEDCV5VA6oz
-    generated_at: '2026-10-11T00:53:19Z'
+    generated_at: '2026-10-12T13:43:26Z'
 dependabot-updates:
   en:
     url: "/assets/audio/dependabot-updates/en.mp3"
