@@ -127,28 +127,28 @@ digital-safety-for-children:
 gift-card-loop:
   en:
     url: "/assets/audio/gift-card-loop/en.mp3"
-    hash: 1b9341287853efbb
-    duration: 312
-    size: 2496301
+    hash: a75ecda176a313fb
+    duration: 322
+    size: 2574668
     model: eleven_v4
     voice: ZoiZ8fuDWInAcwPXaVeq
-    generated_at: '2026-10-11T00:38:37Z'
+    generated_at: '2026-10-12T14:27:08Z'
   es:
     url: "/assets/audio/gift-card-loop/es.mp3"
-    hash: 19c9e353dde9bcb6
-    duration: 342
-    size: 2735786
+    hash: f4c85611983670c9
+    duration: 355
+    size: 2842784
     model: eleven_v4
     voice: QK4xDwo9ESPHA4JNUpX3
-    generated_at: '2026-10-11T00:38:41Z'
+    generated_at: '2026-10-12T14:27:14Z'
   pt:
     url: "/assets/audio/gift-card-loop/pt.mp3"
-    hash: 7164f143b9473b43
-    duration: 336
-    size: 2685093
+    hash: 35ad0ff1b4add6ad
+    duration: 347
+    size: 2778716
     model: eleven_v4
     voice: nLSNxtDmAgEDCV5VA6oz
-    generated_at: '2026-10-11T00:38:43Z'
+    generated_at: '2026-10-12T14:27:10Z'
 pii-obfuscation-and-masking:
   en:
     url: "/assets/audio/pii-obfuscation-and-masking/en.mp3"
