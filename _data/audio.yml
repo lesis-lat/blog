@@ -202,28 +202,28 @@ primitives-and-vulnerabilities:
 sponsoring-events:
   en:
     url: "/assets/audio/sponsoring-events/en.mp3"
-    hash: b34354077f11cbd6
-    duration: 178
-    size: 1427556
+    hash: aefbcf4418151329
+    duration: 183
+    size: 1461411
     model: eleven_v4
     voice: ZoiZ8fuDWInAcwPXaVeq
-    generated_at: '2026-10-11T00:21:26Z'
+    generated_at: '2026-10-12T15:15:17Z'
   es:
     url: "/assets/audio/sponsoring-events/es.mp3"
-    hash: bda26950750aa667
-    duration: 200
-    size: 1604223
+    hash: '09511a59c5ff2c5c'
+    duration: 206
+    size: 1645183
     model: eleven_v4
     voice: QK4xDwo9ESPHA4JNUpX3
-    generated_at: '2026-10-11T00:21:35Z'
+    generated_at: '2026-10-12T15:15:24Z'
   pt:
     url: "/assets/audio/sponsoring-events/pt.mp3"
-    hash: 83b8a6c58a8a2b08
-    duration: 195
-    size: 1559282
+    hash: fc83f4b0f6c6c32c
+    duration: 202
+    size: 1616543
     model: eleven_v4
     voice: nLSNxtDmAgEDCV5VA6oz
-    generated_at: '2026-10-11T00:21:35Z'
+    generated_at: '2026-10-12T15:15:19Z'
 strengthening-community:
   en:
     url: "/assets/audio/strengthening-community/en.mp3"
