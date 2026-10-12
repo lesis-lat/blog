@@ -302,25 +302,25 @@ vulnerability-state-machine:
 writing-security-reports:
   en:
     url: "/assets/audio/writing-security-reports/en.mp3"
-    hash: 44ed9adfe885c578
-    duration: 451
-    size: 3607841
+    hash: 95f9957ed1ee1ae0
+    duration: 455
+    size: 3639606
     model: eleven_v4
     voice: ZoiZ8fuDWInAcwPXaVeq
-    generated_at: '2026-10-11T00:13:02Z'
+    generated_at: '2026-10-12T14:14:51Z'
   es:
     url: "/assets/audio/writing-security-reports/es.mp3"
-    hash: bfd6ca415d4fe5f1
-    duration: 515
-    size: 4124310
+    hash: 5d280ccb127c9a3f
+    duration: 520
+    size: 4163807
     model: eleven_v4
     voice: QK4xDwo9ESPHA4JNUpX3
-    generated_at: '2026-10-11T00:13:21Z'
+    generated_at: '2026-10-12T14:15:12Z'
   pt:
     url: "/assets/audio/writing-security-reports/pt.mp3"
-    hash: 9f41c19004b0801d
-    duration: 516
-    size: 4129950
+    hash: 3bca8324a2208f9b
+    duration: 508
+    size: 4067256
     model: eleven_v4
     voice: nLSNxtDmAgEDCV5VA6oz
-    generated_at: '2026-10-11T00:13:19Z'
+    generated_at: '2026-10-12T14:15:15Z'
