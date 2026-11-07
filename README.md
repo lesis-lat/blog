@@ -1,6 +1,4 @@
-# LESIS Blog
-
-Laboratory of Engineering Studies in Information Security - Research and Development Blog
+# LESIS - Laboratory of Engineering Studies in Information Security - Research and Development Blog
 
 ## Overview
 
