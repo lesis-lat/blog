@@ -24,6 +24,31 @@ ai-assisted-malicious-group:
     model: eleven_v4
     voice: nLSNxtDmAgEDCV5VA6oz
     generated_at: '2026-10-12T15:31:37Z'
+canonical-approaches:
+  en:
+    url: "/assets/audio/canonical-approaches/en.mp3"
+    hash: fb7080fef0b49f2a
+    duration: 954
+    size: 7633029
+    model: eleven_v4
+    voice: ZoiZ8fuDWInAcwPXaVeq
+    generated_at: '2026-11-07T17:57:53Z'
+  es:
+    url: "/assets/audio/canonical-approaches/es.mp3"
+    hash: 5a9b35765321f7c9
+    duration: 989
+    size: 7914621
+    model: eleven_v4
+    voice: QK4xDwo9ESPHA4JNUpX3
+    generated_at: '2026-11-07T17:58:23Z'
+  pt:
+    url: "/assets/audio/canonical-approaches/pt.mp3"
+    hash: '059df54514b1495a'
+    duration: 1008
+    size: 8065078
+    model: eleven_v4
+    voice: nLSNxtDmAgEDCV5VA6oz
+    generated_at: '2026-11-07T17:58:21Z'
 cf-proxy-ip-rotation:
   en:
     url: "/assets/audio/cf-proxy-ip-rotation/en.mp3"
